@@ -1,6 +1,7 @@
 import collections
 from math import radians, cos, sin, asin, sqrt,atan2,degrees
 from Tree import Tree as Tree
+
 def is_part_of_segment(seg, point):
     last_point = seg[-1]
     previous_point = seg[-2]
@@ -58,14 +59,17 @@ def haversine(lon1, lat1, lon2, lat2):
 def time_interval(t1,t2):
     return t2-t1
 
-def velocity():
-    pass
+def add_segment(seg,track):
+    if not track:
+        track = Tree(seg)
+    else:
+        pass
 
 point_file = open('trip_0.txt')
 geo_point = collections.namedtuple('geo_point', ['latitude', 'longitude','timestamp'])
 points = []
 segments = []
-trajectory = None
+track = None
 #load points as touples into a list
 for line in point_file:
     data = line.split(",")
@@ -78,6 +82,7 @@ for point in points:
     else:
         if is_part_of_segment(segment,point):
             segment.append(point)
+            add_segment(segment,track)
         else:
             segments.append(segment)
             segment = []
@@ -91,7 +96,7 @@ root.addChild(node)
 print root.data
 print len(segments)
     
-#print "the segment has %i elements" % len(segment)
+
 def initialize_segment(point1,point2):
     pass
 

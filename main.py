@@ -1,3 +1,4 @@
+from __future__ import division
 from collections import namedtuple
 from QuadTree import QuadTree
 from itertools import tee, izip
@@ -5,7 +6,9 @@ import os
 from rtree import index
 from math import radians, cos, sin,atan2,degrees
 from Track import Track
+from GTrack import GTrack
 from Segment import Segment
+from _abcoll import Sequence
 Point = namedtuple('Point', ['latitude', 'longitude','timestamp'])
 '''
 Returns an array of named tuples
@@ -14,7 +17,7 @@ in the form of geo_point[latitude,longitude,timestamp]
 
 def load_file(file_name):
     points = []
-    if file_name.endswith(".txt"):
+    if file_name.endswith(".txt") and not file_name.startswith("."):
         try:
             point_file = open(file_name)
             for line in point_file:
@@ -114,14 +117,85 @@ def pairwise(iterable):
     next(b, None)
     return izip(a, b)
 
+
+def extract_routes(tracks):
+    candidates = []
+    similar = []
+    treshold = 25
+    print "Total tracks %i:" % len(tracks)
+    
+    #Iterate though tracks for grouping them by similarity
+    for t in tracks:
+    #If the track matches a group then it's added to it
+        unique = True
+        for group in similar:
+            if group_similarity(t,group):
+                unique = False
+                break
+    #If no group is similar to it, create a new one
+        if unique:
+            similar.append([t])
+        
+    print "Groups of similar tracks %i:" % len(similar)
+    #Else the track must form a new group containing itself
+    routes = []
+    for group in similar:
+        nodes = []
+        for track in group:
+            for n in track.nodes:
+                nodes.append(n) 
+
+        route = list(set(nodes))
+        routes.append(route)
+
+        if len(group)>treshold:
+            print len(route)
+            candidates.append(group)
+        
+    print "Possible Routes %i: and %i" % (len(candidates), len(routes))       
+    
+    cluster = []
+    for r1 in routes:
+        for r2 in routes:
+            if merge_routes(r1,r2):
+                
+    os.chdir("/home/moyano/Projects/CreateTracks/Candidates")
+    for i,c in enumerate(candidates):
+        f = open("candidate"+str(i)+".txt", 'w')
+        #print "candidate"+str(i)
+        for track in c:
+            #print track.name
+            for node in track.nodes:
+                p = node.center_of_mass()
+                f.write(str(p.latitude) + "," + str(p.longitude))
+                f.write('\n')
+                
+        
+    return candidates
+
+#Adds a track to a given group if it's similar
+#to more than 80% of it's current members
+def group_similarity(track, track_group):
+    count = 0
+
+    for t in track_group:
+        if track.compare(t):
+            count += 1
+            
+    if count/len(track_group) >= 0.6:
+        track_group.append(track)
+        return True
+    else:
+        return False     
+
 #Load all files and initilize Simple Tracks
 os.chdir("/home/moyano/Projects/CreateTracks/trips/")
 all_points = []
-tracks = []
+#tracks = []
 for trip in os.listdir("."):
         trip_data = load_file(trip)
         all_points += trip_data
-        tracks.append(Track(trip_data))
+        #tracks.append(Track(trip_data))
         
 print 100*("x")
 
@@ -132,7 +206,7 @@ depth = depth(boundries, 0.00035)
 print "Nesting Level: %i" % depth
 qtree = QuadTree(depth, boundries)
 
-print "there are %i tracks" % len(tracks)
+#print "there are %i tracks" % len(tracks)
 
 
 #Make the QTree
@@ -146,18 +220,20 @@ for coord in all_points:
 segments = []
 canonical_tracks = []
 for trip in os.listdir("."):
-    trip_data = load_file(trip)
-    canonical_points = []
-    #Create segments
-    for point1,point2 in pairwise(trip_data):
-        p1 = qtree.canonical_point(point1)
-        p2 = qtree.canonical_point(point2)
-        #Keep the original TimeStamp
-        segments.append(Segment(p1,p2))
-    print canonical_points
-    print 100*("x")
-    tracks.append(Track(canonical_points))
-    
+    if not trip.startswith('.'):
+        trip_data = load_file(trip)
+        nodes = [] 
+        
+        for p in trip_data:
+            nodes.append(qtree.containing_node(p))
+        if not nodes:
+            print trip
+            break
+        
+        canonical_tracks.append(GTrack(nodes,trip))
+
+    #tracks.append(Track(canonical_points))
+extract_routes(canonical_tracks)
 #Write the output file
 os.chdir("/home/moyano/Projects/CreateTracks/")
 test_file = open("test.txt", "w")

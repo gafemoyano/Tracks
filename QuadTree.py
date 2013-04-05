@@ -127,6 +127,22 @@ class QuadTree(object):
             
         if self.se.contains(coord.latitude, coord.longitude):
             return self.se.canonical_point(coord)
+        
+    def containing_node(self, coord):
+        if(self.type == QuadTree.LEAF):
+            return self 
+        
+        if self.nw.contains(coord.latitude, coord.longitude):           
+            return self.nw.containing_node(coord)
+            
+        if self.ne.contains(coord.latitude, coord.longitude):
+            return self.ne.containing_node(coord)
+            
+        if self.sw.contains(coord.latitude, coord.longitude):
+            return self.sw.containing_node(coord)
+            
+        if self.se.contains(coord.latitude, coord.longitude):
+            return self.se.containing_node(coord)
     
     def print_grid(self):
         grid = set()

@@ -2,6 +2,7 @@ from __future__ import division
 import numpy as np
 from collections import namedtuple
 from math import radians, cos, sin, asin, sqrt,atan2,degrees
+Point = namedtuple('Point', 'latitude, longitude')
 class QuadTree(object):
 
     """An implementation of a quad-tree.
@@ -47,8 +48,7 @@ class QuadTree(object):
     #Adds a point to the root where it belongs and returns the geographical
     #center of the node as the most Representative Point
     def add_point(self, coord):
-        #print coord
-        #print self.centre()
+
         if(self.type == QuadTree.LEAF):
             self.items.append(coord)        
             return self
@@ -72,8 +72,6 @@ class QuadTree(object):
             return True
         return False
         
-    def center(self):
-        return ([self.cy, self.cx])
     
     #Returns the aritmetic average of all the coordinates stored in the node
     #Format (longitude, latitude)
@@ -83,12 +81,11 @@ class QuadTree(object):
         else:
             lat = np.mean([coord.latitude for coord in self.items])
             lon = np.mean([coord.longitude for coord in self.items])     
-            return [lat,lon]
+            return Point(lat,lon)
             
     #Returnsthe geographical center of all the items in the node
     #Returns a Point topule [latitude,longitude]
     def geographic_midpoint(self):
-        Point = namedtuple('Point', 'latitude, longitude')
         #List with all the points transformed to [[lat,lon],[lat,lon]....]
         
         rad_points = [Point(radians(coord.latitude),radians(coord.longitude)) for coord in self.items]   
@@ -112,24 +109,24 @@ class QuadTree(object):
         lat = degrees(atan2(z, hyp)) 
         
         #return a point
-        print Point(lat,lon)
         return Point(lat,lon)
-    
-    def find_position(self, coord):
-        if(self.type == QuadTree.LEAF):        
-            return self.center_of_mass()
+    #Returns the center of mass of the leaf where the point would be placed
+    #in the tree. Returns the original timestamp of the coordiante
+    def canonical_point(self, coord):
+        if(self.type == QuadTree.LEAF):
+            return self.center_of_mass() 
         
         if self.nw.contains(coord.latitude, coord.longitude):           
-            return self.nw.find_position(coord)
+            return self.nw.canonical_point(coord)
             
         if self.ne.contains(coord.latitude, coord.longitude):
-            return self.ne.find_position(coord)
+            return self.ne.canonical_point(coord)
             
         if self.sw.contains(coord.latitude, coord.longitude):
-            return self.sw.find_position(coord)
+            return self.sw.canonical_point(coord)
             
         if self.se.contains(coord.latitude, coord.longitude):
-            return self.se.find_position(coord)
+            return self.se.canonical_point(coord)
     
     def print_grid(self):
         grid = set()

@@ -3,14 +3,9 @@ from collections import namedtuple
 class Segment(object):
     
     '''
-    must receive an array of points which will have the values
-    for latitude, longitude and a timestamp
-    'geo_point', ['latitude', 'longitude','timestamp']
+        Construction of 2 
     '''
-    def __init__(self, points):
-        self.points = []
-        Point = namedtuple('Point', 'latitude, longitude, timestamp')
-        for point in points:
-            p = Point(point.latitude, point.longitude, point.timestamp)
-            self.points.append(p)
+    def __init__(self, p1,p2):
+        self.p1 = p1
+        self.p2 = p2
     

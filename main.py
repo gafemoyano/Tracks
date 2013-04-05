@@ -1,9 +1,11 @@
 from collections import namedtuple
 from QuadTree import QuadTree
+from itertools import tee, izip
 import os
 from rtree import index
 from math import radians, cos, sin,atan2,degrees
 from Track import Track
+from Segment import Segment
 Point = namedtuple('Point', ['latitude', 'longitude','timestamp'])
 '''
 Returns an array of named tuples
@@ -13,12 +15,13 @@ in the form of geo_point[latitude,longitude,timestamp]
 def load_file(file_name):
     points = []
     if file_name.endswith(".txt"):
-        point_file = open(file_name)
-        print file_name
-        for line in point_file:
-            data = line.split(",")
-            points.append(Point(float(data[1]),float(data[2]),float(data[3])))
-    
+        try:
+            point_file = open(file_name)
+            for line in point_file:
+                data = line.split(",")
+                points.append(Point(float(data[1]),float(data[2]),float(data[3])))
+        except Exception:
+            print file_name
     return points
 
 def initial_heading(lon1, lat1, lon2, lat2):
@@ -105,6 +108,13 @@ def depth(rect, distance):
     depth = min(l_depth, h_depth)
     return depth
 
+def pairwise(iterable):
+    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
+    a, b = tee(iterable)
+    next(b, None)
+    return izip(a, b)
+
+#Load all files and initilize Simple Tracks
 os.chdir("/home/moyano/Projects/CreateTracks/trips/")
 all_points = []
 tracks = []
@@ -113,8 +123,7 @@ for trip in os.listdir("."):
         all_points += trip_data
         tracks.append(Track(trip_data))
         
-print 100*("Z")
-print all_points
+print 100*("x")
 
 
 #coords =load_file('all_trips.csv')
@@ -122,6 +131,8 @@ boundries = max_bounding_rect(all_points)
 depth = depth(boundries, 0.00035)
 print "Nesting Level: %i" % depth
 qtree = QuadTree(depth, boundries)
+
+print "there are %i tracks" % len(tracks)
 
 
 #Make the QTree
@@ -131,15 +142,32 @@ for coord in all_points:
     l = qtree.add_point(coord)
     leafs.append(l)
 
+#Canonical Tracks
+segments = []
+canonical_tracks = []
+for trip in os.listdir("."):
+    trip_data = load_file(trip)
+    canonical_points = []
+    #Create segments
+    for point1,point2 in pairwise(trip_data):
+        p1 = qtree.canonical_point(point1)
+        p2 = qtree.canonical_point(point2)
+        #Keep the original TimeStamp
+        segments.append(Segment(p1,p2))
+    print canonical_points
+    print 100*("x")
+    tracks.append(Track(canonical_points))
+    
 #Write the output file
+os.chdir("/home/moyano/Projects/CreateTracks/")
 test_file = open("test.txt", "w")
 
-print 100*("x")
+
 
 
 for leaf in set(leafs):
     point = leaf.geographic_midpoint()
-    test_file.write(str(point[0]) + "," + str(point[1]))
+    test_file.write(str(point.latitude) + "," + str(point.longitude))
     test_file.write("\n")
     
     

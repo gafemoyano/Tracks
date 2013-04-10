@@ -10,6 +10,13 @@ class GTrack(object):
                 
                 
     def compare(self,other):
+
+        #Direction
+
+        #Lenght
+        
+        #Similarity
+        
         self_len = len(self.nodes)
         other_len = len(other.nodes)
         #print self_len, other_len

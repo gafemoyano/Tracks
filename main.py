@@ -158,6 +158,7 @@ def extract_routes(tracks):
     for r1 in routes:
         for r2 in routes:
             if merge_routes(r1,r2):
+                pass
                 
     os.chdir("/home/moyano/Projects/CreateTracks/Candidates")
     for i,c in enumerate(candidates):

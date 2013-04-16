@@ -6,7 +6,7 @@ import os
 from rtree import index
 from math import radians, cos, sin,atan2,degrees
 from Track import Track
-from GTrack import GTrack
+from Trip import Trip
 from Segment import Segment
 from _abcoll import Sequence
 Point = namedtuple('Point', ['latitude', 'longitude','timestamp'])
@@ -24,45 +24,10 @@ def load_file(file_name):
                 data = line.split(",")
                 points.append(Point(float(data[1]),float(data[2]),float(data[3])))
         except Exception:
+            print "Error loading File: "
             print file_name
     return points
 
-def initial_heading(lon1, lat1, lon2, lat2):
-    dlon = radians(lon2-lon1)
-    lat1 = radians(lat1)
-    lat2 = radians(lat2)
-    y = sin(dlon)*cos(lat2)
-    x = (cos(lat1)*sin(lat2))-(sin(lat1)*cos(lat2)*cos(dlon))
-    #normalize
-    heading =  (degrees((atan2(y,x)))+360)%360
-    return heading
-
-def is_part_of_segment(seg, point):
-    last_point = seg[-1]
-    previous_point = seg[-2]
-    previous_heading =  initial_heading(previous_point.longitude, previous_point.latitude, last_point.longitude,last_point.latitude)
-    new_heading = initial_heading(last_point.longitude, last_point.latitude, point.longitude, point.latitude)    
-    if abs(previous_heading - new_heading) < 15:
-        return True
-    else:
-        return False
-    
-def get_segments(points):
-    segments = []
-    segment = []
-    for point in points:
-        if  len(segment)<2:
-            segment.append(point)
-        else:
-            if is_part_of_segment(segment,point):
-                segment.append(point)
-            else:
-                segments.append(segment)
-                segment = []
-                segment.append(point)
-                
-    segments.append(segment)
-    return segments
 
 '''
 TEMP Function
@@ -126,13 +91,14 @@ def extract_routes(tracks):
     
     #Iterate though tracks for grouping them by similarity
     for t in tracks:
-    #If the track matches a group then it's added to it
+        #t.corners()
+        #If #the track matches a group then it's added to it
         unique = True
         for group in similar:
             if group_similarity(t,group):
                 unique = False
                 break
-    #If no group is similar to it, create a new one
+        #If no group is similar to it, create a new one
         if unique:
             similar.append([t])
         
@@ -155,10 +121,10 @@ def extract_routes(tracks):
     print "Possible Routes %i: and %i" % (len(candidates), len(routes))       
     
     cluster = []
-    for r1 in routes:
-        for r2 in routes:
-            if merge_routes(r1,r2):
-                pass
+    # for r1 in routes:
+    #     for r2 in routes:
+    #         # if merge_routes(r1,r2):
+    #         #     pass
                 
     os.chdir("/home/moyano/Projects/CreateTracks/Candidates")
     for i,c in enumerate(candidates):
@@ -167,12 +133,14 @@ def extract_routes(tracks):
         for track in c:
             #print track.name
             for node in track.nodes:
-                p = node.center_of_mass()
+                p = node._center_of_mass()
                 f.write(str(p.latitude) + "," + str(p.longitude))
                 f.write('\n')
                 
-        
     return candidates
+
+def routes(self, qtree):
+
 
 #Adds a track to a given group if it's similar
 #to more than 80% of it's current members
@@ -205,48 +173,45 @@ print 100*("x")
 boundries = max_bounding_rect(all_points)
 depth = depth(boundries, 0.00035)
 print "Nesting Level: %i" % depth
-qtree = QuadTree(depth, boundries)
+qtree = QuadTree(5, boundries)
 
 #print "there are %i tracks" % len(tracks)
 
 
 #Make the QTree
-leafs = []
-l2 = []
 for coord in all_points:
     l = qtree.add_point(coord)
-    leafs.append(l)
 
-#Canonical Tracks
-segments = []
-canonical_tracks = []
+#Canonical Trips
+trips = []
+
 for trip in os.listdir("."):
     if not trip.startswith('.'):
-        trip_data = load_file(trip)
-        nodes = [] 
-        
-        for p in trip_data:
-            nodes.append(qtree.containing_node(p))
+        gps_data = load_file(trip)
+        trips.append(load_trip(gps_data))
         if not nodes:
             print trip
             break
         
-        canonical_tracks.append(GTrack(nodes,trip))
+        canonical_trips.append(Trip(nodes,trip))
+
+def load_trip(gps_data):
+    nodes = [] 
+    
+    for gps_point in gps_data:
+        nodes.append(qtree.canonical_point(p))
 
     #tracks.append(Track(canonical_points))
-extract_routes(canonical_tracks)
+extract_routes(canonical_trips)
 #Write the output file
-os.chdir("/home/moyano/Projects/CreateTracks/")
-test_file = open("test.txt", "w")
+# os.chdir("/home/moyano/Projects/CreateTracks/")
+# test_file = open("test.txt", "w")
+# unique = set(leafs)
+# for node in unique:
+#     p = node._center_of_mass()
+#     test_file.write(str(p.latitude) + "," + str(p.longitude))
+#     test_file.write("\n")
 
-
-
-
-for leaf in set(leafs):
-    point = leaf.geographic_midpoint()
-    test_file.write(str(point.latitude) + "," + str(point.longitude))
-    test_file.write("\n")
-    
     
 '''
 tree = index.Index()

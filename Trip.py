@@ -1,5 +1,7 @@
 from __future__ import division
 from math import radians, cos, sin, atan2, degrees
+
+import os
 class Trip(object):
     
     def __init__(self, grid, name = None):
@@ -11,7 +13,7 @@ class Trip(object):
                     self.nodes.append(node)
             else:
                 self.nodes.append(node)
-                
+
     def compare(self,other):
 
         #Direction

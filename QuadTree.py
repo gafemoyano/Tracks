@@ -11,7 +11,7 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
-
+    leaves = []
     def __init__(self, depth, bounding_rect, parent = None):
         """Creates a quad-tree.
 
@@ -130,51 +130,68 @@ class QuadTree(object):
     |sw | s |se |
     |---|---|---|
     """
-    def neighbors(self, coord, include_self=True):
+    def neighbors(self, coord, include_self=False):
         if self.type == QuadTree.ROOT:
             node = self.containing_node(coord)
-            #neighbors = {'nw': None, 'n': None, 'ne': None, 'w': None, 'x': None, 'e': None,'sw': None, 's': None, 'se': None }
-            neighbors =[]
+            neighbors = {'nw': None, 'n': None, 'ne': None, 'w': None, 'x': None, 'e': None,'sw': None, 's': None, 'se': None }
             #find the lenght of the node's boinding box
             delta_x = node.x1 - node.x0
             delta_y = node.y1 - node.y0
             cm = node._center_of_mass
-
+            
             # Find w and e
-            for tlon in (node.cx - delta_x, node.cx + delta_x):
+            lons = {'w': node.cx - delta_x, 'e': node.cx + delta_x}
+            
+            for location, tlon in lons.iteritems():
                 if tlon >= self.x0 and tlon <= self.x1:
                     p = Point(node.cy, tlon)
-                    neighbors.append(self.containing_node(p))
+                    neighbors[location] = self.containing_node(p)
 
             # Find nw, n and ne
             tlat = node.cy + delta_y
             if not tlat > self.y1:
-
-                for tlon in (node.cx - delta_x, node.cx, node.cx + delta_x):
+                lons = {'nw': node.cx - delta_x,'n': node.cx, 'ne': node.cx + delta_x}
+                
+                for location, tlon in lons.iteritems():
                     if tlon >= self.x0 and tlon <= self.x1:
                         p = Point(tlat,tlon)
-                        neighbors.append(self.containing_node(p))
+                        neighbors[location] = self.containing_node(p)
+
             # Find sw, s and se
             tlat = node.cy - delta_y
             if tlat >= self.y0:
-
-                for tlon in (node.cx - delta_x, node.cx, node.cx + delta_x):
+                lons = {'sw': node.cx - delta_x,'s': node.cx, 'se': node.cx + delta_x}
+                
+                for location, tlon in lons.iteritems():
                     if tlon >= self.x0 and tlon <= self.x1:
                         p = Point(tlat,tlon)
-                        neighbors.append(self.containing_node(p))
+                        neighbors[location] = self.containing_node(p)
 
             if include_self:
-                neighbors.append(node)
+                neighbors['x'] = node
 
             return neighbors
+
+    def cleanse(self):
+        pass
     
+    def traverse(self):
+        if(self.type == QuadTree.LEAF):
+            if self.items:
+                self.leaves.append(self)
+        else:
+            self.nw.traverse()
+            self.ne.traverse()
+            self.sw.traverse()
+            self.se.traverse()
+
     """ #######################################
     INSTANCE METHODS
     ###################################### """     
 
-    def _neighbors(self, include_self):
+    def _neighbors(self, include_self=False):
         root = self._get_root()
-        neighbors = []
+        neighbors = {}
         neighbors = root.neighbors(self._center_of_mass())
         return neighbors
 

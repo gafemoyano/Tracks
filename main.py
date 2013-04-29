@@ -1,20 +1,85 @@
 from __future__ import division
+import os
+import sys
+import heatmap
 from collections import namedtuple
 from QuadTree import QuadTree
 from itertools import tee, izip
-import os
 from rtree import index
 from math import radians, cos, sin,atan2,degrees
 from Track import Track
 from Trip import Trip
 from Segment import Segment
 from _abcoll import Sequence
+
 Point = namedtuple('Point', ['latitude', 'longitude','timestamp'])
 '''
 Returns an array of named tuples
 in the form of geo_point[latitude,longitude,timestamp]
 '''
 
+def main():
+        #Load all files and initilize Simple Tracks
+    os.chdir("/home/moyano/Projects/CreateTracks/trips/")
+    all_points = []
+    for trip in os.listdir("."):
+            trip_data = load_file(trip)
+            all_points += trip_data
+            #tracks.append(Track(trip_data))
+            
+    print 100*("x")
+
+
+    boundries = max_bounding_rect(all_points)
+   # depth = depth(boundries, 0.00035)
+    #print "Nesting Level: %i" % depth
+    qtree = QuadTree(6, boundries)
+    #Make the QTree
+    for coord in all_points:
+        qtree.add_point(coord)
+    qtree.traverse()
+    nodes = qtree.leaves
+
+    #Load Trips
+     trips = []
+     for trip in os.listdir("."):
+        if not trip.startswith('.'):
+             gps_data = load_file(trip)
+             trips.append(Trip(gps_data,trip))
+
+    routes(trips, qtree)
+
+    #Weighted Points
+    os.chdir("/home/moyano/Projects/CreateTracks/edges")
+    test_file = open("edges.txt", "w")
+    test_file.write("latitude, longitude, ocurrences, color")
+    # print children
+    for node in nodes:
+        p = node._center_of_mass()
+        count = len(node.items)
+        if count > 2:
+            test_file.write("\n")  
+            test_file.write(str(p.latitude) + "," + str(p.longitude) + "," + str(count) + "," + get_color(count))
+
+    #All points
+    os.chdir("/home/moyano/Projects/CreateTracks/edges")
+    test_file = open("edges2.csv", "w")
+    test_file.write("latitude, longitude")
+    test_file.write("#")  
+    # print children
+    xpoints = []
+    for node in nodes:
+        p = node._center_of_mass()
+        count = len(node.items)
+        if count > 100:
+
+            for _ in xrange(count):
+                xpoints.append((p.latitude, p.longitude))
+                test_file.write(str(p.latitude) + ", " + str(p.longitude))
+                test_file.write("#")  
+
+    #to_png(xpoints, boundries)
+                            
 def load_file(file_name):
     points = []
     if file_name.endswith(".txt") and not file_name.startswith("."):
@@ -139,7 +204,40 @@ def extract_routes(tracks):
                 
     return candidates
 
-def routes(self, qtree):
+def routes(trips, qtree):
+    candidates = []
+
+    for trip in trips:
+        _new = True
+        
+        for route in candidates:
+            if continuation(route, trip):
+            _new = False
+            break 
+
+        if _new:
+            candidates.append(trip)
+
+#Return true if
+def continuation(route, trip):
+    #Area being all the neighbors of the node including itself
+    end_area = route.nodes[-1].neighbors
+    start_area = trip.nodes[0].neighbors
+    result = []
+
+    for node in end_area:
+        if node in start_area:
+            result.append(node)
+
+    if result:
+        route.append(trip)
+
+    return False if not result else True
+
+#Returns a list without repeated elements
+def unique(_list):
+    _temp = list(set(_list))
+    return _temp    
 
 
 #Adds a track to a given group if it's similar
@@ -156,53 +254,86 @@ def group_similarity(track, track_group):
         return True
     else:
         return False     
+#Returns de n,s,w,e or a combination of these    
+def get_direction(node1, node2):
+    neighbors = node1._neighbors()
 
-#Load all files and initilize Simple Tracks
-os.chdir("/home/moyano/Projects/CreateTracks/trips/")
-all_points = []
-#tracks = []
-for trip in os.listdir("."):
-        trip_data = load_file(trip)
-        all_points += trip_data
-        #tracks.append(Track(trip_data))
-        
-print 100*("x")
+    for location, neighbor in neighbors.iteritems():
+        if neighbor is node2:
+            return location
+    else :
+        print "not consecutive neighbors"
+        return None
 
-
-#coords =load_file('all_trips.csv')
-boundries = max_bounding_rect(all_points)
-depth = depth(boundries, 0.00035)
-print "Nesting Level: %i" % depth
-qtree = QuadTree(5, boundries)
-
-#print "there are %i tracks" % len(tracks)
-
-
-#Make the QTree
-for coord in all_points:
-    l = qtree.add_point(coord)
-
-#Canonical Trips
-trips = []
-
-for trip in os.listdir("."):
-    if not trip.startswith('.'):
-        gps_data = load_file(trip)
-        trips.append(load_trip(gps_data))
-        if not nodes:
-            print trip
-            break
-        
-        canonical_trips.append(Trip(nodes,trip))
-
-def load_trip(gps_data):
+def load_trip(gps_data, trip):
     nodes = [] 
+    direction = ""
     
     for gps_point in gps_data:
-        nodes.append(qtree.canonical_point(p))
+        actual = qtree.containing_node(gps_point)
+        #Add  the first point to an empty list
+        if not nodes:
+            nodes.append(actual)
+        #Ignore points that are mapped to the same grid
+        elif actual is nodes[-1]:
+            pass
+        #The second point should set the direction variable
+        elif direction is None:
+            last = nodes[-1]
+            nodes.append(actual)
+            direction = get_direction(actual, last)
+        else:
+            last = nodes[-1]
+            new_direction = get_direction(actual,last)
+            if new_direction == direction:
+                nodes[-1] = actual
+            else:
+                direction = new_direction
+                nodes.append(actual)
 
-    #tracks.append(Track(canonical_points))
-extract_routes(canonical_trips)
+    return Trip(nodes,trip)
+
+def get_color(count):
+    if count <= 100:
+        return "small_blue"
+    elif count > 100 and count <= 150:
+        return "ylw_blank"
+    elif count > 150 and count <= 200:
+        return "wht_blank"
+    elif count > 200 and count <= 250:
+        return "red_blank"
+    elif count > 250 and count <= 300:
+        return "purple_blank"
+    elif count > 300 and count <= 350:
+        return "pink_blank"
+    elif count > 350 and count <= 400:
+        return "pink_blank"        
+    elif count > 400 and count <= 450:
+        return "orange_blank"
+    elif count > 450 and count <= 500:
+        return "ltblu_blank"
+    elif count > 500 and count <= 550:
+        return "grn_blank"        
+    elif count > 550 and count <= 650:
+        return "blu_blank"     
+    elif count > 650 and count <= 750:
+        return "ylw_stars"
+    else:
+        return "wht_stars"    
+        
+
+def to_png(data, area):
+    os.chdir("/home/moyano/Projects/CreateTracks/maps/")
+    hm = heatmap.Heatmap()
+    img = hm.heatmap(data)
+    img.saveKML("map.kml")    
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+ 
+
+#extract_routes(canonical_trips)
 #Write the output file
 # os.chdir("/home/moyano/Projects/CreateTracks/")
 # test_file = open("test.txt", "w")

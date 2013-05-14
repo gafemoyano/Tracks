@@ -2,21 +2,14 @@ from __future__ import division
 import os
 import sys
 import heatmap
-from collections import namedtuple
-from QuadTree import QuadTree
+from quadtree import QuadTree
 from itertools import tee, izip
 from rtree import index
-from math import radians, cos, sin,atan2,degrees
-from Track import Track
-from Trip import Trip
+from trip import TripLoader
 from Segment import Segment
-from _abcoll import Sequence
 
-Point = namedtuple('Point', ['latitude', 'longitude','timestamp'])
-'''
-Returns an array of named tuples
-in the form of geo_point[latitude,longitude,timestamp]
-'''
+all_trips = TripLoader.get_all_trips("trips/")
+trip_max=len(all_trips)
 
 def main():
         #Load all files and initilize Simple Tracks
@@ -27,8 +20,6 @@ def main():
             all_points += trip_data
             #tracks.append(Track(trip_data))
             
-    print 100*("x")
-
 
     boundries = max_bounding_rect(all_points)
    # depth = depth(boundries, 0.00035)
@@ -78,7 +69,6 @@ def main():
                 test_file.write(str(p.latitude) + ", " + str(p.longitude))
                 test_file.write("#")  
 
-    #to_png(xpoints, boundries)
                             
 def load_file(file_name):
     points = []
@@ -111,8 +101,6 @@ def max_bounding_rect(coordinates):
     #y0 = [min_x, max_y]
     #y1 = [max_x,max_y]
     rec = rectangle(min_x, max_x, min_y, max_y)
-    print "Max Grid Size: " 
-    print rec
     return rec
                
 def depth(rect, distance):
@@ -203,6 +191,7 @@ def extract_routes(tracks):
                 f.write('\n')
                 
     return candidates
+def write_files
 
 def routes(trips, qtree):
     candidates = []

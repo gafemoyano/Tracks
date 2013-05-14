@@ -6,7 +6,7 @@ Point = namedtuple('Point', 'latitude, longitude')
 class QuadTree(object):
 
     """An implementation of a quad-tree.
-        Inserts geographical points at the leaves
+        Inserts Locations at the leaves
     """
     LEAF = 2
     BRANCH = 1
@@ -54,23 +54,23 @@ class QuadTree(object):
     CLASS METHODS
     ###################################### """ 
 
-    def add_point(self, coord):
+    def insert(self, coord):
 
         if(self.type == QuadTree.LEAF):
             self.items.append(coord)        
             return self
         
         if self.nw._contains(coord.latitude, coord.longitude):           
-            return self.nw.add_point(coord)
+            return self.nw.insert(coord)
             
         if self.ne._contains(coord.latitude, coord.longitude):
-            return self.ne.add_point(coord)
+            return self.ne.insert(coord)
             
         if self.sw._contains(coord.latitude, coord.longitude):
-            return self.sw.add_point(coord)
+            return self.sw.insert(coord)
             
         if self.se._contains(coord.latitude, coord.longitude):
-            return self.se.add_point(coord)
+            return self.se.insert(coord)
             
 
     #Returns the center of mass of the leaf where the point would be placed
@@ -175,7 +175,7 @@ class QuadTree(object):
     def cleanse(self):
         pass
     
-    def traverse(self):
+    def traverse(self, count = 0):
         if(self.type == QuadTree.LEAF):
             if self.items:
                 self.leaves.append(self)

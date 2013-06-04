@@ -33,6 +33,7 @@ class QuadTree(object):
             self.type = QuadTree.LEAF
             self.items = []
             self.parent = parent
+            self.blur_value = 0
             return
         elif parent is None:
             self.type = QuadTree.ROOT
@@ -184,6 +185,7 @@ class QuadTree(object):
             self.ne.traverse()
             self.sw.traverse()
             self.se.traverse()
+        
 
     """ #######################################
     INSTANCE METHODS
@@ -246,3 +248,5 @@ class QuadTree(object):
         
         #return a point
         return Point(lat,lon)
+
+

@@ -20,11 +20,10 @@ def main():
             all_points += trip_data
             #tracks.append(Track(trip_data))
             
-
     boundries = max_bounding_rect(all_points)
    # depth = depth(boundries, 0.00035)
     #print "Nesting Level: %i" % depth
-    qtree = QuadTree(6, boundries)
+    qtree = QuadTree(10, boundries)
     #Make the QTree
     for coord in all_points:
         qtree.add_point(coord)
@@ -32,11 +31,12 @@ def main():
     nodes = qtree.leaves
 
     #Load Trips
-     trips = []
-     for trip in os.listdir("."):
+    trips = []
+    for trip in os.listdir("."):
         if not trip.startswith('.'):
-             gps_data = load_file(trip)
-             trips.append(Trip(gps_data,trip))
+
+            gps_data = load_file(trip)
+            trips.append(Trip(gps_data,trip))
 
     routes(trips, qtree)
 
@@ -91,6 +91,7 @@ max boundries would be different according to the geographical
 cuadrant given than coordinates and latitudes change sign
 '''
 def max_bounding_rect(coordinates):
+    print coordinates
     max_y = max(coord.latitude for coord in coordinates)
     min_y = min(coord.latitude for coord in coordinates)
     max_x = max(coord.longitude for coord in coordinates)
@@ -191,7 +192,7 @@ def extract_routes(tracks):
                 f.write('\n')
                 
     return candidates
-def write_files
+
 
 def routes(trips, qtree):
     candidates = []
@@ -201,8 +202,8 @@ def routes(trips, qtree):
         
         for route in candidates:
             if continuation(route, trip):
-            _new = False
-            break 
+                _new = False
+                break 
 
         if _new:
             candidates.append(trip)

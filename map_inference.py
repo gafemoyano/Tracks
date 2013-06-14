@@ -40,6 +40,7 @@ class MapAlgo(object):
         self.trip_edge_index = None
         self.canonical_trips = []
         self.canonical_edges = {}
+        self.all_nodes = {}
 	
     #
     # Control de flow of the algorithm
@@ -50,6 +51,7 @@ class MapAlgo(object):
         self.location_index = self._build_location_index() # Initialize and populate the quadtree
         self.canonical_trips = self._find_canonical_trips() # Build Trips with qtree Nodes instead of Locations
         self._apply_gaussian()
+        self.skeletonize()
       #  self.canonical_edges = self._find_canonical_edges() # Extract edges from the canonical trips
         #self.trip_edge_index = self._build_trip_edge_index() # Build a geospacial index with all the edges
     #
@@ -141,6 +143,14 @@ class MapAlgo(object):
                 location_index.insert(location)
 
         location_index.traverse() #Populate leaves[]
+
+        _node_id = 0
+        #Hash with all leaves
+        for leave in location_index.leaves:
+            leave.id = _node_id
+            self.all_nodes[_node_id] = leave
+            _node_id += 1
+
         return location_index
 
     #
@@ -190,22 +200,33 @@ class MapAlgo(object):
         max_x  = max(coord.longitude for coord in locations)
         min_x = min(coord.longitude for coord in locations)
         rectangle = namedtuple('rectangle', ['x0', 'x1','y0', 'y1'])    
-        box = rectangle(min_x, max_x, min_y, max_y)
+        box = rectangle(min_x -  0.005, max_x +  0.005 , min_y -  0.005, max_y +  0.005)
         return box
 
     def _write_trips_to_file(self):
-        pass
+        os.chdir("/home/moyano/Projects/CreateTracks/edges")
+        test_file = open("skeleton.txt", "w")
+        test_file.write("latitude, longitude, ocurrences")
+        # print children
+        for k in self.all_nodes.keys():
+            p = self.all_nodes[k]._center_of_mass()
+            count = self.all_nodes[k].skeleton_value
+
+            if count == 1:
+                test_file.write("\n")  
+                test_file.write(str(p.latitude) + "," + str(p.longitude) + "," + str(count))
+
 
     def _write_nodes_to_file(self):
         nodes = self.location_index.leaves
         os.chdir("/home/moyano/Projects/CreateTracks/edges")
-        test_file = open("edges.txt", "w")
+        test_file = open("blurred.txt", "w")
         test_file.write("latitude, longitude, ocurrences")
         # print children
         for node in nodes:
             p = node._center_of_mass()
             count = node.blur_value
-            if count > 2:
+            if count > 280:
                 test_file.write("\n")  
                 test_file.write(str(p.latitude) + "," + str(p.longitude) + "," + str(count))
 
@@ -215,6 +236,144 @@ class MapAlgo(object):
 
     def _get_tracks(self):
         pass
+
+    def skeletonize(self, threshold = 250):
+        _nodes = self.location_index.leaves
+        _selected_nodes = set()
+
+        for _node_key in self.all_nodes.keys():
+
+            if self.all_nodes[_node_key].blur_value > threshold:
+                _selected_nodes.add(_node_key)
+                self.all_nodes[_node_key].skeleton_value = 1
+        
+        print len(_selected_nodes)
+        print len(self.all_nodes)
+        self.thin_nodes(_selected_nodes)
+    # Define if a pixel should be removed or not. A pixel is only kept if it  belongs
+    # to the skeleton of the image
+    # based on "A Fast Parallel Algorithm for Thinning Digital Patterns" by T. Y. ZHANG and C. Y. SUEN
+
+
+
+    def thin_nodes(self, nodes):
+
+        sys.stdout.write("\nThinning the nodes in the grid... ")
+        sys.stdout.flush()
+        # Matrix counting the number of neighbors a given position has
+        check_nodes = set()
+        
+        # For each node check it's neighbors and decide weather they are to be deleted or not
+        for key in nodes:
+            coord = self.all_nodes[key]._center_of_mass()
+            _neighbors = self.location_index.neighbors(coord, False)
+            _num_neighbors = 0
+
+            # Count     
+            for k,v in _neighbors.items(): 
+                if _neighbors[k] is not None and len(_neighbors[k].locations) > 0:
+                    _num_neighbors += 1
+
+            # First condition of the thinning algorithm
+            if _num_neighbors >= 2 and _num_neighbors <= 6 and self.all_nodes[key].skeleton_value == 1:
+                check_nodes.add(key)
+
+        #Iterate over all the check_nodes
+        while len(check_nodes) > 0:
+            print len(check_nodes)
+            s1_nodes = self.first_subiteration(check_nodes)
+            s2_nodes = self.second_subiteration(check_nodes.union(s1_nodes))     
+            check_nodes = s1_nodes.union(s2_nodes)
+
+            print check_nodes
+    
+        sys.stdout.write("\nDone... ")
+        sys.stdout.flush()
+        
+
+
+    # On this subiteration we remove the south-east boundary points and the north-west cornerpoints 
+    def first_subiteration(self, fg_nodes):
+        next_nodes = set() 
+        zero_nodes = set() #nodes to be deleted from the skeleton
+
+        for _node_id in fg_nodes:
+            if self.all_nodes[_node_id].skeleton_value != 1: continue
+
+            # get the center of mass of the node
+            _location = self.all_nodes[_node_id]._center_of_mass()
+
+            # query the index for its neighbors
+            _neighbors = self.location_index.neighbors(_location, False)
+            
+            print "|" + str(_neighbors['nw'].skeleton_value) + "|" + str(_neighbors['n'].skeleton_value) + "|" + str(_neighbors['ne'].skeleton_value)
+            print "|" + str(_neighbors['w'].skeleton_value )+ "|" + str(self.all_nodes[_node_id].skeleton_value) + "|" +str( _neighbors['e'].skeleton_value)
+            print "|" + str(_neighbors['sw'].skeleton_value) + "|" + str(_neighbors['s'].skeleton_value) + "|" + str(_neighbors['se'].skeleton_value)
+            print "-"*20
+            # Count
+            _num_neighbors = 0     
+            for k,v in _neighbors.items(): 
+                if _neighbors[k] is not None and len(_neighbors[k].locations) > 0:
+                    _num_neighbors += 1
+            # if these conditions are satisfied then the the node isn't part of the skeleton
+
+            nes = _neighbors['n'].skeleton_value * _neighbors['e'].skeleton_value * _neighbors['s'].skeleton_value        
+            esw = _neighbors['e'].skeleton_value * _neighbors['s'].skeleton_value * _neighbors['w'].skeleton_value
+            # the number of non zero neighbors is beteween 2 and 6
+            if (_num_neighbors >= 2 and _num_neighbors <= 6 and nes == 0 and esw == 0):
+                # there is exactly one pair of 01 neighbors
+                if self._zero_one_neighbors(_neighbors) == 1:
+                    zero_nodes.add(_node_id)
+
+                    for k in _neighbors.keys():
+                        if _neighbors[k].skeleton_value == 1:
+                            next_nodes.add(_neighbors[k].id)
+        # set the skeleton_value to 0 if needed
+        for _id in zero_nodes:
+            self.all_nodes[_id].skeleton_value = 0
+            print _id
+
+        return next_nodes
+
+
+    def second_subiteration(self,fg_nodes):
+        next_nodes = set() 
+        zero_nodes = set() #nodes to be deleted from the skeleton
+
+        for _node_id in fg_nodes:
+            if self.all_nodes[_node_id].skeleton_value != 1: continue
+            # get the center of mass of the node
+            _location = self.all_nodes[_node_id]._center_of_mass()
+            # query the index for its neighbors
+            _neighbors = self.location_index.neighbors(_location, False)
+            
+            # Count
+            _num_neighbors = 0     
+            for k,v in _neighbors.items(): 
+                if _neighbors[k] is not None and len(_neighbors[k].locations) > 0:
+                    _num_neighbors += 1
+
+            # if these conditions are satisfied then the the node isn't part of the skeleton
+
+            # the number of non zero neighbors is beteween 2 and 6
+            _new = _neighbors['n'].skeleton_value * _neighbors['e'].skeleton_value * _neighbors['w'].skeleton_value
+            nsw = _neighbors['n'].skeleton_value * _neighbors['s'].skeleton_value * _neighbors['w'].skeleton_value
+            
+            if _num_neighbors >= 2 and _num_neighbors <= 6 and _new == 0 and nsw == 0:     
+                # there is exactly one pair of 01 neighbors
+                if self._zero_one_neighbors(_neighbors) == 1:
+                    zero_nodes.add(_node_id)
+                    
+                    for k in _neighbors.keys():
+                        if _neighbors[k].skeleton_value == 1:
+                            next_nodes.add(_neighbors[k].id)
+        
+        # set the skeleton_value to 0 if needed
+        for _id in zero_nodes:
+            self.all_nodes[_id].skeleton_value = 0
+            print _id
+        return next_nodes
+
 
     def _apply_gaussian(self):
         _kernel = self.gauss_kernel(1)
@@ -247,7 +406,7 @@ class MapAlgo(object):
     def _multiply(self, node, kernel_value):
 
         if node:
-            return len(node.leaves)*kernel_value
+            return len(node.locations)*kernel_value
         else:
             return 0
     # I don't even know why the quadtree returns a hash
@@ -272,6 +431,36 @@ class MapAlgo(object):
         matrix.append(line3)
 
         return matrix
+
+    # Returns the number of 01 pairs
+    def _zero_one_neighbors(self, _neighbors):
+        _sum = 0
+
+        if  _neighbors['n'].skeleton_value == 0 and _neighbors['ne'].skeleton_value == 1:
+            _sum += 1
+
+        if  _neighbors['ne'].skeleton_value == 0 and _neighbors['e'].skeleton_value == 1:
+            _sum += 1
+
+        if  _neighbors['e'].skeleton_value == 0 and _neighbors['se'].skeleton_value == 1:
+            _sum += 1
+        
+        if  _neighbors['se'].skeleton_value == 0 and _neighbors['s'].skeleton_value == 1:
+            _sum += 1
+
+        if  _neighbors['s'].skeleton_value == 0 and _neighbors['sw'].skeleton_value == 1:
+            _sum += 1
+
+        if  _neighbors['sw'].skeleton_value == 0 and _neighbors['w'].skeleton_value == 1:
+            _sum += 1
+
+        if  _neighbors['w'].skeleton_value == 0 and _neighbors['nw'].skeleton_value == 1:
+            _sum += 1
+
+        if  _neighbors['nw'].skeleton_value == 0 and _neighbors['n'].skeleton_value == 1:
+            _sum += 1
+
+        return _sum
 
     def _segments_to_kml(self, output):
         #Header
@@ -372,6 +561,7 @@ if __name__ == '__main__':
     start_time = time.time()
     m = MapAlgo(all_trips[:trip_max])
     m.run_algorithm()
+    m._write_trips_to_file()
     m._write_nodes_to_file()
     # os.chdir("/home/moyano/Projects/CreateTracks/maps/")
     # m._segments_to_kml("kml_output.kml")

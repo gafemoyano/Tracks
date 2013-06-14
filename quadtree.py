@@ -19,7 +19,7 @@ class QuadTree(object):
             The maximum recursion depth.
             
         @param bounding_rect:
-            The bounding rectangle of all of the items in the quad-tree. For
+            The bounding rectangle of all of the locations in the quad-tree. For
             internal use only.
         """
         #Set box attributes       
@@ -30,10 +30,12 @@ class QuadTree(object):
         #Stop recursion at maximum depth
         depth -= 1
         if depth == 0:
-            self.type = QuadTree.LEAF
-            self.items = []
-            self.parent = parent
-            self.blur_value = 0
+            self.type = QuadTree.LEAF       #Type constant
+            self.locations = []     #Holds all the locations inserted on the index
+            self.parent = parent    #reference to the parent node
+            self.blur_value = 0     #holds the gaussian blur value
+            self.id = -1        #node id
+            self.skeleton_value = 0   #Indicates if the node is part of the skeleton, is set to true when a location is added
             return
         elif parent is None:
             self.type = QuadTree.ROOT
@@ -58,7 +60,7 @@ class QuadTree(object):
     def insert(self, coord):
 
         if(self.type == QuadTree.LEAF):
-            self.items.append(coord)        
+            self.locations.append(coord)       
             return self
         
         if self.nw._contains(coord.latitude, coord.longitude):           
@@ -84,8 +86,8 @@ class QuadTree(object):
             max_items = 0
             #The node with the highest number of poitns is the most significant
             for node in neighbors:
-                if len(node.items) > max_items: 
-                    max_items = len(node.items)
+                if len(node.locations) > max_items: 
+                    max_items = len(node.locations)
                     significant_node = node 
             
             return significant_node
@@ -134,7 +136,10 @@ class QuadTree(object):
     def neighbors(self, coord, include_self=False):
         if self.type == QuadTree.ROOT:
             node = self.containing_node(coord)
-            neighbors = {'nw': None, 'n': None, 'ne': None, 'w': None, 'x': None, 'e': None,'sw': None, 's': None, 'se': None }
+            if include_self:
+                neighbors = {'nw': None, 'n': None, 'ne': None, 'w': None, 'x': None, 'e': None,'sw': None, 's': None, 'se': None }
+            else:
+                neighbors = {'nw': None, 'n': None, 'ne': None, 'w': None, 'e': None,'sw': None, 's': None, 'se': None }
             #find the lenght of the node's boinding box
             delta_x = node.x1 - node.x0
             delta_y = node.y1 - node.y0
@@ -178,8 +183,10 @@ class QuadTree(object):
     
     def traverse(self, count = 0):
         if(self.type == QuadTree.LEAF):
-            if self.items:
+
+            if self.locations:
                 self.leaves.append(self)
+
         else:
             self.nw.traverse()
             self.ne.traverse()
@@ -217,16 +224,16 @@ class QuadTree(object):
         if self.type != QuadTree.LEAF:
             return None
         else:
-            lat = np.mean([coord.latitude for coord in self.items])
-            lon = np.mean([coord.longitude for coord in self.items])     
+            lat = np.mean([coord.latitude for coord in self.locations])
+            lon = np.mean([coord.longitude for coord in self.locations])     
             return Point(lat,lon)
             
-    #Returnsthe geographical center of all the items in the node
+    #Returnsthe geographical center of all the locations in the node
     #Returns a Point topule [latitude,longitude]
     def _geographic_midpoint(self):
         #List with all the points transformed to [[lat,lon],[lat,lon]....]
         
-        rad_points = [Point(radians(coord.latitude),radians(coord.longitude)) for coord in self.items]   
+        rad_points = [Point(radians(coord.latitude),radians(coord.longitude)) for coord in self.locations]   
         
         #Converting to cartesian coordinates
         x_coords = [cos(coord.latitude)*cos(coord.longitude) for coord in rad_points]
@@ -234,7 +241,7 @@ class QuadTree(object):
         z_coords = [sin(coord.latitude) for coord in rad_points]
       
         #Since the locations are to be weighted equally
-        total_weight = len(self.items)
+        total_weight = len(self.locations)
         
         #Calculate the average
         x = sum(x_coords)/total_weight

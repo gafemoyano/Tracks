@@ -12,6 +12,7 @@ from pymongo import MongoClient
 from rtree import index
 from trip import TripLoader, Trip, TripParser
 from collections import namedtuple
+from itertools import tee, islice, chain, izip
 
 client = MongoClient()
 db = client.trip_db
@@ -42,7 +43,7 @@ class MapAlgo(object):
         self.canonical_edges = {}
         self.all_nodes = {}
 	
-    #
+    #distribution
     # Control de flow of the algorithm
     #
     def run_algorithm(self):
@@ -51,12 +52,42 @@ class MapAlgo(object):
         self.location_index = self._build_location_index() # Initialize and populate the quadtree
         self.canonical_trips = self._find_canonical_trips() # Build Trips with qtree Nodes instead of Locations
         self._apply_gaussian()
-        self.skeletonize()
+        self._segments_to_kml("segments.kml")
+        #self.skeletonize()
       #  self.canonical_edges = self._find_canonical_edges() # Extract edges from the canonical trips
         #self.trip_edge_index = self._build_trip_edge_index() # Build a geospacial index with all the edges
-    #
-    # by James P. Biagioni (jbiagi1@uic.edu) 
-    #
+
+    def classify_nodes(self):
+        thresholds = [2**x for x in range(8, 3, -1)] + range(15, 0, -1)
+
+        for current_threshold in thresholds:
+            current_nodes = self.filter_nodes_by_threshold(current_threshold)
+            self.save_nodes(current_nodes,threshold)
+
+    def filter_nodes_by_threshold(self, threshold):
+        thresholded_nodes = []
+
+        for key in self.all_nodes:
+            if self.all_nodes[key].blur_value > threshold:
+                thresholded_nodes.add(key)
+
+        return thresholded_nodes
+
+    def save_nodes(self, nodes, threshold):
+        
+        save_nodes = []
+        for current_id in nodes:
+            loc = [current_id[0],current_id[1]]
+            save_node = {"location": loc,
+                         "threshold": threshold,
+                         "value": self.all_nodes[current_id].blur_value
+            }
+            save_nodes.append(save_node)
+
+        node_collection = db.node_collection
+        node_collection.insert(save_nodes)
+
+
     def _find_all_trip_edges(self):
         sys.stdout.write("\nFinding all trip edges ... ")
         sys.stdout.flush()
@@ -136,22 +167,63 @@ class MapAlgo(object):
         sys.stdout.flush()
         location_index = QuadTree(MAX_DEPTH, self.bounding_box)
         # iterate through all trips
+        count = 0
         for trip in self.all_trips:
-
-            #Iterate through all locations
-            for location in trip.locations:
-                location_index.insert(location)
-
+            if count < 20:
+                #Iterate through all locations
+                current_node = None
+                previous_node = None
+                #Loop for adding trajectory information
+                for previous, location, next in self.previous_and_next(trip.locations):
+                    current_node = location_index.insert(location)
+                    
+                    # Second location 
+                    if previous is None:
+                        previous_node = current_node
+                    # 
+                    if next is not None:
+                        # update previous node when the current location falls 
+                        if previous_node is not current_node: 
+                            #get the node where the next location would fall
+                            next_node = location_index.containing_node(next)
+                            
+                            # if it's different from the current location then we've found 3 valid nodes
+                            if next_node is not current_node:
+                                self.update_trajectory(previous_node, current_node, next_node)
+                                previous_node = current_node
+            count += 1
         location_index.traverse() #Populate leaves[]
 
         _node_id = 0
         #Hash with all leaves
         for leave in location_index.leaves:
-            leave.id = _node_id
-            self.all_nodes[_node_id] = leave
-            _node_id += 1
+            location = leave._center_of_mass()
+            leave.id = (location.latitude, location.longitude)
+            self.all_nodes[(location.latitude, location.longitude)] = leave
 
         return location_index
+
+    def update_trajectory(self, previous, current, next):
+        c_neighbors = current._neighbors(False)
+
+        # Look for the relative location of previous
+        p_loc = ""
+        for k,v in c_neighbors.iteritems():
+            if v is previous:
+                p_loc = k
+
+        #look for the relative location of next
+        n_loc = ""
+        for k,v in c_neighbors.iteritems():
+            if v is next:
+                n_loc = k
+
+        if p_loc and n_loc:
+            #update the values in location
+            if p_loc != n_loc:
+                current.trajectories[(p_loc, n_loc)] += 1
+
+                    
 
     #
     #   Store all canonical trip edges in a RTree index
@@ -191,8 +263,11 @@ class MapAlgo(object):
         #     _out = edge.uot_node
         pass    
 
-    def _get_road_center_line():
+    def _get_road_center_line(self):
         pass
+
+
+
 
     def _bounding_box(self, locations):
         max_y = max(coord.latitude for coord in locations)
@@ -226,7 +301,7 @@ class MapAlgo(object):
         for node in nodes:
             p = node._center_of_mass()
             count = node.blur_value
-            if count > 280:
+            if count > 2:
                 test_file.write("\n")  
                 test_file.write(str(p.latitude) + "," + str(p.longitude) + "," + str(count))
 
@@ -246,7 +321,7 @@ class MapAlgo(object):
             if self.all_nodes[_node_key].blur_value > threshold:
                 _selected_nodes.add(_node_key)
                 self.all_nodes[_node_key].skeleton_value = 1
-        
+       
         print len(_selected_nodes)
         print len(self.all_nodes)
         self.thin_nodes(_selected_nodes)
@@ -478,25 +553,33 @@ class MapAlgo(object):
         kml +=        "<color>7f00ff00</color>"
         kml +=      "</PolyStyle>"
         kml +=  "</Style>"
+        
+        sys.stdout.write("\nWriting output to kml ... ")
+        sys.stdout.flush()
 
-
-        for key in self.canonical_edges:
+        for key in self.all_nodes:
             
-            edge = self.canonical_edges[key]
-            _in = edge.in_node._center_of_mass()
-            _out = edge.out_node._center_of_mass()
+            if self.all_nodes[key].blur_value > 5:
+                _trajs = self.all_nodes[key].trajectories
+                _neighbors = self.location_index.neighbors(self.all_nodes[key]._center_of_mass())
 
-            kml += "<Placemark>"
-            kml += "<name>" + str(key) + "</name>"
-            kml += "<styleUrl>#myStyle</styleUrl>"
-            kml += "<LineString>"
-            kml +=  "<altitudeMode>relative</altitudeMode>"
-            kml +=  "<coordinates>"
-            kml +=      str(_in.longitude) + "," + str(_in.latitude) 
-            kml +=      str(_out.longitude) + "," + str(_out.latitude)
-            kml +=   "</coordinates>"
-            kml +=  "</LineString>"
-            kml += "</Placemark>"
+                for t in _trajs:
+                    if _trajs[t] > 2:
+                        _in = _neighbors[t[0]]
+                        _out = _neighbors[t[1]]
+
+                        kml += "<Placemark>"
+                        kml += "<name>" + str(key) + "</name>"
+                        kml += "<styleUrl>#myStyle</styleUrl>"
+                        kml += "<LineString>"
+                        kml +=  "<altitudeMode>relative</altitudeMode>"
+                        kml +=  "<coordinates>"
+                        kml +=      str(_in._center_of_mass().longitude) + "," + str(_in._center_of_mass().latitude)
+                        kml +=      str(self.all_nodes[key]._center_of_mass().longitude) + "," + str(self.all_nodes[key]._center_of_mass().latitude) 
+                        kml +=      str(_out._center_of_mass().longitude) + "," + str(_out._center_of_mass().latitude)
+                        kml +=   "</coordinates>"
+                        kml +=  "</LineString>"
+                        kml += "</Placemark>"
 
         #Close tags
         kml +=  "</Document>"       
@@ -505,6 +588,8 @@ class MapAlgo(object):
         _file = open(output,"w")
         _file.write(kml)
         _file.close()
+        sys.stdout.write("\nDone ... ")
+        sys.stdout.flush()
 
     def get_color(self,count):
         if count <= 100:
@@ -545,6 +630,62 @@ class MapAlgo(object):
         x, y = mgrid[-size:size+1, -sizey:sizey+1]
         g = exp(-(x**2/float(size)+y**2/float(sizey)))
         return g / g.sum()
+
+    # Stablish a certainty value
+    def _certainty_value(self, _min, _max, node_id):
+        _weight = self.all_nodes[node_id].blur_value
+        _percent = (_weight/_max)
+
+        if _weight < _min:
+            return 0
+
+        elif 0.8 < _percent <= 1:
+            return 1
+        
+        elif 0.7 < _percent <= 0.8:
+            return 0.8
+        
+        elif 0.6 < _percent <= 0.7:
+            return 0.7
+        
+        elif 0.5 < _percent <= 0.6:
+            return 0.6
+        
+        elif 0.4 < _percent <= 0.5:
+            return 0.5
+        
+        elif 0.3 < _percent <= 0.4:
+            return 0.4
+        
+        elif 0.2 < _percent <= 0.3:
+            return 0.3
+        
+        elif 0.15 < _percent <= 0.2:
+            return 0.2
+
+        elif 0.10 < _percent <= 0.15:
+            return 0.15
+
+        elif 0.05 < _percent <= 0.10:
+            return 0.01
+
+        elif 0.05 < _percent <= 0.10:
+            return 0.05
+
+        elif 0.03 < _percent <= 0.05:
+            return 0.03
+
+        elif 0.02 < _percent <= 0.03:
+            return 0.02
+
+        elif 0.01 < _percent <= 0.02:
+            return 0.01
+
+    def previous_and_next(self, some_iterable):
+        prevs, items, nexts = tee(some_iterable, 3)
+        prevs = chain([None], prevs)
+        nexts = chain(islice(nexts, 1, None), [None])
+        return izip(prevs, items, nexts)
 
 import sys, getopt, time,os
 if __name__ == '__main__':

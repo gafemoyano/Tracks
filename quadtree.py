@@ -1,8 +1,15 @@
 from __future__ import division
 import numpy as np
 from collections import namedtuple
+from itertools import permutations
 from math import radians, cos, sin, asin, sqrt,atan2,degrees
 Point = namedtuple('Point', 'latitude, longitude')
+directions = ["n","e","w","s","ne","nw","se","sw"]
+t_list = list(permutations(directions,2))
+trajectories = {}
+for _dir in t_list:
+    trajectories[_dir] = 0
+
 class QuadTree(object):
 
     """An implementation of a quad-tree.
@@ -12,6 +19,8 @@ class QuadTree(object):
     BRANCH = 1
     ROOT = 0
     leaves = []
+
+
     def __init__(self, depth, bounding_rect, parent = None):
         """Creates a quad-tree.
 
@@ -36,6 +45,7 @@ class QuadTree(object):
             self.blur_value = 0     #holds the gaussian blur value
             self.id = -1        #node id
             self.skeleton_value = 0   #Indicates if the node is part of the skeleton, is set to true when a location is added
+            self.trajectories = trajectories
             return
         elif parent is None:
             self.type = QuadTree.ROOT

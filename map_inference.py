@@ -17,7 +17,7 @@ from itertools import tee, islice, chain, izip
 client = MongoClient()
 db = client.trip_db
 trip_collection = db.trips
-all_trips = TripParser.json_to_object(trip_collection.find())
+all_trips = TripParser.json_to_object(trip_collection.find().limit(1))
 # globals
 trip_max=len(all_trips)
 all_locations = list(location for trip in all_trips for location in trip.locations)
@@ -52,7 +52,7 @@ class MapAlgo(object):
         self.location_index = self._build_location_index() # Initialize and populate the quadtree
         self.canonical_trips = self._find_canonical_trips() # Build Trips with qtree Nodes instead of Locations
         self._apply_gaussian()
-        self._segments_to_kml("segments.kml")
+        self._segments_to_kml()
         #self.skeletonize()
       #  self.canonical_edges = self._find_canonical_edges() # Extract edges from the canonical trips
         #self.trip_edge_index = self._build_trip_edge_index() # Build a geospacial index with all the edges
@@ -169,7 +169,7 @@ class MapAlgo(object):
         # iterate through all trips
         count = 0
         for trip in self.all_trips:
-            if count < 20:
+            if count < 5000:
                 #Iterate through all locations
                 current_node = None
                 previous_node = None
@@ -301,7 +301,7 @@ class MapAlgo(object):
         for node in nodes:
             p = node._center_of_mass()
             count = node.blur_value
-            if count > 2:
+            if count > 0:
                 test_file.write("\n")  
                 test_file.write(str(p.latitude) + "," + str(p.longitude) + "," + str(count))
 
@@ -537,59 +537,78 @@ class MapAlgo(object):
 
         return _sum
 
-    def _segments_to_kml(self, output):
+    def _segments_to_kml(self, output = "segments.kml"):
+        _file = open(output,"w")
         #Header
-        kml = "<?xml version='1.0' encoding='UTF-8'?>"
-        kml += "<kml xmlns='http://www.opengis.net/kml/2.2'>"
-        kml +=  "<Document>"
+        _file.write("<?xml version='1.0' encoding='UTF-8'?>\n")
+        _file.write( "<kml xmlns='http://www.opengis.net/kml/2.2'>\n")
+        _file.write(  "<Document>\n")
 
-        #Line Style
-        kml +=  "<Style id='myStyle'>"
-        kml +=      "<LineStyle>"
-        kml +=        "<color>7f00ff00</color>"
-        kml +=        "<width>4</width>"
-        kml +=      "</LineStyle>"
-        kml +=      "<PolyStyle>"
-        kml +=        "<color>7f00ff00</color>"
-        kml +=      "</PolyStyle>"
-        kml +=  "</Style>"
-        
+        #Line Style)
+        _file.write(  "<Style id='myStyle'>\n")
+        _file.write(      "<LineStyle>\n")
+        _file.write(        "<color>7f00ff00</color>\n")
+        _file.write(        "<width>4</width>\n")
+        _file.write(      "</LineStyle>\n")
+        _file.write(      "<PolyStyle>\n")
+        _file.write(        "<color>7f00ff00</color>\n")
+        _file.write(      "</PolyStyle>\n")
+        _file.write(  "</Style>\n")
+       
+               #Line Style)
+        _file.write(  "<Style id='myStyle2'>\n")
+        _file.write(      "<LineStyle>\n")
+        _file.write(        "<color>ffff0000</color>\n")
+        _file.write(        "<width>4</width>\n")
+        _file.write(      "</LineStyle>\n")
+        _file.write(      "<PolyStyle>\n")
+        _file.write(        "<color>ff0000ff</color>\n")
+        _file.write(      "</PolyStyle>\n")
+        _file.write(  "</Style>\n")
+
         sys.stdout.write("\nWriting output to kml ... ")
         sys.stdout.flush()
 
         for key in self.all_nodes:
             
-            if self.all_nodes[key].blur_value > 5:
+            if self.all_nodes[key].blur_value > 0:
                 _trajs = self.all_nodes[key].trajectories
                 _neighbors = self.location_index.neighbors(self.all_nodes[key]._center_of_mass())
 
                 for t in _trajs:
-                    if _trajs[t] > 2:
-                        _in = _neighbors[t[0]]
-                        _out = _neighbors[t[1]]
-
-                        kml += "<Placemark>"
-                        kml += "<name>" + str(key) + "</name>"
-                        kml += "<styleUrl>#myStyle</styleUrl>"
-                        kml += "<LineString>"
-                        kml +=  "<altitudeMode>relative</altitudeMode>"
-                        kml +=  "<coordinates>"
-                        kml +=      str(_in._center_of_mass().longitude) + "," + str(_in._center_of_mass().latitude)
-                        kml +=      str(self.all_nodes[key]._center_of_mass().longitude) + "," + str(self.all_nodes[key]._center_of_mass().latitude) 
-                        kml +=      str(_out._center_of_mass().longitude) + "," + str(_out._center_of_mass().latitude)
-                        kml +=   "</coordinates>"
-                        kml +=  "</LineString>"
-                        kml += "</Placemark>"
+                    #Threshold
+                    #if _trajs[t] > 25:
+                    _in = _neighbors[t[0]]
+                    _out = _neighbors[t[1]]
+                    if _trajs[t] > 1:
+                        print t
+                        _file.write( "<Placemark>\n")
+                        _file.write( "<name>" + str(key) + "</name>\n")
+    
+                        _file.write( "<styleUrl>#myStyle2</styleUrl>\n")
+                    # else:
+                    #     _file.write( "<styleUrl>#myStyle</styleUrl>\n")
+                        _file.write( "<LineString>\n")
+                        _file.write(  "<altitudeMode>relative</altitudeMode>\n")
+                        _file.write(  "<coordinates>\n")
+                        _file.write(      str(_in._center_of_mass().longitude) + "," + str(_in._center_of_mass().latitude) + "\n")
+                        _file.write(      str(self.all_nodes[key]._center_of_mass().longitude) + "," + str(self.all_nodes[key]._center_of_mass().latitude) + "\n")
+                        _file.write(      str(_out._center_of_mass().longitude) + "," + str(_out._center_of_mass().latitude) + "\n")
+                        _file.write(   "</coordinates>\n")
+                        _file.write(  "</LineString>\n")
+                        _file.write( "</Placemark>\n")
+                        _file.write( "<weight>\n")
+                        _file.write( str(t) + ":::" + str(_trajs[t]) + "\n")
+                        _file.write( "</weight>\n")
 
         #Close tags
-        kml +=  "</Document>"       
-        kml += "</kml>"
-
-        _file = open(output,"w")
-        _file.write(kml)
+        _file.write(  "</Document>\n")       
+        _file.write( "</kml>\n")
         _file.close()
+
         sys.stdout.write("\nDone ... ")
         sys.stdout.flush()
+
 
     def get_color(self,count):
         if count <= 100:

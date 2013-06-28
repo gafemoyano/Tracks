@@ -21,7 +21,7 @@ all_trips = TripParser.json_to_object(trip_collection.find().limit(1))
 # globals
 trip_max=len(all_trips)
 all_locations = list(location for trip in all_trips for location in trip.locations)
-MAX_DEPTH = 9 #Max recursion inn the quadtree
+MAX_DEPTH = 8 #Max recursion inn the quadtree
 
 
 class Edge:
@@ -167,31 +167,37 @@ class MapAlgo(object):
         sys.stdout.flush()
         location_index = QuadTree(MAX_DEPTH, self.bounding_box)
         # iterate through all trips
-        count = 0
+
         for trip in self.all_trips:
-            if count < 5000:
-                #Iterate through all locations
-                current_node = None
-                previous_node = None
-                #Loop for adding trajectory information
-                for previous, location, next in self.previous_and_next(trip.locations):
-                    current_node = location_index.insert(location)
-                    
-                    # Second location 
-                    if previous is None:
-                        previous_node = current_node
-                    # 
-                    if next is not None:
-                        # update previous node when the current location falls 
-                        if previous_node is not current_node: 
-                            #get the node where the next location would fall
-                            next_node = location_index.containing_node(next)
-                            
-                            # if it's different from the current location then we've found 3 valid nodes
-                            if next_node is not current_node:
-                                self.update_trajectory(previous_node, current_node, next_node)
-                                previous_node = current_node
-            count += 1
+            #Iterate through all locations
+            current_node = None
+            previous_node = None
+            #Loop for adding trajectory information
+            for previous, location, next in self.previous_and_next(trip.locations):
+                current_node = location_index.insert(location)
+
+                # First location 
+                if previous is None:
+                    print "\nonly once"
+                    previous_node = current_node
+                # else:
+                # 
+                if next is not None:
+                    # update previous node when the current location falls 
+                    if previous_node is not current_node: 
+                        print previous_node._center_of_mass()
+                        print current_node._center_of_mass()
+                        #get the node where the next location would fall
+                        print next.latitude, next.longitude
+                        next_node = location_index.containing_node(next)
+                        print "x"*10
+                        # if it's different from the current location then we've found 3 valid nodes
+                        if next_node is not current_node:
+                            print "hai"
+                            self.update_trajectory(previous_node, current_node, next_node)
+                            previous_node = current_node
+
+
         location_index.traverse() #Populate leaves[]
 
         _node_id = 0
@@ -204,20 +210,38 @@ class MapAlgo(object):
         return location_index
 
     def update_trajectory(self, previous, current, next):
-        c_neighbors = current._neighbors(False)
+        current_neighbors = current._neighbors(True)
 
-        # Look for the relative location of previous
-        p_loc = ""
-        for k,v in c_neighbors.iteritems():
-            if v is previous:
+        print previous._neighbors(True)
+        for k, v in current_neighbors.iteritems():
+            print k, v
+        print "Previous:"
+        print current_neighbors['w']._center_of_mass()
+        print previous._center_of_mass()
+
+        print "Current:"
+        print current._center_of_mass()
+        print current._center_of_mass()
+        print current_neighbors['x'], current
+
+        print "Next:"
+        print current_neighbors['e']
+        print next._center_of_mass()
+
+
+        # Look for the relative location of the previous node
+        previous_location = ""
+        for key in current_neighbors.keys():
+            print current_neighbors[key], previous
+            if current_neighbors[key] is previous:
                 p_loc = k
 
         #look for the relative location of next
         n_loc = ""
-        for k,v in c_neighbors.iteritems():
+        for k,v in current_neighbors.iteritems():
             if v is next:
                 n_loc = k
-
+        print p_loc, n_loc
         if p_loc and n_loc:
             #update the values in location
             if p_loc != n_loc:
@@ -280,17 +304,22 @@ class MapAlgo(object):
 
     def _write_trips_to_file(self):
         os.chdir("/home/moyano/Projects/CreateTracks/edges")
-        test_file = open("skeleton.txt", "w")
-        test_file.write("latitude, longitude, ocurrences")
+        test_file = open("neighbors.txt", "w")
+        test_file.write("latitude, longitude")
         # print children
         for k in self.all_nodes.keys():
             p = self.all_nodes[k]._center_of_mass()
-            count = self.all_nodes[k].skeleton_value
-
-            if count == 1:
-                test_file.write("\n")  
-                test_file.write(str(p.latitude) + "," + str(p.longitude) + "," + str(count))
-
+            print p
+            n = self.location_index.neighbors(p)
+            print n
+            if n:
+                for k,v in n.iteritems():
+                    print v
+                    x = v._center_of_mass()
+                    print x
+                    test_file.write("\n")  
+                    test_file.write(str(x.latitude) + "," + str(x.longitude))
+            break
 
     def _write_nodes_to_file(self):
         nodes = self.location_index.leaves
@@ -571,16 +600,16 @@ class MapAlgo(object):
 
         for key in self.all_nodes:
             
-            if self.all_nodes[key].blur_value > 0:
+            if len(self.all_nodes[key].locations) > 0:
                 _trajs = self.all_nodes[key].trajectories
                 _neighbors = self.location_index.neighbors(self.all_nodes[key]._center_of_mass())
-
+                #print _trajs
                 for t in _trajs:
                     #Threshold
                     #if _trajs[t] > 25:
                     _in = _neighbors[t[0]]
                     _out = _neighbors[t[1]]
-                    if _trajs[t] > 1:
+                    if _trajs[t] > 0:
                         print t
                         _file.write( "<Placemark>\n")
                         _file.write( "<name>" + str(key) + "</name>\n")

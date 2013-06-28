@@ -19,5 +19,6665 @@
 <color>ff0000ff</color>
 </PolyStyle>
 </Style>
+<Placemark>
+<name>(41.869512999999998, -87.650897999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6510724531,41.8696550156
+-87.650898,41.869513
+-87.650655,41.869503
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869512999999998, -87.650897999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.651113,41.869395
+-87.650898,41.869513
+-87.650655,41.869503
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869512999999998, -87.650897999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6510724531,41.8695392969
+-87.650898,41.869513
+-87.6505386406,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869512999999998, -87.650897999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6510724531,41.8695392969
+-87.650898,41.869513
+-87.650655,41.869503
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866853999999996, -87.667361999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6676206406,41.8669934844
+-87.667362,41.866854
+-87.667062,41.86686
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866853999999996, -87.667361999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6676206406,41.8667620469
+-87.667362,41.866854
+-87.667062,41.86686
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866853999999996, -87.667361999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.667656,41.866851
+-87.667362,41.866854
+-87.6670868281,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866853999999996, -87.667361999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.667656,41.866851
+-87.667362,41.866854
+-87.667062,41.86686
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866973999999999, -87.659216000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6596134531,41.8671092031
+-87.659216,41.866974
+-87.6590796406,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866973999999999, -87.659216000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6596134531,41.8668777656
+-87.659216,41.866974
+-87.6590796406,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866973999999999, -87.659216000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.659525,41.866969
+-87.659216,41.866974
+-87.6590796406,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866973999999999, -87.659216000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.659525,41.866969
+-87.659216,41.866974
+-87.6590796406,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869498, -87.650341999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6505386406,41.8696550156
+-87.650342,41.869498
+-87.64998,41.869499
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869498, -87.650341999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6505386406,41.8694235781
+-87.650342,41.869498
+-87.64998,41.869499
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869498, -87.650341999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.650655,41.869503
+-87.650342,41.869498
+-87.6500048281,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869498, -87.650341999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.650655,41.869503
+-87.650342,41.869498
+-87.64998,41.869499
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867153999999999, -87.651049)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8672249219
+-87.651049,41.867154
+-87.6508055469,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867153999999999, -87.651049)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8669934844
+-87.651049,41.867154
+-87.6508055469,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867153999999999, -87.651049)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.651307,41.867136
+-87.651049,41.867154
+-87.6508055469,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867153999999999, -87.651049)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.651307,41.867136
+-87.651049,41.867154
+-87.6508055469,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867136000000002, -87.651307000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6516062656,41.8672249219
+-87.651307,41.867136
+-87.651049,41.867154
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867136000000002, -87.651307000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6516062656,41.8669934844
+-87.651307,41.867136
+-87.651049,41.867154
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867136000000002, -87.651307000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.651605,41.867116
+-87.651307,41.867136
+-87.6510724531,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867136000000002, -87.651307000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.651605,41.867116
+-87.651307,41.867136
+-87.651049,41.867154
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869501, -87.649713000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6500048281,41.8696550156
+-87.649713,41.869501
+-87.649449,41.869503
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869501, -87.649713000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6500048281,41.8694235781
+-87.649713,41.869501
+-87.649449,41.869503
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869501, -87.649713000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.64998,41.869499
+-87.649713,41.869501
+-87.6494710156,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869501, -87.649713000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.64998,41.869499
+-87.649713,41.869501
+-87.649449,41.869503
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869152999999997, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8693078594
+-87.669062,41.869153
+-87.6686882656,41.8691921406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869152999999997, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8690764219
+-87.669062,41.869153
+-87.6686882656,41.8691921406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869152999999997, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8691921406
+-87.669062,41.869153
+-87.6686882656,41.8693078594
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869152999999997, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8691921406
+-87.669062,41.869153
+-87.6686882656,41.8691921406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867116000000003, -87.651605000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6518731719,41.8672249219
+-87.651605,41.867116
+-87.651307,41.867136
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867116000000003, -87.651605000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6518731719,41.8669934844
+-87.651605,41.867116
+-87.651307,41.867136
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867116000000003, -87.651605000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.651947,41.867102
+-87.651605,41.867116
+-87.6513393594,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867116000000003, -87.651605000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.651947,41.867102
+-87.651605,41.867116
+-87.651307,41.867136
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871600000000001, -87.670389999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6705566094,41.8717379531
+-87.67039,41.8716
+-87.670116,41.871592
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871600000000001, -87.670389999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6705566094,41.8715065156
+-87.67039,41.8716
+-87.670116,41.871592
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871600000000001, -87.670389999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.67067,41.871595
+-87.67039,41.8716
+-87.6700227969,41.8717379531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871600000000001, -87.670389999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.67067,41.871595
+-87.67039,41.8716
+-87.670116,41.871592
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867016, -87.656851000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6572112969,41.8671092031
+-87.656851,41.867016
+-87.6566774844,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867016, -87.656851000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6572112969,41.8668777656
+-87.656851,41.867016
+-87.6566774844,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867016, -87.656851000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.657134,41.867014
+-87.656851,41.867016
+-87.6566774844,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867016, -87.656851000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.657134,41.867014
+-87.656851,41.867016
+-87.6566774844,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866892999999997, -87.664034999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6644177656,41.8669934844
+-87.664035,41.866893
+-87.6638839531,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866892999999997, -87.664034999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6644177656,41.8667620469
+-87.664035,41.866893
+-87.6638839531,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866892999999997, -87.664034999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.664358,41.866889
+-87.664035,41.866893
+-87.6638839531,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866892999999997, -87.664034999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.664358,41.866889
+-87.664035,41.866893
+-87.6638839531,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871042000000003, -87.669107999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8711593594
+-87.669108,41.871042
+-87.6689551719,41.8710436406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871042000000003, -87.669107999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8709279219
+-87.669108,41.871042
+-87.6689551719,41.8710436406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871042000000003, -87.669107999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8710436406
+-87.669108,41.871042
+-87.6689551719,41.8711593594
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871042000000003, -87.669107999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8710436406
+-87.669108,41.871042
+-87.6689551719,41.8710436406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867085000000003, -87.653318999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6534746094,41.8672249219
+-87.653319,41.867085
+-87.653054,41.867089
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867085000000003, -87.653318999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6534746094,41.8669934844
+-87.653319,41.867085
+-87.653054,41.867089
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867085000000003, -87.653318999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.653573,41.867081
+-87.653319,41.867085
+-87.6529407969,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867085000000003, -87.653318999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.653573,41.867081
+-87.653319,41.867085
+-87.653054,41.867089
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866928999999999, -87.662085000000005)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6622825156,41.8669934844
+-87.662085,41.866929
+-87.661758,41.866933
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866928999999999, -87.662085000000005)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6622825156,41.8667620469
+-87.662085,41.866929
+-87.661758,41.866933
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866928999999999, -87.662085000000005)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.662414,41.866924
+-87.662085,41.866929
+-87.6617487031,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866928999999999, -87.662085000000005)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.662414,41.866924
+-87.662085,41.866929
+-87.661758,41.866933
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869501999999997, -87.649197000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6494710156,41.8696550156
+-87.649197,41.869502
+-87.64887,41.869511
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869501999999997, -87.649197000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6494710156,41.8694235781
+-87.649197,41.869502
+-87.64887,41.869511
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869501999999997, -87.649197000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.649449,41.869503
+-87.649197,41.869502
+-87.6489372031,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869501999999997, -87.649197000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.649449,41.869503
+-87.649197,41.869502
+-87.64887,41.869511
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867538000000003, -87.651010999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8676877969
+-87.651011,41.867538
+-87.6508055469,41.8675720781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867538000000003, -87.651010999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8674563594
+-87.651011,41.867538
+-87.6508055469,41.8675720781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867538000000003, -87.651010999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8675720781
+-87.651011,41.867538
+-87.6508055469,41.8676877969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867538000000003, -87.651010999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8675720781
+-87.651011,41.867538
+-87.6508055469,41.8675720781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868943999999999, -87.669054000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8690764219
+-87.669054,41.868944
+-87.6686882656,41.8689607031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868943999999999, -87.669054000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8688449844
+-87.669054,41.868944
+-87.6686882656,41.8689607031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868943999999999, -87.669054000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8689607031
+-87.669054,41.868944
+-87.6686882656,41.8690764219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868943999999999, -87.669054000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8689607031
+-87.669054,41.868944
+-87.6686882656,41.8689607031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866964000000003, -87.659834000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6601472656,41.8671092031
+-87.659834,41.866964
+-87.659525,41.866969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866964000000003, -87.659834000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6601472656,41.8668777656
+-87.659834,41.866964
+-87.659525,41.866969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866964000000003, -87.659834000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.660144,41.86696
+-87.659834,41.866964
+-87.6596134531,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866964000000003, -87.659834000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.660144,41.86696
+-87.659834,41.866964
+-87.659525,41.866969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868510000000001, -87.669036000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8686135469
+-87.669036,41.86851
+-87.6686882656,41.8684978281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868510000000001, -87.669036000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8683821094
+-87.669036,41.86851
+-87.6686882656,41.8684978281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868510000000001, -87.669036000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8684978281
+-87.669036,41.86851
+-87.6686882656,41.8686135469
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868510000000001, -87.669036000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8684978281
+-87.669036,41.86851
+-87.6686882656,41.8684978281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866916000000003, -87.662737000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6630832344,41.8669934844
+-87.662737,41.866916
+-87.6625494219,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866916000000003, -87.662737000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6630832344,41.8667620469
+-87.662737,41.866916
+-87.6625494219,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866916000000003, -87.662737000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.663059,41.866912
+-87.662737,41.866916
+-87.6625494219,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866916000000003, -87.662737000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.663059,41.866912
+-87.662737,41.866916
+-87.6625494219,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866844, -87.668739000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.668967,41.866989
+-87.668739,41.866844
+-87.668492,41.866847
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866844, -87.668739000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6689551719,41.8667620469
+-87.668739,41.866844
+-87.668492,41.866847
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866844, -87.668739000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6689551719,41.8668777656
+-87.668739,41.866844
+-87.6684213594,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866844, -87.668739000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6689551719,41.8668777656
+-87.668739,41.866844
+-87.668492,41.866847
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866942999999999, -87.661433000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6617487031,41.8671092031
+-87.661433,41.866943
+-87.661107,41.866948
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866942999999999, -87.661433000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.661758,41.866933
+-87.661433,41.866943
+-87.661107,41.866948
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866942999999999, -87.661433000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6617487031,41.8669934844
+-87.661433,41.866943
+-87.6612148906,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866942999999999, -87.661433000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6617487031,41.8669934844
+-87.661433,41.866943
+-87.661107,41.866948
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868326000000003, -87.669022999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8684978281
+-87.669023,41.868326
+-87.6686882656,41.8683821094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868326000000003, -87.669022999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8682663906
+-87.669023,41.868326
+-87.6686882656,41.8683821094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868326000000003, -87.669022999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8683821094
+-87.669023,41.868326
+-87.6686882656,41.8684978281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868326000000003, -87.669022999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8683821094
+-87.669023,41.868326
+-87.6686882656,41.8683821094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866847999999997, -87.667929000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6681544531,41.8669934844
+-87.667929,41.866848
+-87.667656,41.866851
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866847999999997, -87.667929000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6681544531,41.8667620469
+-87.667929,41.866848
+-87.667656,41.866851
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866847999999997, -87.667929000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.668176,41.866846
+-87.667929,41.866848
+-87.6676206406,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866847999999997, -87.667929000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.668176,41.866846
+-87.667929,41.866848
+-87.667656,41.866851
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868119999999998, -87.669013000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8682663906
+-87.669013,41.86812
+-87.6686882656,41.8681506719
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868119999999998, -87.669013000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8680349531
+-87.669013,41.86812
+-87.6686882656,41.8681506719
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868119999999998, -87.669013000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8681506719
+-87.669013,41.86812
+-87.6686882656,41.8682663906
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868119999999998, -87.669013000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8681506719
+-87.669013,41.86812
+-87.6686882656,41.8681506719
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866900000000001, -87.663711000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6638839531,41.8669934844
+-87.663711,41.8669
+-87.663384,41.866908
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866900000000001, -87.663711000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6638839531,41.8667620469
+-87.663711,41.8669
+-87.663384,41.866908
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866900000000001, -87.663711000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6638839531,41.8668777656
+-87.663711,41.8669
+-87.6633501406,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866900000000001, -87.663711000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6638839531,41.8668777656
+-87.663711,41.8669
+-87.663384,41.866908
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867049000000002, -87.655237999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6556098594,41.8671092031
+-87.655238,41.867049
+-87.6550760469,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867049000000002, -87.655237999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6556098594,41.8668777656
+-87.655238,41.867049
+-87.6550760469,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867049000000002, -87.655237999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.655487,41.867044
+-87.655238,41.867049
+-87.6550760469,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867049000000002, -87.655237999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.655487,41.867044
+-87.655238,41.867049
+-87.6550760469,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.870387000000001, -87.669067999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8704650469
+-87.669068,41.870387
+-87.6686882656,41.8703493281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.870387000000001, -87.669067999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8702336094
+-87.669068,41.870387
+-87.6686882656,41.8703493281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.870387000000001, -87.669067999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8703493281
+-87.669068,41.870387
+-87.6686882656,41.8704650469
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.870387000000001, -87.669067999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8703493281
+-87.669068,41.870387
+-87.6686882656,41.8703493281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869503000000002, -87.650655)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6508055469,41.8696550156
+-87.650655,41.869503
+-87.650342,41.869498
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869503000000002, -87.650655)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6508055469,41.8694235781
+-87.650655,41.869503
+-87.650342,41.869498
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869503000000002, -87.650655)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.650898,41.869513
+-87.650655,41.869503
+-87.6502717344,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869503000000002, -87.650655)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.650898,41.869513
+-87.650655,41.869503
+-87.650342,41.869498
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871591000000002, -87.670973000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6713573281,41.8717379531
+-87.670973,41.871591
+-87.6708235156,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871591000000002, -87.670973000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6713573281,41.8715065156
+-87.670973,41.871591
+-87.6708235156,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871591000000002, -87.670973000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.671285,41.871586
+-87.670973,41.871591
+-87.6708235156,41.8717379531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871591000000002, -87.670973000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.671285,41.871586
+-87.670973,41.871591
+-87.6708235156,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867910999999999, -87.669010999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8680349531
+-87.669011,41.867911
+-87.6686882656,41.8679192344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867910999999999, -87.669010999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8678035156
+-87.669011,41.867911
+-87.6686882656,41.8679192344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867910999999999, -87.669010999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8679192344
+-87.669011,41.867911
+-87.6686882656,41.8680349531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867910999999999, -87.669010999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8679192344
+-87.669011,41.867911
+-87.6686882656,41.8679192344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866933000000003, -87.661758000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6620156094,41.8669934844
+-87.661758,41.866933
+-87.6614817969,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866933000000003, -87.661758000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6620156094,41.8667620469
+-87.661758,41.866933
+-87.6614817969,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866933000000003, -87.661758000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.662085,41.866929
+-87.661758,41.866933
+-87.661433,41.866943
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866933000000003, -87.661758000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.662085,41.866929
+-87.661758,41.866933
+-87.6614817969,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866990000000001, -87.658345999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6585458281,41.8671092031
+-87.658346,41.86699
+-87.658007,41.866998
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866990000000001, -87.658345999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6585458281,41.8668777656
+-87.658346,41.86699
+-87.658007,41.866998
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866990000000001, -87.658345999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.658612,41.866987
+-87.658346,41.86699
+-87.6580120156,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866990000000001, -87.658345999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.658612,41.866987
+-87.658346,41.86699
+-87.658007,41.866998
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869503000000002, -87.649449000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6497379219,41.8696550156
+-87.649449,41.869503
+-87.649197,41.869502
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869503000000002, -87.649449000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6497379219,41.8694235781
+-87.649449,41.869503
+-87.649197,41.869502
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869503000000002, -87.649449000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.649713,41.869501
+-87.649449,41.869503
+-87.6492041094,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869503000000002, -87.649449000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.649713,41.869501
+-87.649449,41.869503
+-87.649197,41.869502
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867102000000003, -87.651947000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6521400781,41.8672249219
+-87.651947,41.867102
+-87.651605,41.867116
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867102000000003, -87.651947000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6521400781,41.8669934844
+-87.651947,41.867102
+-87.651605,41.867116
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867102000000003, -87.651947000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.65222,41.867098
+-87.651947,41.867102
+-87.6516062656,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867102000000003, -87.651947000000007)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.65222,41.867098
+-87.651947,41.867102
+-87.651605,41.867116
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867010000000001, -87.657436000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6577451094,41.8671092031
+-87.657436,41.86701
+-87.657134,41.867014
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867010000000001, -87.657436000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6577451094,41.8668777656
+-87.657436,41.86701
+-87.657134,41.867014
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867010000000001, -87.657436000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.657701,41.867005
+-87.657436,41.86701
+-87.6572112969,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867010000000001, -87.657436000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.657701,41.867005
+-87.657436,41.86701
+-87.657134,41.867014
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866881999999997, -87.664991000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6652184844,41.8669934844
+-87.664991,41.866882
+-87.664675,41.866887
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866881999999997, -87.664991000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6652184844,41.8667620469
+-87.664991,41.866882
+-87.664675,41.866887
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866881999999997, -87.664991000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.665302,41.866877
+-87.664991,41.866882
+-87.6646846719,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866881999999997, -87.664991000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.665302,41.866877
+-87.664991,41.866882
+-87.664675,41.866887
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866987000000002, -87.658612000000005)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6588127344,41.8671092031
+-87.658612,41.866987
+-87.658346,41.86699
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866987000000002, -87.658612000000005)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6588127344,41.8668777656
+-87.658612,41.866987
+-87.658346,41.86699
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866987000000002, -87.658612000000005)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.658909,41.866981
+-87.658612,41.866987
+-87.6582789219,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866987000000002, -87.658612000000005)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.658909,41.866981
+-87.658612,41.866987
+-87.658346,41.86699
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868405000000003, -87.651042000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8684978281
+-87.651042,41.868405
+-87.6508055469,41.8683821094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868405000000003, -87.651042000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8682663906
+-87.651042,41.868405
+-87.6508055469,41.8683821094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868405000000003, -87.651042000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8683821094
+-87.651042,41.868405
+-87.6508055469,41.8684978281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868405000000003, -87.651042000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8683821094
+-87.651042,41.868405
+-87.6508055469,41.8683821094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871586000000001, -87.671561999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6718911406,41.8717379531
+-87.671562,41.871586
+-87.671285,41.871586
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871586000000001, -87.671561999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6718911406,41.8715065156
+-87.671562,41.871586
+-87.671285,41.871586
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871586000000001, -87.671561999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6718911406,41.8716222344
+-87.671562,41.871586
+-87.6713573281,41.8717379531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871586000000001, -87.671561999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6718911406,41.8716222344
+-87.671562,41.871586
+-87.671285,41.871586
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.870018999999999, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8701178906
+-87.669062,41.870019
+-87.6686882656,41.8700021719
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.870018999999999, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8698864531
+-87.669062,41.870019
+-87.6686882656,41.8700021719
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.870018999999999, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8700021719
+-87.669062,41.870019
+-87.6686882656,41.8701178906
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.870018999999999, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8700021719
+-87.669062,41.870019
+-87.6686882656,41.8700021719
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867344000000003, -87.651005999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8674563594
+-87.651006,41.867344
+-87.6508055469,41.8673406406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867344000000003, -87.651005999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8672249219
+-87.651006,41.867344
+-87.6508055469,41.8673406406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867344000000003, -87.651005999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8673406406
+-87.651006,41.867344
+-87.6508055469,41.8674563594
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867344000000003, -87.651005999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8673406406
+-87.651006,41.867344
+-87.6508055469,41.8673406406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869188999999999, -87.651087000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8693078594
+-87.651087,41.869189
+-87.6508055469,41.8691921406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869188999999999, -87.651087000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8690764219
+-87.651087,41.869189
+-87.6508055469,41.8691921406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869188999999999, -87.651087000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8691921406
+-87.651087,41.869189
+-87.6508055469,41.8693078594
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869188999999999, -87.651087000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8691921406
+-87.651087,41.869189
+-87.6508055469,41.8691921406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867089999999997, -87.652781000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6529407969,41.8672249219
+-87.652781,41.86709
+-87.652502,41.867093
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867089999999997, -87.652781000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6529407969,41.8669934844
+-87.652781,41.86709
+-87.652502,41.867093
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867089999999997, -87.652781000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.653054,41.867089
+-87.652781,41.86709
+-87.6524069844,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867089999999997, -87.652781000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.653054,41.867089
+-87.652781,41.86709
+-87.652502,41.867093
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867772000000002, -87.651020000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8679192344
+-87.65102,41.867772
+-87.6508055469,41.8678035156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867772000000002, -87.651020000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8676877969
+-87.65102,41.867772
+-87.6508055469,41.8678035156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867772000000002, -87.651020000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8678035156
+-87.65102,41.867772
+-87.6508055469,41.8679192344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867772000000002, -87.651020000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8678035156
+-87.65102,41.867772
+-87.6508055469,41.8678035156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866908000000002, -87.663383999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6636170469,41.8669934844
+-87.663384,41.866908
+-87.663059,41.866912
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866908000000002, -87.663383999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6636170469,41.8667620469
+-87.663384,41.866908
+-87.663059,41.866912
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866908000000002, -87.663383999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.663711,41.8669
+-87.663384,41.866908
+-87.6630832344,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866908000000002, -87.663383999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.663711,41.8669
+-87.663384,41.866908
+-87.663059,41.866912
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867063000000002, -87.654531000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6548091406,41.8672249219
+-87.654531,41.867063
+-87.6542753281,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867063000000002, -87.654531000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6548091406,41.8669934844
+-87.654531,41.867063
+-87.6542753281,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867063000000002, -87.654531000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.654883,41.867057
+-87.654531,41.867063
+-87.6542753281,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867063000000002, -87.654531000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.654883,41.867057
+-87.654531,41.867063
+-87.6542753281,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869577999999997, -87.647679999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6478695781,41.8696550156
+-87.64768,41.869578
+-87.647398,41.869585
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869577999999997, -87.647679999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6478695781,41.8694235781
+-87.64768,41.869578
+-87.647398,41.869585
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869577999999997, -87.647679999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.647984,41.869569
+-87.64768,41.869578
+-87.6473357656,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869577999999997, -87.647679999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.647984,41.869569
+-87.64768,41.869578
+-87.647398,41.869585
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869585000000001, -87.647397999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6476026719,41.8696550156
+-87.647398,41.869585
+-87.6470688594,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869585000000001, -87.647397999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6476026719,41.8694235781
+-87.647398,41.869585
+-87.6470688594,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869585000000001, -87.647397999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.64768,41.869578
+-87.647398,41.869585
+-87.6470688594,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869585000000001, -87.647397999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.64768,41.869578
+-87.647398,41.869585
+-87.6470688594,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.870769000000003, -87.669084999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8709279219
+-87.669085,41.870769
+-87.6686882656,41.8708122031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.870769000000003, -87.669084999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8706964844
+-87.669085,41.870769
+-87.6686882656,41.8708122031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.870769000000003, -87.669084999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8708122031
+-87.669085,41.870769
+-87.6686882656,41.8709279219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.870769000000003, -87.669084999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8708122031
+-87.669085,41.870769
+-87.6686882656,41.8708122031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866877000000002, -87.665301999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6654853906,41.8669934844
+-87.665302,41.866877
+-87.664991,41.866882
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866877000000002, -87.665301999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6654853906,41.8667620469
+-87.665302,41.866877
+-87.664991,41.866882
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866877000000002, -87.665301999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.665606,41.86687
+-87.665302,41.866877
+-87.6649515781,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866877000000002, -87.665301999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.665606,41.86687
+-87.665302,41.866877
+-87.664991,41.866882
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869532999999997, -87.648612)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6489372031,41.8696550156
+-87.648612,41.869533
+-87.648303,41.869558
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869532999999997, -87.648612)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6489372031,41.8694235781
+-87.648612,41.869533
+-87.648303,41.869558
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869532999999997, -87.648612)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.64887,41.869511
+-87.648612,41.869533
+-87.6484033906,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869532999999997, -87.648612)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.64887,41.869511
+-87.648612,41.869533
+-87.648303,41.869558
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869562999999999, -87.669059000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8696550156
+-87.669059,41.869563
+-87.6686882656,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869562999999999, -87.669059000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8694235781
+-87.669059,41.869563
+-87.6686882656,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869562999999999, -87.669059000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8695392969
+-87.669059,41.869563
+-87.6686882656,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869562999999999, -87.669059000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8695392969
+-87.669059,41.869563
+-87.6686882656,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.870578000000002, -87.669073999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8706964844
+-87.669074,41.870578
+-87.6686882656,41.8705807656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.870578000000002, -87.669073999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8704650469
+-87.669074,41.870578
+-87.6686882656,41.8705807656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.870578000000002, -87.669073999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8705807656
+-87.669074,41.870578
+-87.6686882656,41.8706964844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.870578000000002, -87.669073999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8705807656
+-87.669074,41.870578
+-87.6686882656,41.8705807656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869557999999998, -87.648302999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6486702969,41.8696550156
+-87.648303,41.869558
+-87.6481364844,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869557999999998, -87.648302999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6486702969,41.8694235781
+-87.648303,41.869558
+-87.6481364844,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869557999999998, -87.648302999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.648612,41.869533
+-87.648303,41.869558
+-87.6481364844,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869557999999998, -87.648302999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.648612,41.869533
+-87.648303,41.869558
+-87.6481364844,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869511000000003, -87.648870000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6492041094,41.8696550156
+-87.64887,41.869511
+-87.648612,41.869533
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869511000000003, -87.648870000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6492041094,41.8694235781
+-87.64887,41.869511
+-87.648612,41.869533
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869511000000003, -87.648870000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.649197,41.869502
+-87.64887,41.869511
+-87.6486702969,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869511000000003, -87.648870000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.649197,41.869502
+-87.64887,41.869511
+-87.648612,41.869533
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871640499999998, -87.669753499999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6700227969,41.8717379531
+-87.6697535,41.8716405
+-87.6694889844,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871640499999998, -87.669753499999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6700227969,41.8715065156
+-87.6697535,41.8716405
+-87.6694889844,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871640499999998, -87.669753499999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.670116,41.871592
+-87.6697535,41.8716405
+-87.6694889844,41.8717379531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871640499999998, -87.669753499999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.670116,41.871592
+-87.6697535,41.8716405
+-87.6694889844,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867004999999999, -87.657701000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6580120156,41.8671092031
+-87.657701,41.867005
+-87.657436,41.86701
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867004999999999, -87.657701000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6580120156,41.8668777656
+-87.657701,41.867005
+-87.657436,41.86701
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867004999999999, -87.657701000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.658007,41.866998
+-87.657701,41.867005
+-87.6574782031,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867004999999999, -87.657701000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.658007,41.866998
+-87.657701,41.867005
+-87.657436,41.86701
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866869999999999, -87.665605999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6657522969,41.8669934844
+-87.665606,41.86687
+-87.665302,41.866877
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866869999999999, -87.665605999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6657522969,41.8667620469
+-87.665606,41.86687
+-87.665302,41.866877
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866869999999999, -87.665605999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6657522969,41.8668777656
+-87.665606,41.86687
+-87.6652184844,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866869999999999, -87.665605999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6657522969,41.8668777656
+-87.665606,41.86687
+-87.665302,41.866877
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866923999999997, -87.662413999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6625494219,41.8669934844
+-87.662414,41.866924
+-87.662085,41.866929
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866923999999997, -87.662413999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6625494219,41.8667620469
+-87.662414,41.866924
+-87.662085,41.866929
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866923999999997, -87.662413999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6625494219,41.8668777656
+-87.662414,41.866924
+-87.6620156094,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866923999999997, -87.662413999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6625494219,41.8668777656
+-87.662414,41.866924
+-87.662085,41.866929
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866911999999999, -87.663059000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6633501406,41.8669934844
+-87.663059,41.866912
+-87.662737,41.866916
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866911999999999, -87.663059000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6633501406,41.8667620469
+-87.663059,41.866912
+-87.662737,41.866916
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866911999999999, -87.663059000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.663384,41.866908
+-87.663059,41.866912
+-87.6628163281,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866911999999999, -87.663059000000004)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.663384,41.866908
+-87.663059,41.866912
+-87.662737,41.866916
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869498999999998, -87.649979999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6502717344,41.8696550156
+-87.64998,41.869499
+-87.649713,41.869501
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869498999999998, -87.649979999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6502717344,41.8694235781
+-87.64998,41.869499
+-87.649713,41.869501
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869498999999998, -87.649979999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.650342,41.869498
+-87.64998,41.869499
+-87.6497379219,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869498999999998, -87.649979999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.650342,41.869498
+-87.64998,41.869499
+-87.649713,41.869501
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866981000000003, -87.658908999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6590796406,41.8671092031
+-87.658909,41.866981
+-87.658612,41.866987
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866981000000003, -87.658908999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6590796406,41.8668777656
+-87.658909,41.866981
+-87.658612,41.866987
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866981000000003, -87.658908999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6590796406,41.8669934844
+-87.658909,41.866981
+-87.6585458281,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866981000000003, -87.658908999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6590796406,41.8669934844
+-87.658909,41.866981
+-87.658612,41.866987
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867457999999999, -87.668993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8675720781
+-87.668993,41.867458
+-87.6686882656,41.8674563594
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867457999999999, -87.668993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8673406406
+-87.668993,41.867458
+-87.6686882656,41.8674563594
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867457999999999, -87.668993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8674563594
+-87.668993,41.867458
+-87.6686882656,41.8675720781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867457999999999, -87.668993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8674563594
+-87.668993,41.867458
+-87.6686882656,41.8674563594
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867092999999997, -87.652501999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6526738906,41.8672249219
+-87.652502,41.867093
+-87.65222,41.867098
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867092999999997, -87.652501999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6526738906,41.8669934844
+-87.652502,41.867093
+-87.65222,41.867098
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867092999999997, -87.652501999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.652781,41.86709
+-87.652502,41.867093
+-87.6521400781,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867092999999997, -87.652501999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.652781,41.86709
+-87.652502,41.867093
+-87.65222,41.867098
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868695000000002, -87.669044999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8688449844
+-87.669045,41.868695
+-87.6686882656,41.8687292656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868695000000002, -87.669044999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8686135469
+-87.669045,41.868695
+-87.6686882656,41.8687292656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868695000000002, -87.669044999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8687292656
+-87.669045,41.868695
+-87.6686882656,41.8688449844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868695000000002, -87.669044999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8687292656
+-87.669045,41.868695
+-87.6686882656,41.8687292656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869374999999998, -87.669083999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8695392969
+-87.669084,41.869375
+-87.6686882656,41.8694235781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869374999999998, -87.669083999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8693078594
+-87.669084,41.869375
+-87.6686882656,41.8694235781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869374999999998, -87.669083999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8694235781
+-87.669084,41.869375
+-87.6686882656,41.8695392969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869374999999998, -87.669083999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8694235781
+-87.669084,41.869375
+-87.6686882656,41.8694235781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867024999999998, -87.656519000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6566774844,41.8671092031
+-87.656519,41.867025
+-87.6561425,41.867034
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867024999999998, -87.656519000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6566774844,41.8668777656
+-87.656519,41.867025
+-87.6561425,41.867034
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867024999999998, -87.656519000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6566774844,41.8669934844
+-87.656519,41.867025
+-87.6561436719,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867024999999998, -87.656519000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6566774844,41.8669934844
+-87.656519,41.867025
+-87.6561425,41.867034
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866968999999997, -87.659525000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6598803594,41.8671092031
+-87.659525,41.866969
+-87.659216,41.866974
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866968999999997, -87.659525000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6598803594,41.8668777656
+-87.659525,41.866969
+-87.659216,41.866974
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866968999999997, -87.659525000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.659834,41.866964
+-87.659525,41.866969
+-87.6593465469,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866968999999997, -87.659525000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.659834,41.866964
+-87.659525,41.866969
+-87.659216,41.866974
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866998000000002, -87.658006999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6582789219,41.8671092031
+-87.658007,41.866998
+-87.657701,41.867005
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866998000000002, -87.658006999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6582789219,41.8668777656
+-87.658007,41.866998
+-87.657701,41.867005
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866998000000002, -87.658006999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.658346,41.86699
+-87.658007,41.866998
+-87.6577451094,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866998000000002, -87.658006999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.658346,41.86699
+-87.658007,41.866998
+-87.657701,41.867005
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867034000000004, -87.656142500000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6564105781,41.8671092031
+-87.6561425,41.867034
+-87.655748,41.86704
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867034000000004, -87.656142500000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6564105781,41.8668777656
+-87.6561425,41.867034
+-87.655748,41.86704
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867034000000004, -87.656142500000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.656519,41.867025
+-87.6561425,41.867034
+-87.6558767656,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867034000000004, -87.656142500000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.656519,41.867025
+-87.6561425,41.867034
+-87.655748,41.86704
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868034999999999, -87.651027999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8681506719
+-87.651028,41.868035
+-87.6508055469,41.8680349531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868034999999999, -87.651027999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8679192344
+-87.651028,41.868035
+-87.6508055469,41.8680349531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868034999999999, -87.651027999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8680349531
+-87.651028,41.868035
+-87.6508055469,41.8681506719
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868034999999999, -87.651027999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8680349531
+-87.651028,41.868035
+-87.6508055469,41.8680349531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871651, -87.669342999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8717379531
+-87.669343,41.871651
+-87.6689551719,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871651, -87.669342999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8715065156
+-87.669343,41.871651
+-87.6689551719,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871651, -87.669342999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8716222344
+-87.669343,41.871651
+-87.6689551719,41.8717379531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871651, -87.669342999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8716222344
+-87.669343,41.871651
+-87.6689551719,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866948000000001, -87.661107000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6614817969,41.8671092031
+-87.661107,41.866948
+-87.6609479844,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866948000000001, -87.661107000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6614817969,41.8668777656
+-87.661107,41.866948
+-87.6609479844,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866948000000001, -87.661107000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.661433,41.866943
+-87.661107,41.866948
+-87.6609479844,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866948000000001, -87.661107000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.661433,41.866943
+-87.661107,41.866948
+-87.6609479844,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868223, -87.651034999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8683821094
+-87.651035,41.868223
+-87.6508055469,41.8682663906
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868223, -87.651034999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8681506719
+-87.651035,41.868223
+-87.6508055469,41.8682663906
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868223, -87.651034999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8682663906
+-87.651035,41.868223
+-87.6508055469,41.8683821094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868223, -87.651034999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8682663906
+-87.651035,41.868223
+-87.6508055469,41.8682663906
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866846000000002, -87.668176000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6684213594,41.8669934844
+-87.668176,41.866846
+-87.667929,41.866848
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866846000000002, -87.668176000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6684213594,41.8667620469
+-87.668176,41.866846
+-87.667929,41.866848
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866846000000002, -87.668176000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.668492,41.866847
+-87.668176,41.866846
+-87.6678875469,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866846000000002, -87.668176000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.668492,41.866847
+-87.668176,41.866846
+-87.667929,41.866848
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871510999999998, -87.669150000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8716222344
+-87.66915,41.871511
+-87.6689551719,41.8715065156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871510999999998, -87.669150000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8713907969
+-87.66915,41.871511
+-87.6689551719,41.8715065156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871510999999998, -87.669150000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8715065156
+-87.66915,41.871511
+-87.6689551719,41.8716222344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871510999999998, -87.669150000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8715065156
+-87.66915,41.871511
+-87.6689551719,41.8715065156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866860000000003, -87.667062000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6673537344,41.8669934844
+-87.667062,41.86686
+-87.666767,41.866864
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866860000000003, -87.667062000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6673537344,41.8667620469
+-87.667062,41.86686
+-87.666767,41.866864
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866860000000003, -87.667062000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.667362,41.866854
+-87.667062,41.86686
+-87.6668199219,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866860000000003, -87.667062000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.667362,41.866854
+-87.667062,41.86686
+-87.666767,41.866864
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867080999999999, -87.653572999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6537415156,41.8672249219
+-87.653573,41.867081
+-87.653319,41.867085
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867080999999999, -87.653572999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6537415156,41.8669934844
+-87.653573,41.867081
+-87.653319,41.867085
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867080999999999, -87.653572999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6537415156,41.8671092031
+-87.653573,41.867081
+-87.6532077031,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867080999999999, -87.653572999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6537415156,41.8671092031
+-87.653573,41.867081
+-87.653319,41.867085
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867040000000003, -87.655748000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6561436719,41.8671092031
+-87.655748,41.86704
+-87.655487,41.867044
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867040000000003, -87.655748000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6561436719,41.8668777656
+-87.655748,41.86704
+-87.655487,41.867044
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867040000000003, -87.655748000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6561425,41.867034
+-87.655748,41.86704
+-87.6556098594,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867040000000003, -87.655748000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6561425,41.867034
+-87.655748,41.86704
+-87.655487,41.867044
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866861999999998, -87.666191999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6665530156,41.8669934844
+-87.666192,41.866862
+-87.665902,41.866865
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866861999999998, -87.666191999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6665530156,41.8667620469
+-87.666192,41.866862
+-87.665902,41.866865
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866861999999998, -87.666191999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.666478,41.866863
+-87.666192,41.866862
+-87.6660192031,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866861999999998, -87.666191999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.666478,41.866863
+-87.666192,41.866862
+-87.665902,41.866865
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866988999999997, -87.668966999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8671092031
+-87.668967,41.866989
+-87.6686882656,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866988999999997, -87.668966999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8668777656
+-87.668967,41.866989
+-87.6686882656,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866988999999997, -87.668966999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8669934844
+-87.668967,41.866989
+-87.6686882656,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866988999999997, -87.668966999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8669934844
+-87.668967,41.866989
+-87.6686882656,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871594999999999, -87.670670000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6708235156,41.8717379531
+-87.67067,41.871595
+-87.67039,41.8716
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871594999999999, -87.670670000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6708235156,41.8715065156
+-87.67067,41.871595
+-87.67039,41.8716
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871594999999999, -87.670670000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6708235156,41.8716222344
+-87.67067,41.871595
+-87.6702897031,41.8717379531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871594999999999, -87.670670000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6708235156,41.8716222344
+-87.67067,41.871595
+-87.67039,41.8716
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867057000000003, -87.654882999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6550760469,41.8672249219
+-87.654883,41.867057
+-87.654531,41.867063
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867057000000003, -87.654882999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6550760469,41.8669934844
+-87.654883,41.867057
+-87.654531,41.867063
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867057000000003, -87.654882999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6550760469,41.8671092031
+-87.654883,41.867057
+-87.6545422344,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867057000000003, -87.654882999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6550760469,41.8671092031
+-87.654883,41.867057
+-87.654531,41.867063
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866850999999997, -87.667655999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6678875469,41.8669934844
+-87.667656,41.866851
+-87.667362,41.866854
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866850999999997, -87.667655999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6678875469,41.8667620469
+-87.667656,41.866851
+-87.667362,41.866854
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866850999999997, -87.667655999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.667929,41.866848
+-87.667656,41.866851
+-87.6673537344,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866850999999997, -87.667655999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.667929,41.866848
+-87.667656,41.866851
+-87.667362,41.866854
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867089, -87.653053999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6532077031,41.8672249219
+-87.653054,41.867089
+-87.652781,41.86709
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867089, -87.653053999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6532077031,41.8669934844
+-87.653054,41.867089
+-87.652781,41.86709
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867089, -87.653053999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.653319,41.867085
+-87.653054,41.867089
+-87.6526738906,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867089, -87.653053999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.653319,41.867085
+-87.653054,41.867089
+-87.652781,41.86709
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866956000000002, -87.660460999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6606810781,41.8671092031
+-87.660461,41.866956
+-87.660144,41.86696
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866956000000002, -87.660460999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6606810781,41.8668777656
+-87.660461,41.866956
+-87.660144,41.86696
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866956000000002, -87.660460999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.660783,41.866953
+-87.660461,41.866956
+-87.6601472656,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866956000000002, -87.660460999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.660783,41.866953
+-87.660461,41.866956
+-87.660144,41.86696
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866959999999999, -87.660144000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6604141719,41.8671092031
+-87.660144,41.86696
+-87.659834,41.866964
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866959999999999, -87.660144000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6604141719,41.8668777656
+-87.660144,41.86696
+-87.659834,41.866964
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866959999999999, -87.660144000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.660461,41.866956
+-87.660144,41.86696
+-87.6598803594,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866959999999999, -87.660144000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.660461,41.866956
+-87.660144,41.86696
+-87.659834,41.866964
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866889, -87.664357999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6646846719,41.8669934844
+-87.664358,41.866889
+-87.664035,41.866893
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866889, -87.664357999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6646846719,41.8667620469
+-87.664358,41.866889
+-87.664035,41.866893
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866889, -87.664357999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.664675,41.866887
+-87.664358,41.866889
+-87.6641508594,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866889, -87.664357999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.664675,41.866887
+-87.664358,41.866889
+-87.664035,41.866893
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866864, -87.666766999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6670868281,41.8669934844
+-87.666767,41.866864
+-87.666478,41.866863
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866864, -87.666766999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6670868281,41.8667620469
+-87.666767,41.866864
+-87.666478,41.866863
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866864, -87.666766999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.667062,41.86686
+-87.666767,41.866864
+-87.6665530156,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866864, -87.666766999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.667062,41.86686
+-87.666767,41.866864
+-87.666478,41.866863
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867013999999998, -87.657133999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6574782031,41.8671092031
+-87.657134,41.867014
+-87.656851,41.867016
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867013999999998, -87.657133999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6574782031,41.8668777656
+-87.657134,41.867014
+-87.656851,41.867016
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867013999999998, -87.657133999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.657436,41.86701
+-87.657134,41.867014
+-87.6569443906,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867013999999998, -87.657133999999999)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.657436,41.86701
+-87.657134,41.867014
+-87.656851,41.867016
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867097999999999, -87.65222)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6524069844,41.8672249219
+-87.65222,41.867098
+-87.651947,41.867102
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867097999999999, -87.65222)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6524069844,41.8669934844
+-87.65222,41.867098
+-87.651947,41.867102
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867097999999999, -87.65222)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.652502,41.867093
+-87.65222,41.867098
+-87.6518731719,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867097999999999, -87.65222)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.652502,41.867093
+-87.65222,41.867098
+-87.651947,41.867102
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866863000000002, -87.666477999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6668199219,41.8669934844
+-87.666478,41.866863
+-87.666192,41.866862
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866863000000002, -87.666477999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6668199219,41.8667620469
+-87.666478,41.866863
+-87.666192,41.866862
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866863000000002, -87.666477999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.666767,41.866864
+-87.666478,41.866863
+-87.6662861094,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866863000000002, -87.666477999999998)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.666767,41.866864
+-87.666478,41.866863
+-87.666192,41.866862
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866886999999998, -87.664675000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6649515781,41.8669934844
+-87.664675,41.866887
+-87.664358,41.866889
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866886999999998, -87.664675000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6649515781,41.8667620469
+-87.664675,41.866887
+-87.664358,41.866889
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866886999999998, -87.664675000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.664991,41.866882
+-87.664675,41.866887
+-87.6644177656,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866886999999998, -87.664675000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.664991,41.866882
+-87.664675,41.866887
+-87.664358,41.866889
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867044, -87.655486999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6558767656,41.8671092031
+-87.655487,41.867044
+-87.655238,41.867049
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867044, -87.655486999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6558767656,41.8668777656
+-87.655487,41.867044
+-87.655238,41.867049
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867044, -87.655486999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.655748,41.86704
+-87.655487,41.867044
+-87.6553429531,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867044, -87.655486999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.655748,41.86704
+-87.655487,41.867044
+-87.655238,41.867049
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866847, -87.668492000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6686882656,41.8669934844
+-87.668492,41.866847
+-87.668176,41.866846
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866847, -87.668492000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6686882656,41.8667620469
+-87.668492,41.866847
+-87.668176,41.866846
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866847, -87.668492000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.668739,41.866844
+-87.668492,41.866847
+-87.6681544531,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866847, -87.668492000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.668739,41.866844
+-87.668492,41.866847
+-87.668176,41.866846
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867206000000003, -87.668988999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8673406406
+-87.668989,41.867206
+-87.6686882656,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867206000000003, -87.668988999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8671092031
+-87.668989,41.867206
+-87.6686882656,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867206000000003, -87.668988999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8672249219
+-87.668989,41.867206
+-87.6686882656,41.8673406406
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867206000000003, -87.668988999999996)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8672249219
+-87.668989,41.867206
+-87.6686882656,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871281000000003, -87.669134999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8713907969
+-87.669135,41.871281
+-87.6689551719,41.8712750781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871281000000003, -87.669134999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8711593594
+-87.669135,41.871281
+-87.6689551719,41.8712750781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871281000000003, -87.669134999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8712750781
+-87.669135,41.871281
+-87.6689551719,41.8713907969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871281000000003, -87.669134999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6694889844,41.8712750781
+-87.669135,41.871281
+-87.6689551719,41.8712750781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.870201999999999, -87.669056999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8703493281
+-87.669057,41.870202
+-87.6686882656,41.8702336094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.870201999999999, -87.669056999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8701178906
+-87.669057,41.870202
+-87.6686882656,41.8702336094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.870201999999999, -87.669056999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8702336094
+-87.669057,41.870202
+-87.6686882656,41.8703493281
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.870201999999999, -87.669056999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8702336094
+-87.669057,41.870202
+-87.6686882656,41.8702336094
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869765999999998, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8698864531
+-87.669062,41.869766
+-87.6686882656,41.8697707344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869765999999998, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8696550156
+-87.669062,41.869766
+-87.6686882656,41.8697707344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869765999999998, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8697707344
+-87.669062,41.869766
+-87.6686882656,41.8698864531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869765999999998, -87.669061999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8697707344
+-87.669062,41.869766
+-87.6686882656,41.8697707344
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869394999999997, -87.651112999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8695392969
+-87.651113,41.869395
+-87.6508055469,41.8694235781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869394999999997, -87.651112999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8693078594
+-87.651113,41.869395
+-87.6508055469,41.8694235781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869394999999997, -87.651112999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8694235781
+-87.651113,41.869395
+-87.650898,41.869513
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869394999999997, -87.651112999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8694235781
+-87.651113,41.869395
+-87.6508055469,41.8694235781
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867721000000003, -87.669004000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8678035156
+-87.669004,41.867721
+-87.6686882656,41.8676877969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867721000000003, -87.669004000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8675720781
+-87.669004,41.867721
+-87.6686882656,41.8676877969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867721000000003, -87.669004000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8676877969
+-87.669004,41.867721
+-87.6686882656,41.8678035156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867721000000003, -87.669004000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6692220781,41.8676877969
+-87.669004,41.867721
+-87.6686882656,41.8676877969
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868760000000002, -87.651054000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8688449844
+-87.651054,41.86876
+-87.6508055469,41.8687292656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868760000000002, -87.651054000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8686135469
+-87.651054,41.86876
+-87.6508055469,41.8687292656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868760000000002, -87.651054000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8687292656
+-87.651054,41.86876
+-87.6508055469,41.8688449844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868760000000002, -87.651054000000002)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8687292656
+-87.651054,41.86876
+-87.6508055469,41.8687292656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.867074000000002, -87.653940000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6542753281,41.8672249219
+-87.65394,41.867074
+-87.6537415156,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.867074000000002, -87.653940000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6542753281,41.8669934844
+-87.65394,41.867074
+-87.6537415156,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.867074000000002, -87.653940000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6542753281,41.8671092031
+-87.65394,41.867074
+-87.6537415156,41.8672249219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.867074000000002, -87.653940000000006)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6542753281,41.8671092031
+-87.65394,41.867074
+-87.6537415156,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.868940000000002, -87.651060000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8690764219
+-87.65106,41.86894
+-87.6508055469,41.8689607031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.868940000000002, -87.651060000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8688449844
+-87.65106,41.86894
+-87.6508055469,41.8689607031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.868940000000002, -87.651060000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8689607031
+-87.65106,41.86894
+-87.6508055469,41.8690764219
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.868940000000002, -87.651060000000001)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6513393594,41.8689607031
+-87.65106,41.86894
+-87.6508055469,41.8689607031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871586000000001, -87.671284999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6716242344,41.8717379531
+-87.671285,41.871586
+-87.670973,41.871591
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871586000000001, -87.671284999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6716242344,41.8715065156
+-87.671285,41.871586
+-87.670973,41.871591
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871586000000001, -87.671284999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.671562,41.871586
+-87.671285,41.871586
+-87.6710904219,41.8717379531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871586000000001, -87.671284999999997)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.671562,41.871586
+-87.671285,41.871586
+-87.670973,41.871591
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.871592, -87.670115999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6702897031,41.8717379531
+-87.670116,41.871592
+-87.6697535,41.8716405
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.871592, -87.670115999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6702897031,41.8715065156
+-87.670116,41.871592
+-87.6697535,41.8716405
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.871592, -87.670115999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.67039,41.8716
+-87.670116,41.871592
+-87.6697558906,41.8717379531
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.871592, -87.670115999999993)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.67039,41.8716
+-87.670116,41.871592
+-87.6697535,41.8716405
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.869568999999998, -87.647983999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6481364844,41.8696550156
+-87.647984,41.869569
+-87.64768,41.869578
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.869568999999998, -87.647983999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6481364844,41.8694235781
+-87.647984,41.869569
+-87.64768,41.869578
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.869568999999998, -87.647983999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6481364844,41.8695392969
+-87.647984,41.869569
+-87.6476026719,41.8696550156
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.869568999999998, -87.647983999999994)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6481364844,41.8695392969
+-87.647984,41.869569
+-87.64768,41.869578
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866864999999997, -87.665902000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6662861094,41.8669934844
+-87.665902,41.866865
+-87.6657522969,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866864999999997, -87.665902000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6662861094,41.8667620469
+-87.665902,41.866865
+-87.6657522969,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866864999999997, -87.665902000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.666192,41.866862
+-87.665902,41.866865
+-87.6657522969,41.8669934844
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866864999999997, -87.665902000000003)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.666192,41.866862
+-87.665902,41.866865
+-87.6657522969,41.8668777656
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
+<Placemark>
+<name>(41.866953000000002, -87.660782999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6609479844,41.8671092031
+-87.660783,41.866953
+-87.660461,41.866956
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('nw', 'e'):::1
+</weight>
+<Placemark>
+<name>(41.866953000000002, -87.660782999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6609479844,41.8668777656
+-87.660783,41.866953
+-87.660461,41.866956
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('sw', 'e'):::2
+</weight>
+<Placemark>
+<name>(41.866953000000002, -87.660782999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6609479844,41.8669934844
+-87.660783,41.866953
+-87.6604141719,41.8671092031
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'ne'):::1
+</weight>
+<Placemark>
+<name>(41.866953000000002, -87.660782999999995)</name>
+<styleUrl>#myStyle2</styleUrl>
+<LineString>
+<altitudeMode>relative</altitudeMode>
+<coordinates>
+-87.6609479844,41.8669934844
+-87.660783,41.866953
+-87.660461,41.866956
+</coordinates>
+</LineString>
+</Placemark>
+<weight>
+('w', 'e'):::49
+</weight>
 </Document>
 </kml>

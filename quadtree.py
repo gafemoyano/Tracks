@@ -211,7 +211,7 @@ class QuadTree(object):
     def _neighbors(self, include_self=False):
         root = self._get_root()
         neighbors = {}
-        neighbors = root.neighbors(self._center_of_mass())
+        neighbors = root.neighbors(self._center_of_mass(), include_self)
         return neighbors
 
     def _get_root(self):
@@ -234,8 +234,12 @@ class QuadTree(object):
         if self.type != QuadTree.LEAF:
             return None
         else:
-            lat = np.mean([coord.latitude for coord in self.locations])
-            lon = np.mean([coord.longitude for coord in self.locations])     
+            if self.locations:
+                lat = np.mean([coord.latitude for coord in self.locations])
+                lon = np.mean([coord.longitude for coord in self.locations])     
+            else:
+                lat = (self.y0 + self.y1)/2
+                lon = (self.x0 + self.x1)/2
             return Point(lat,lon)
             
     #Returnsthe geographical center of all the locations in the node

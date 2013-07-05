@@ -21,7 +21,7 @@ all_trips = TripParser.json_to_object(trip_collection.find().limit(1))
 # globals
 trip_max=len(all_trips)
 all_locations = list(location for trip in all_trips for location in trip.locations)
-MAX_DEPTH = 8 #Max recursion inn the quadtree
+MAX_DEPTH = 8 #Max recursion inn the quadtree #Should change this to meters
 
 
 class Edge:
@@ -123,9 +123,9 @@ class MapAlgo(object):
         _trip_edges = {} # indexed by trip edge id
         
         # storage for trip edge id
-        _trip_edge_id = 0
+        _trip_edge_id = iterate
         
-        # iterate through all trips
+        # 0 through all trips
         for trip in self.canonical_trips:
             
             # iterate through all trip locations
@@ -183,7 +183,7 @@ class MapAlgo(object):
                 # else:
                 # 
                 if next is not None:
-                    # update previous node when the current location falls 
+                    # update previous node where the current location falls 
                     if previous_node is not current_node: 
                         print previous_node._center_of_mass()
                         print current_node._center_of_mass()
@@ -211,7 +211,11 @@ class MapAlgo(object):
 
     def update_trajectory(self, previous, current, next):
         current_neighbors = current._neighbors(True)
-
+        #Assign the entry trajectory to previous-current bearing
+        #and exit trajectory to current-next bearing
+        #Assign a pair of letters
+        #Maybe set some kind of heuristic?
+        
         print previous._neighbors(True)
         for k, v in current_neighbors.iteritems():
             print k, v
@@ -222,7 +226,7 @@ class MapAlgo(object):
         print "Current:"
         print current._center_of_mass()
         print current._center_of_mass()
-        print current_neighbors['x'], current
+        print current_neighbors['x'] ,current
 
         print "Next:"
         print current_neighbors['e']

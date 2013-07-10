@@ -5,6 +5,7 @@
 import time
 import math
 import sys
+from trajectory import Trajectory
 from quadtree import QuadTree
 from scipy import signal as sg
 from scipy import mgrid, exp
@@ -17,7 +18,7 @@ from itertools import tee, islice, chain, izip
 client = MongoClient()
 db = client.trip_db
 trip_collection = db.trips
-all_trips = TripParser.json_to_object(trip_collection.find().limit(1))
+all_trips = TripParser.json_to_object(trip_collection.find())
 # globals
 trip_max=len(all_trips)
 all_locations = list(location for trip in all_trips for location in trip.locations)
@@ -50,8 +51,9 @@ class MapAlgo(object):
         sys.stdout.write("\nRunning map inference algorithm ... ")
         sys.stdout.flush()
         self.location_index = self._build_location_index() # Initialize and populate the quadtree
-        self.canonical_trips = self._find_canonical_trips() # Build Trips with qtree Nodes instead of Locations
-        self._apply_gaussian()
+        #self.canonical_trips = self._find_canonical_trips() # Build Trips with qtree Nodes instead of Locations
+        #self._apply_gaussian()
+        self._count_patterns()
         self._segments_to_kml()
         #self.skeletonize()
       #  self.canonical_edges = self._find_canonical_edges() # Extract edges from the canonical trips
@@ -119,8 +121,8 @@ class MapAlgo(object):
         sys.stdout.write("\nFinding canonical trip edges ... ")
         sys.stdout.flush()
         
-        # storage for trip edges
-        _trip_edges = {} # indexed by trip edge id
+        # storage for trip _trip_edges
+        edges = {} # indexed by trip edge id
         
         # storage for trip edge id
         _trip_edge_id = iterate
@@ -171,31 +173,14 @@ class MapAlgo(object):
         for trip in self.all_trips:
             #Iterate through all locations
             current_node = None
-            previous_node = None
             #Loop for adding trajectory information
             for previous, location, next in self.previous_and_next(trip.locations):
                 current_node = location_index.insert(location)
 
                 # First location 
-                if previous is None:
-                    print "\nonly once"
-                    previous_node = current_node
-                # else:
-                # 
-                if next is not None:
-                    # update previous node where the current location falls 
-                    if previous_node is not current_node: 
-                        print previous_node._center_of_mass()
-                        print current_node._center_of_mass()
-                        #get the node where the next location would fall
-                        print next.latitude, next.longitude
-                        next_node = location_index.containing_node(next)
-                        print "x"*10
-                        # if it's different from the current location then we've found 3 valid nodes
-                        if next_node is not current_node:
-                            print "hai"
-                            self.update_trajectory(previous_node, current_node, next_node)
-                            previous_node = current_node
+                if previous is not None and next is not None:
+                    #get the node where the next location would fall
+                    self.update_trajectory(previous, location, next, current_node)
 
 
         location_index.traverse() #Populate leaves[]
@@ -209,47 +194,24 @@ class MapAlgo(object):
 
         return location_index
 
-    def update_trajectory(self, previous, current, next):
-        current_neighbors = current._neighbors(True)
-        #Assign the entry trajectory to previous-current bearing
-        #and exit trajectory to current-next bearing
-        #Assign a pair of letters
-        #Maybe set some kind of heuristic?
+    def update_trajectory(self, previous, current, next, node):
+
+        #get the total distance traveled
+        total_distance = Trajectory.distance(previous.latitude, previous.longitude, current.latitude, current.longitude) + Trajectory.distance(next.latitude, next.longitude, current.latitude, current.longitude)
         
-        print previous._neighbors(True)
-        for k, v in current_neighbors.iteritems():
-            print k, v
-        print "Previous:"
-        print current_neighbors['w']._center_of_mass()
-        print previous._center_of_mass()
+        # If the distance traveled between the three points is more than 15 mts
+        if total_distance > 15:
+            in_bearing = Trajectory.initial_heading(previous.latitude, previous.longitude, current.latitude, current.longitude)
+            out_bearing = Trajectory.initial_heading(current.latitude, current.longitude, next.latitude, next.longitude)
 
-        print "Current:"
-        print current._center_of_mass()
-        print current._center_of_mass()
-        print current_neighbors['x'] ,current
+            #Get a cardinal representation of the bearing
+            in_direction = Trajectory.direction((in_bearing + 180) % 360)
+            out_direction = Trajectory.direction(out_bearing)
 
-        print "Next:"
-        print current_neighbors['e']
-        print next._center_of_mass()
+            if  (in_direction, out_direction) not in node.trajectories:
+                node.trajectories[in_direction,out_direction] = 0
 
-
-        # Look for the relative location of the previous node
-        previous_location = ""
-        for key in current_neighbors.keys():
-            print current_neighbors[key], previous
-            if current_neighbors[key] is previous:
-                p_loc = k
-
-        #look for the relative location of next
-        n_loc = ""
-        for k,v in current_neighbors.iteritems():
-            if v is next:
-                n_loc = k
-        print p_loc, n_loc
-        if p_loc and n_loc:
-            #update the values in location
-            if p_loc != n_loc:
-                current.trajectories[(p_loc, n_loc)] += 1
+            node.trajectories[in_direction,out_direction] += 1
 
                     
 
@@ -307,7 +269,7 @@ class MapAlgo(object):
         return box
 
     def _write_trips_to_file(self):
-        os.chdir("/home/moyano/Projects/CreateTracks/edges")
+        os.chdir("/home/moyano/Projects/Tracks/edges")
         test_file = open("neighbors.txt", "w")
         test_file.write("latitude, longitude")
         # print children
@@ -318,16 +280,16 @@ class MapAlgo(object):
             print n
             if n:
                 for k,v in n.iteritems():
-                    print v
-                    x = v._center_of_mass()
-                    print x
-                    test_file.write("\n")  
-                    test_file.write(str(x.latitude) + "," + str(x.longitude))
+                    if v.locations:
+                        x = v._center_of_mass()
+                        print x
+                        test_file.write("\n")  
+                        test_file.write(str(x.latitude) + "," + str(x.longitude))
             break
 
     def _write_nodes_to_file(self):
         nodes = self.location_index.leaves
-        os.chdir("/home/moyano/Projects/CreateTracks/edges")
+        os.chdir("/home/moyano/Projects/Tracks/edges")
         test_file = open("blurred.txt", "w")
         test_file.write("latitude, longitude, ocurrences")
         # print children
@@ -570,7 +532,7 @@ class MapAlgo(object):
 
         return _sum
 
-    def _segments_to_kml(self, output = "segments.kml"):
+    def _segments_to_kml(self, output = "segments_2.kml"):
         _file = open(output,"w")
         #Header
         _file.write("<?xml version='1.0' encoding='UTF-8'?>\n")
@@ -601,23 +563,20 @@ class MapAlgo(object):
 
         sys.stdout.write("\nWriting output to kml ... ")
         sys.stdout.flush()
-
+        i = 0
         for key in self.all_nodes:
             
             if len(self.all_nodes[key].locations) > 0:
                 _trajs = self.all_nodes[key].trajectories
                 _neighbors = self.location_index.neighbors(self.all_nodes[key]._center_of_mass())
-                #print _trajs
                 for t in _trajs:
                     #Threshold
-                    #if _trajs[t] > 25:
-                    _in = _neighbors[t[0]]
-                    _out = _neighbors[t[1]]
-                    if _trajs[t] > 0:
-                        print t
+                    if _trajs[t] > 2:
+                        _in = _neighbors[t[0]]
+                        _out = _neighbors[t[1]]
                         _file.write( "<Placemark>\n")
                         _file.write( "<name>" + str(key) + "</name>\n")
-    
+
                         _file.write( "<styleUrl>#myStyle2</styleUrl>\n")
                     # else:
                     #     _file.write( "<styleUrl>#myStyle</styleUrl>\n")

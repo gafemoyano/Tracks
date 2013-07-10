@@ -45,7 +45,7 @@ class QuadTree(object):
             self.blur_value = 0     #holds the gaussian blur value
             self.id = -1        #node id
             self.skeleton_value = 0   #Indicates if the node is part of the skeleton, is set to true when a location is added
-            self.trajectories = trajectories
+            self.trajectories = {}
             return
         elif parent is None:
             self.type = QuadTree.ROOT

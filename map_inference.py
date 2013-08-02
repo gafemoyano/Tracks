@@ -5,10 +5,13 @@
 import time
 import math
 import sys
+import numpy as np
 from trajectory import Trajectory
 from quadtree import QuadTree
 from scipy import signal as sg
 from scipy import mgrid, exp
+from scipy import stats as st
+from itertools import permutations, groupby
 from pymongo import MongoClient
 from rtree import index
 from trip import TripLoader, Trip, TripParser
@@ -22,8 +25,9 @@ all_trips = TripParser.json_to_object(trip_collection.find())
 # globals
 trip_max=len(all_trips)
 all_locations = list(location for trip in all_trips for location in trip.locations)
-MAX_DEPTH = 8 #Max recursion inn the quadtree #Should change this to meters
+location_dict = dict([(loc._id, loc) for loc in all_locations])
 
+MAX_DEPTH = 8 #Max recursion inn the quadtree #Should change this to meters
 
 class Edge:
     def __init__(self, id, in_node, out_node):
@@ -50,11 +54,13 @@ class MapAlgo(object):
     def run_algorithm(self):
         sys.stdout.write("\nRunning map inference algorithm ... ")
         sys.stdout.flush()
-        self.location_index = self._build_location_index() # Initialize and populate the quadtree
+        self.location_index = self._build_dynamic_location_index() # Initialize and populate the quadtree
         #self.canonical_trips = self._find_canonical_trips() # Build Trips with qtree Nodes instead of Locations
         #self._apply_gaussian()
-        self._count_patterns()
-        self._segments_to_kml()
+        #self._print_pattern_ocurrences()
+        self._get_all_patterns()
+        self._trim_spurious_roads()
+
         #self.skeletonize()
       #  self.canonical_edges = self._find_canonical_edges() # Extract edges from the canonical trips
         #self.trip_edge_index = self._build_trip_edge_index() # Build a geospacial index with all the edges
@@ -117,32 +123,6 @@ class MapAlgo(object):
         # return all trip edges
         return trip_edges
 
-    def _find_canonical_edges(self):
-        sys.stdout.write("\nFinding canonical trip edges ... ")
-        sys.stdout.flush()
-        
-        # storage for trip _trip_edges
-        edges = {} # indexed by trip edge id
-        
-        # storage for trip edge id
-        _trip_edge_id = iterate
-        
-        # 0 through all trips
-        for trip in self.canonical_trips:
-            
-            # iterate through all trip locations
-            for i in range(1, len(trip.locations)):
-                
-                # store current edge_index
-                _trip_edges[_trip_edge_id] = Edge(_trip_edge_id, trip.locations[i-1], trip.locations[i])
-                
-                # increment trip edge id
-                _trip_edge_id += 1
-        
-        print "done."
-        
-        # return all trip edges
-        return _trip_edges
 
     #
     #  Transforms all the trip locations to their containing
@@ -164,23 +144,26 @@ class MapAlgo(object):
 
         return trips
 
+    #
+    # Initializes the quadtree and adds all the trajectory information
+    # 
     def _build_location_index(self):   
         sys.stdout.write("Generating QuadTree location index... ")
         sys.stdout.flush()
-        location_index = QuadTree(MAX_DEPTH, self.bounding_box)
+        location_index = QuadTree(self.bounding_box)
         # iterate through all trips
 
         for trip in self.all_trips:
             #Iterate through all locations
-            current_node = None
+            current_cell = None
             #Loop for adding trajectory information
             for previous, location, next in self.previous_and_next(trip.locations):
-                current_node = location_index.insert(location)
+                current_cell = location_index.insert(location)
 
                 # First location 
                 if previous is not None and next is not None:
                     #get the node where the next location would fall
-                    self.update_trajectory(previous, location, next, current_node)
+                    self.update_trajectory(previous, location, next, current_cell)
 
 
         location_index.traverse() #Populate leaves[]
@@ -194,12 +177,41 @@ class MapAlgo(object):
 
         return location_index
 
-    def update_trajectory(self, previous, current, next, node):
+    def _build_dynamic_location_index(self):   
+        sys.stdout.write("Generating QuadTree location index...\n ")
+        sys.stdout.flush()
+        location_index = QuadTree(self.bounding_box)
+        # iterate through all trips
+
+        for trip in self.all_trips:
+            #Iterate through all locations
+            current_cell = None
+            #Loop for adding trajectory information
+            for location in trip.locations:
+                current_cell = location_index.insert(location)
+
+        location_index.traverse() #Populate leaves[]
+
+        _node_id = 0
+        #Hash with all leaves
+        for leave in location_index.leaves:
+            location = leave._center_of_mass()
+            leave.id = (location.latitude, location.longitude)
+            self.all_nodes[(location.latitude, location.longitude)] = leave
+        
+        sys.stdout.write("Done...\n ")
+        sys.stdout.flush()
+        
+        return location_index
+
+    def _find_pattern(self, previous, current, next, cell):
+
+
 
         #get the total distance traveled
         total_distance = Trajectory.distance(previous.latitude, previous.longitude, current.latitude, current.longitude) + Trajectory.distance(next.latitude, next.longitude, current.latitude, current.longitude)
         
-        # If the distance traveled between the three points is more than 15 mts
+        # If the distance traveled between the three points is moer than 15 mts
         if total_distance > 15:
             in_bearing = Trajectory.initial_heading(previous.latitude, previous.longitude, current.latitude, current.longitude)
             out_bearing = Trajectory.initial_heading(current.latitude, current.longitude, next.latitude, next.longitude)
@@ -208,13 +220,13 @@ class MapAlgo(object):
             in_direction = Trajectory.direction((in_bearing + 180) % 360)
             out_direction = Trajectory.direction(out_bearing)
 
-            if  (in_direction, out_direction) not in node.trajectories:
-                node.trajectories[in_direction,out_direction] = 0
+            if  (in_direction, out_direction) not in cell.patterns:
+                cell.patterns[in_direction,out_direction] = 0
 
-            node.trajectories[in_direction,out_direction] += 1
+            cell.patterns[in_direction,out_direction] += 1
 
-                    
-
+                                
+    
     #
     #   Store all canonical trip edges in a RTree index
     #
@@ -242,22 +254,6 @@ class MapAlgo(object):
         
         return edge_index
 
-    def _get_road_segments(self, treshold=0):
-        # so basically what i am going to do here is something like this..
-        # try to get the road segments that repete the most
-        # hmm and
-        # ok so lets get all the segments clasiffied and paint them
-
-        # for edge in canonical_edges:
-        #     _in = edge.in_node
-        #     _out = edge.uot_node
-        pass    
-
-    def _get_road_center_line(self):
-        pass
-
-
-
 
     def _bounding_box(self, locations):
         max_y = max(coord.latitude for coord in locations)
@@ -268,45 +264,113 @@ class MapAlgo(object):
         box = rectangle(min_x -  0.005, max_x +  0.005 , min_y -  0.005, max_y +  0.005)
         return box
 
-    def _write_trips_to_file(self):
-        os.chdir("/home/moyano/Projects/Tracks/edges")
-        test_file = open("neighbors.txt", "w")
-        test_file.write("latitude, longitude")
-        # print children
+    def _get_all_patterns(self):
+        """
+        Traverse all the LEAF cells on the tree and identify all
+        the patterns
+        """
+        sys.stdout.write("Finding trace patterns...\n ")
+        sys.stdout.flush()
+
         for k in self.all_nodes.keys():
-            p = self.all_nodes[k]._center_of_mass()
-            print p
-            n = self.location_index.neighbors(p)
-            print n
-            if n:
-                for k,v in n.iteritems():
-                    if v.locations:
-                        x = v._center_of_mass()
-                        print x
-                        test_file.write("\n")  
-                        test_file.write(str(x.latitude) + "," + str(x.longitude))
-            break
 
-    def _write_nodes_to_file(self):
-        nodes = self.location_index.leaves
-        os.chdir("/home/moyano/Projects/Tracks/edges")
-        test_file = open("blurred.txt", "w")
-        test_file.write("latitude, longitude, ocurrences")
-        # print children
-        for node in nodes:
-            p = node._center_of_mass()
-            count = node.blur_value
-            if count > 0:
-                test_file.write("\n")  
-                test_file.write(str(p.latitude) + "," + str(p.longitude) + "," + str(count))
+            for location in self.all_nodes[k].locations:
+
+                if location.prev_location and location.next_location:
+                    previous = location_dict[location.prev_location]
+                    next = location_dict[location.next_location]
+                    self._find_pattern(previous, location, next, self.all_nodes[k])
+
+        sys.stdout.write("Done...\n ")
+        sys.stdout.flush()
+
+    def _trim_spurious_roads(self):
+
+        sys.stdout.write("Filtering non-relevant patterns...\n ")
+        sys.stdout.flush()
+        for k in self.all_nodes.keys():
+            if len(self.all_nodes[k].patterns)>0:
+                sig_patterns = self._get_significant_patterns(k)
+
+                for _tuple in sig_patterns:
+                    self.all_nodes[k].significant_patterns[_tuple[0]] = _tuple[1]
+                
+        sys.stdout.write("Done...\n ")
+        sys.stdout.flush()
+
+   
+    def _get_significant_patterns(self, key, critical_value = 0.51):
+        
+        """
+        Given a certain cell run a T-test over all the patterns found and
+        return only those that are statistically significant
+        """     
+        #Get all the patterns of the current cell and sorted by number of ocurrences
+        sorted_patterns = sorted(self.all_nodes[key].patterns.iteritems(), key = lambda t: t[1], reverse = True)
+        _current_group = []
+
+        #If there's only one pattern then return it and skip the rest
+        if len(sorted_patterns) == 1:
+            _current_group =  sorted_patterns
+
+        else:
+            #Each tuple is in the form (Pattern, Number of Ocurrences)
+            for _tuple in sorted_patterns:
+                #If the list is empty the first pattern is added
+                if not _current_group:
+                    _current_group.append(_tuple)
+
+                else:
+                    #create a copy of the current list
+                    test_group = list(_current_group)
+                    # Add the next pattern
+                    test_group.append(_tuple)
+                    #Test if the new set is statistically diferent from
+                    
+                    #The list should be sorted on descending order.
+                    #They are also turned into sets
+                    l1 = sorted(list(set([x[1] for x in _current_group])), reverse = True)
+                    l2 = sorted(list(set([x[1] for x in test_group])), reverse = True)
+                    
+                    #When two patterns in a row have the same number of ocurrences [8,7,5,4,4] => [8,7,5,4]
+                    #the last value is removed. This makes sure that the same test
+                    #is being run for each pattern with the same value.
+                    if len(l1)>= 2 and l1[-1] == l2[-1]:
+                        l1.pop()
 
 
-    def _write_weighted_nodes_to_file(self):
-        pass
+                    (t, p_value) = st.ttest_ind(l1, l2, equal_var = False) 
 
-    def _get_tracks(self):
-        pass
+                
+                    if p_value >= critical_value:
+                        break
+                    else:
+                        _current_group.append(_tuple)
 
+            #Removing the last pattern added
+            final_patterns = set([x[1] for x in _current_group])
+            _significant_patterns =[]
+            if len(final_patterns) > 1:
+         
+                # while _current_group[-1][1] == last_pattern:
+                #     _current_group.pop()
+                temp_list = sorted(list(set([x[1] for x in _current_group])), reverse = True)
+                median = np.median(temp_list)
+
+                for x in _current_group:
+                    if x[1] > median:
+                        _significant_patterns.append(x)
+        
+                if _significant_patterns:
+                    _current_group = _significant_patterns
+        
+        return _current_group
+
+            
+   
+    #----------------------------------------------------
+    # Image Processing Algorithms
+    #----------------------------------------------------
     def skeletonize(self, threshold = 250):
         _nodes = self.location_index.leaves
         _selected_nodes = set()
@@ -532,7 +596,83 @@ class MapAlgo(object):
 
         return _sum
 
-    def _segments_to_kml(self, output = "segments_2.kml"):
+    #-----------------------------------------
+    # Text Output Algorithms
+    #----------------------------------------
+
+    def _print_pattern_ocurrences(self, output = 'ocurrences.txt'):
+            #Create a hash with all the possible patterns that are stored in the quadtree
+            sys.stdout.write("\nCounting the number of patters... ")
+            sys.stdout.flush()
+            ocurrences = {}
+
+            for key in self.all_nodes:
+                if len(self.all_nodes[key].locations) > 0:
+                    _trajectories = self.all_nodes[key].trajectories 
+                    for pattern in _trajectories:
+                        if not pattern in ocurrences:
+                            ocurrences[pattern] = 0
+                        ocurrences[pattern] += _trajectories[pattern]
+
+            sys.stdout.write("\nWriting " + output + "... ")
+            sys.stdout.flush()
+            os.chdir("/home/moyano/Projects/Tracks/graphics/")
+            
+            _file = open(output,"w")
+            _file.write("Pattern: Ocurrences\n")
+            
+            sorted_ocurrences = sorted(ocurrences.iteritems(), key = lambda t: t[1])
+            for pattern in sorted_ocurrences:
+                _file.write(str(pattern[0]) + ": " + str(pattern[1]) + "\n")
+            _file.close()
+
+            _file = open('ocurrences_npatterns.csv',"w")
+            _file.write("Ocurrences: Times: Patterns\n")
+
+            for key, group in groupby(sorted_ocurrences, lambda x: x[1]):
+                    patterns = []
+
+                    for p in group:
+                        patterns.append(p[0])
+
+                    _file.write(str(key) + ': '+ str(len(patterns)) + ': ' +str(patterns))
+                    _file.write("\n")
+            _file.close()
+
+            _file = open('ocr_pattrn.csv',"w")
+            _file.write("Ocurrences: Patterns\n")
+            _max_x = max(ocurrences[k] for k in ocurrences.keys())
+
+            for x in range(0,_max_x):
+                counter = 0
+                for k in ocurrences.keys():
+                    if ocurrences[k] <= x:
+                        counter += 1
+
+                _file.write(str(x) + ": " + str(counter)) 
+                _file.write("\n")
+
+            _file.close()
+
+            _file = open('o_p_2.csv',"w")
+            _file.write("Ocurrences: Patterns\n")
+
+            for key, group in groupby(sorted_ocurrences, lambda x: x[1]):
+                    counter = 0
+                    for k in ocurrences.keys():
+                        if ocurrences[k] <= key:
+                            counter += 1
+
+                    _file.write(str(key) + ': ' +str(counter))
+                    _file.write("\n")
+            _file.close()
+
+    def _segments_to_kml(self, output = "default.kml", density = 2):
+        os.chdir("/home/moyano/Projects/Tracks/kml/")
+
+        sys.stdout.write("\nWriting output to kml ... ")
+        sys.stdout.flush()
+
         _file = open(output,"w")
         #Header
         _file.write("<?xml version='1.0' encoding='UTF-8'?>\n")
@@ -561,23 +701,24 @@ class MapAlgo(object):
         _file.write(      "</PolyStyle>\n")
         _file.write(  "</Style>\n")
 
-        sys.stdout.write("\nWriting output to kml ... ")
-        sys.stdout.flush()
-        i = 0
+
         for key in self.all_nodes:
             
             if len(self.all_nodes[key].locations) > 0:
-                _trajs = self.all_nodes[key].trajectories
+                _trajs = self.all_nodes[key].patterns
+                _ntrajs = self.all_nodes[key].significant_patterns
                 _neighbors = self.location_index.neighbors(self.all_nodes[key]._center_of_mass())
                 for t in _trajs:
                     #Threshold
-                    if _trajs[t] > 2:
+                    if _trajs[t] > density:
                         _in = _neighbors[t[0]]
                         _out = _neighbors[t[1]]
                         _file.write( "<Placemark>\n")
                         _file.write( "<name>" + str(key) + "</name>\n")
-
-                        _file.write( "<styleUrl>#myStyle2</styleUrl>\n")
+                        if t == ('w','e') or t == ('s', 'n'):
+                            _file.write( "<styleUrl>#myStyle</styleUrl>\n")
+                        else:
+                            _file.write( "<styleUrl>#myStyle2</styleUrl>\n")
                     # else:
                     #     _file.write( "<styleUrl>#myStyle</styleUrl>\n")
                         _file.write( "<LineString>\n")
@@ -601,34 +742,51 @@ class MapAlgo(object):
         sys.stdout.write("\nDone ... ")
         sys.stdout.flush()
 
+    def _write_nodes_to_file(self):
 
-    def get_color(self,count):
-        if count <= 100:
-            return "small_blue"
-        elif count > 100 and count <= 150:
-            return "ylw_blank"
-        elif count > 150 and count <= 200:
-            return "wht_blank"
-        elif count > 200 and count <= 250:
-            return "red_blank"
-        elif count > 250 and count <= 300:
-            return "purple_blank"
-        elif count > 300 and count <= 350:
-            return "pink_blank"
-        elif count > 350 and count <= 400:
-            return "pink_blank"        
-        elif count > 400 and count <= 450:
-            return "orange_blank"
-        elif count > 450 and count <= 500:
-            return "ltblu_blank"
-        elif count > 500 and count <= 550:
-            return "grn_blank"        
-        elif count > 550 and count <= 650:
-            return "blu_blank"     
-        elif count > 650 and count <= 750:
-            return "ylw_stars"
-        else:
-            return "wht_stars" 
+        nodes = self.location_index.leaves
+
+        os.chdir("/home/moyano/Projects/Tracks/edges")
+
+        test_file = open("blurred.txt", "w")
+
+        test_file.write("latitude, longitude, ocurrences")
+
+        # print children
+
+        for node in nodes:
+
+            p = node._center_of_mass()
+
+            count = len(node.locations)
+
+            if count > 0:
+
+                test_file.write("\n")  
+
+                test_file.write(str(p.latitude) + "," + str(p.longitude) + "," + str(count))
+
+    def _write_trips_to_file(self):
+        os.chdir("/home/moyano/Projects/Tracks/edges")
+        test_file = open("neighbors.txt", "w")
+        test_file.write("latitude, longitude")
+        # print children
+        for k in self.all_nodes.keys():
+            p = self.all_nodes[k]._center_of_mass()
+            print p
+            n = self.location_index.neighbors(p)
+            print n
+            if n:
+                for k,v in n.iteritems():
+                    if v.locations:
+                        x = v._center_of_mass()
+                        print x
+                        test_file.write("\n")  
+                        test_file.write(str(x.latitude) + "," + str(x.longitude))
+            break
+    #-----------------------------------------
+    # Misc and Helpers
+    #----------------------------------------
 
     def gauss_kernel(self, size, sizey=None):
         """ Returns a normalized 2D gauss kernel array for convolutions """
@@ -692,6 +850,7 @@ class MapAlgo(object):
         elif 0.01 < _percent <= 0.02:
             return 0.01
 
+
     def previous_and_next(self, some_iterable):
         prevs, items, nexts = tee(some_iterable, 3)
         prevs = chain([None], prevs)
@@ -701,21 +860,23 @@ class MapAlgo(object):
 import sys, getopt, time,os
 if __name__ == '__main__':
     
-    (opts, args) = getopt.getopt(sys.argv[1:],"n:h")
+    (opts, args) = getopt.getopt(sys.argv[1:],"n:f:h")
     
     for o,a in opts:
+        print o,a
         if o == "-n":
             trip_max = int(a)
+        if o == "-f":
+            kml_output = a
         if o == "-h":
-            print "Usage: python map_inference.py [-n <trip_max>] [-h]\n"
+            print "Usage: python map_inference.py [-n <trip_max>] [-f <filde_name>] [-h]\n"
             exit()
     
     start_time = time.time()
     m = MapAlgo(all_trips[:trip_max])
     m.run_algorithm()
-    m._write_trips_to_file()
-    m._write_nodes_to_file()
+    m._segments_to_kml(kml_output)
+    #m._write_nodes_to_file()
     # os.chdir("/home/moyano/Projects/CreateTracks/maps/")
-    # m._segments_to_kml("kml_output.kml")
     
     print "\nMap inference completed (in " + str(time.time() - start_time) + " seconds).\n"

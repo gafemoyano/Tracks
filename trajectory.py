@@ -60,33 +60,47 @@ class Trajectory:
         c = 2 * asin(sqrt(a)) 
         km = 6367 * c
         print km 
+
+        
     @staticmethod
     def direction(heading):
+        """
+        Maps a given angle to a number similar to this picture (asuming it is a circle).
+        i.e.  128 would be maped to 7
+        |---|---|---|
+        | 0 | 1 | 2 |
+        |---|---|---|
+        | 3 | x | 4 |
+        |---|---|---|
+        | 5 | 6 | 7 |
+        |---|---|---|
+
+        """
 
         _dir = ''
         if (heading > 337.5 and heading < 360) or (heading >= 0 and heading <= 22.5):
-            _dir = 'n'
+            _dir = '1'
 
         elif heading > 22.5 and heading <= 67.5:
-            _dir = 'ne'
+            _dir = '2'
 
         elif heading > 67.5 and heading <= 112.5:
-            _dir = 'e'
+            _dir = '4'
 
         elif heading > 112.5 and heading <= 157.5:
-            _dir = 'se'
+            _dir = '7'
 
         elif heading > 157.5 and heading <= 202.5:
-            _dir = 's'
+            _dir = '6'
 
         elif heading > 202.5 and heading <= 247.5:
-            _dir = 'sw' 
+            _dir = '5' 
 
         elif heading > 247.5 and heading <= 292.5:
-            _dir = 'w'
+            _dir = '3'
 
         elif heading > 292.5 and heading <= 337.5:
-            _dir = 'nw'
+            _dir = '0'
 
         if not _dir:
             print 'nope'

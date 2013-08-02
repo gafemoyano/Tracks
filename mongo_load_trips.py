@@ -1,6 +1,7 @@
 import sys
 from pymongo import MongoClient
 from trip import TripLoader
+from bson.objectid import ObjectId
 
 def get_trips_from_files(path):
 	all_trips = TripLoader.get_all_trips(path)
@@ -9,7 +10,8 @@ def get_trips_from_files(path):
 	sys.stdout.write("\nRetrieving trips from text files... ")
 
 	for trip in all_trips:
-
+		print trip
+		print "\n"
 		#create JSON type object
 		t = {"num_locations": trip.num_locations,
 			 "start_time": trip.start_time,
@@ -21,7 +23,9 @@ def get_trips_from_files(path):
 		#iterate all locations 
 		new_locations = []
 		for l in trip.locations:
-			new_location = {"longitude": l.longitude,
+			new_location = {
+							"_id": ObjectId(),
+							"longitude": l.longitude,
 							"latitude": l.latitude,
 							"time": l.time
 			}
@@ -43,6 +47,9 @@ if __name__ == '__main__':
 	client = MongoClient()
 	db = client["trip_db"]
 	trip_collection = db.trips
+	#Drop the current table
+	trip_collection.drop()
+	#Load trips from files
 	trips = get_trips_from_files("trips/")
 
 	sys.stdout.write("\nInserting objects into database... ")

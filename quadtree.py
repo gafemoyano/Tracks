@@ -18,11 +18,14 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
+    MAX_LOCATIONS = 10
+    DYNAMIC = False
     leaves = []
 
 
     def __init__(self, depth, bounding_rect, parent = None):
-        """Creates a quad-tree.
+        """Creates a quadtree with a fixed
+            recursion depth
 
         @param depth:
             The maximum recursion depth.
@@ -45,7 +48,8 @@ class QuadTree(object):
             self.blur_value = 0     #holds the gaussian blur value
             self.id = -1        #node id
             self.skeleton_value = 0   #Indicates if the node is part of the skeleton, is set to true when a location is added
-            self.trajectories = {}
+            self.significant_patterns = {}
+            self.patterns = {}
             return
         elif parent is None:
             self.type = QuadTree.ROOT
@@ -60,6 +64,38 @@ class QuadTree(object):
         self.se = QuadTree(depth, (cx, self.x1, self.y0, cy), self)
         self.sw = QuadTree(depth, (self.x0, cx, self.y0, cy), self)
     
+
+    def __init__(self, bounding_rect, parent = None):
+        """Initializes a location index. New  cells are
+        created when a max number of locations per cell is reached.
+
+        @param bounding_rect:
+            The bounding rectangle of all of the locations in the quad-tree. For
+            internal use only.
+        """
+        QuadTree.DYNAMIC = True
+        #Set box attributes       
+        self.x0, self.x1, self.y0, self.y1 = bounding_rect        
+        cx = self.cx = (self.x0 + self.x1) * 0.5
+        cy = self.cy = (self.y0 + self.y1) * 0.5
+
+        #Initialize the Root
+        if parent is None:
+            self.type = QuadTree.ROOT
+            self.nw = QuadTree((self.x0, cx, cy, self.y1), self)
+            self.ne = QuadTree((cx, self.x1, cy, self.y1), self)
+            self.se = QuadTree((cx, self.x1, self.y0, cy), self)
+            self.sw = QuadTree((self.x0, cx, self.y0, cy), self)
+        else:
+            self.type = QuadTree.LEAF       #Type constant
+            self.locations = []     #Holds all the locations inserted on the index
+            self.parent = parent    #reference to the parent node
+            self.blur_value = 0     #holds the gaussian blur value
+            self.id = -1        #node id
+            self.skeleton_value = 0   #Indicates if the node is part of the skeleton, is set to true when a location is added
+            self.significant_patterns = {}
+            self.patterns = {}
+
     #Adds a point to the root where it belongs and returns the geographical
     #center of the node as the most Representative Point
 
@@ -71,6 +107,8 @@ class QuadTree(object):
 
         if(self.type == QuadTree.LEAF):
             self.locations.append(coord)       
+            if QuadTree.DYNAMIC and len(self.locations) > QuadTree.MAX_LOCATIONS:
+                self.subdivide()
             return self
         
         if self.nw._contains(coord.latitude, coord.longitude):           
@@ -85,6 +123,48 @@ class QuadTree(object):
         if self.se._contains(coord.latitude, coord.longitude):
             return self.se.insert(coord)
             
+
+
+    def subdivide(self):
+        """
+        Divides the current cell and inserts all the locations
+        into the respective children
+        """
+
+        self.type = QuadTree.BRANCH
+
+        #Unset the leaf attributes (Should probably handle this better)
+
+        self.blur_value = None
+        self.id = None
+        self.skeleton_value = None
+        self.significant_patterns = None
+        self.patterns = None
+
+        cx = self.cx = (self.x0 + self.x1) * 0.5
+        cy = self.cy = (self.y0 + self.y1) * 0.5
+        #Creating the children
+        self.nw = QuadTree((self.x0, cx, cy, self.y1), self)
+        self.ne = QuadTree((cx, self.x1, cy, self.y1), self)
+        self.se = QuadTree((cx, self.x1, self.y0, cy), self)
+        self.sw = QuadTree((self.x0, cx, self.y0, cy), self)
+
+        #Insert the locations into the new cells
+        for coord in self.locations:
+
+            if self.nw._contains(coord.latitude, coord.longitude):           
+                self.nw.locations.append(coord)
+                
+            if self.ne._contains(coord.latitude, coord.longitude):
+                self.ne.locations.append(coord)
+                
+            if self.sw._contains(coord.latitude, coord.longitude):
+                self.sw.locations.append(coord)
+                
+            if self.se._contains(coord.latitude, coord.longitude):
+                self.se.locations.append(coord)
+
+
 
     #Returns the center of mass of the leaf where the point would be placed
     #in the tree. Returns the original timestamp of the coordiante
@@ -134,49 +214,57 @@ class QuadTree(object):
     # I'm not sure this works if the point is exactly at one of the
     # borders
     # Returns a list with the neighboring nodes and itself at the end
-    """
-    |---|---|---|
-    |nw | n |ne |
-    |---|---|---|
-    | w | x | e |
-    |---|---|---|
-    |sw | s |se |
-    |---|---|---|
-    """
+
     def neighbors(self, coord, include_self=False):
+        """
+        Finds the neighbors of the cell 'x'
+        Returns a hash where the value is a reference to a neighbor cell and the key is the number
+        representing the relative position to 'x' according to the diagram.
+        |---|---|---|
+        | 0 | 1 | 2 |
+        |---|---|---|
+        | 3 | x | 4 |
+        |---|---|---|
+        | 5 | 6 | 7 |
+        |---|---|---|
+        """
         if self.type == QuadTree.ROOT:
             node = self.containing_node(coord)
             if include_self:
-                neighbors = {'nw': None, 'n': None, 'ne': None, 'w': None, 'x': None, 'e': None,'sw': None, 's': None, 'se': None }
+                neighbors = {'0': None, '1': None, '2': None, '3': None, '4': None, '5': None,'6': None, '7': None, 'x': None }
             else:
-                neighbors = {'nw': None, 'n': None, 'ne': None, 'w': None, 'e': None,'sw': None, 's': None, 'se': None }
-            #find the lenght of the node's boinding box
+                neighbors = {'0': None, '1': None, '2': None, '3': None, '4': None,'5': None, '6': None, '7': None }
+            #find the lenght of the node's bounding box
             delta_x = node.x1 - node.x0
             delta_y = node.y1 - node.y0
             cm = node._center_of_mass
             
-            # Find w and e
-            lons = {'w': node.cx - delta_x, 'e': node.cx + delta_x}
+            # Shift the position on the x axis by a given delta. This will give a new
+            # location guaranteed to fall on the cell to the right (4) and to the left (3)
+            # Then query the quadtree for those cells
+            lons = {'4': node.cx - delta_x, '3': node.cx + delta_x}
             
             for location, tlon in lons.iteritems():
                 if tlon >= self.x0 and tlon <= self.x1:
                     p = Point(node.cy, tlon)
                     neighbors[location] = self.containing_node(p)
 
-            # Find nw, n and ne
+            # Shift the position on the y axis by adding a delta.
+            # Repeat the previous step to find the upper neigbhors (1,2,3)
             tlat = node.cy + delta_y
             if not tlat > self.y1:
-                lons = {'nw': node.cx - delta_x,'n': node.cx, 'ne': node.cx + delta_x}
+                lons = {'0': node.cx - delta_x,'1': node.cx, '2': node.cx + delta_x}
                 
                 for location, tlon in lons.iteritems():
                     if tlon >= self.x0 and tlon <= self.x1:
                         p = Point(tlat,tlon)
                         neighbors[location] = self.containing_node(p)
 
-            # Find sw, s and se
+            # Shift the position on the y axis by substracting a delta.
+            # Find the bottom neigbhors (5,6,7)
             tlat = node.cy - delta_y
             if tlat >= self.y0:
-                lons = {'sw': node.cx - delta_x,'s': node.cx, 'se': node.cx + delta_x}
+                lons = {'5': node.cx - delta_x,'6': node.cx, '7': node.cx + delta_x}
                 
                 for location, tlon in lons.iteritems():
                     if tlon >= self.x0 and tlon <= self.x1:

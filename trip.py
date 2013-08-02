@@ -9,17 +9,18 @@
 
 from __future__ import division
 from math import radians, cos, sin, atan2, degrees
+from itertools import tee, islice, chain, izip
 import os
 
 class Location:
     def __init__(self, latitude, longitude, time):
+        self._id = None
         self.latitude = latitude
         self.longitude = longitude
-        self.orig_latitude = latitude
-        self.orig_longitude = longitude
         self.time = time
         self.prev_location = None
         self.next_location = None
+        self.trace_id = None
 
 class Trip(object):
     
@@ -44,6 +45,7 @@ class Trip(object):
     @property
     def time_span(self):
         return (self.locations[-1].time - self.locations[0].time)
+
 
     def compare(self,other):
         self_len = len(self.locations)
@@ -178,11 +180,30 @@ class TripParser:
             new_trip = Trip()
             
             locations = trip['locations']
-            for location in locations:
+
+            for previous, location, next in TripParser.previous_and_next(locations):
+            
                 new_location = Location(location['latitude'], location['longitude'], location['time'])
                 #add location to trip
+                new_location._id = location['_id']
+
+                if previous:
+                    new_location.prev_location = previous['_id']
+
+                if next:
+                    new_location.next_location = next['_id']
+
+                new_location.trace_id = trip['_id']
+                
                 new_trip.add_location(new_location)
 
             all_trips.append(new_trip)
 
         return all_trips
+
+    @staticmethod
+    def previous_and_next(some_iterable):
+        prevs, items, nexts = tee(some_iterable, 3)
+        prevs = chain([None], prevs)
+        nexts = chain(islice(nexts, 1, None), [None])
+        return izip(prevs, items, nexts)

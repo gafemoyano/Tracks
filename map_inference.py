@@ -58,12 +58,277 @@ class MapAlgo(object):
         #self.canonical_trips = self._find_canonical_trips() # Build Trips with qtree Nodes instead of Locations
         #self._apply_gaussian()
         #self._print_pattern_ocurrences()
-        self._get_all_patterns()
-        self._trim_spurious_roads()
+        self.look_for_patterns() #Identify patternes on the quadtree
+        self.trim_patterns() #Remove patterns that aren't statistically significant
+    
+    def _bounding_box(self, locations):
+        """
+        Given a list of GPS (latitude, longitude) locations values
+        find the max and min value. 
+        Return a rectangle element with those values plus an arbitrary delta
+        """
+        max_y = max(coord.latitude for coord in locations)
+        min_y = min(coord.latitude for coord in locations)
+        max_x  = max(coord.longitude for coord in locations)
+        min_x = min(coord.longitude for coord in locations)
+        rectangle = namedtuple('rectangle', ['x0', 'x1','y0', 'y1'])    
+        box = rectangle(min_x -  0.005, max_x +  0.005 , min_y -  0.005, max_y +  0.005)
+        return box
+    #
+    # Initializes the quadtree and adds all the trajectory information
+    # 
+    def _build_location_index(self):   
+        sys.stdout.write("Generating QuadTree location index... ")
+        sys.stdout.flush()
+        location_index = QuadTree(self.bounding_box)
+        # iterate through all trips
 
-        #self.skeletonize()
-      #  self.canonical_edges = self._find_canonical_edges() # Extract edges from the canonical trips
-        #self.trip_edge_index = self._build_trip_edge_index() # Build a geospacial index with all the edges
+        for trip in self.all_trips:
+            #Iterate through all locations
+            current_cell = None
+            #Loop for adding trajectory information
+            for previous, location, next in self.previous_and_next(trip.locations):
+                current_cell = location_index.insert(location)
+
+                # First location 
+                if previous is not None and next is not None:
+                    #get the node where the next location would fall
+                    self.update_trajectory(previous, location, next, current_cell)
+
+
+        location_index.traverse() #Populate leaves[]
+
+        _node_id = 0
+        #Hash with all leaves
+        for leave in location_index.leaves:
+            location = leave._center_of_mass()
+            leave.id = (location.latitude, location.longitude)
+            self.all_nodes[(location.latitude, location.longitude)] = leave
+
+        return location_index
+
+
+    def _build_dynamic_location_index(self):
+        """
+        Initialize a quadtree index and insert
+        all the stored locations 
+        """   
+        sys.stdout.write("Generating QuadTree location index...\n ")
+        sys.stdout.flush()
+        location_index = QuadTree(self.bounding_box)
+        # iterate through all trips
+
+        for trip in self.all_trips:
+            #Iterate through all locations
+            current_cell = None
+            #Loop for adding trajectory information
+            for location in trip.locations:
+                current_cell = location_index.insert(location)
+
+        location_index.traverse() #Populate leaves[]
+
+        _node_id = 0
+        #Store a reference to all the quadtree LEAF cells
+        for cell in location_index.leaves:
+            location = cell._center_of_mass()
+            cell.id = (location.latitude, location.longitude)
+            self.all_nodes[(location.latitude, location.longitude)] = cell
+        
+        sys.stdout.write("Done...\n ")
+        sys.stdout.flush()
+        
+        return location_index
+
+
+
+    def look_for_patterns(self):
+        """
+        Traverse all the LEAF cells on the tree and identify all
+        the patterns
+        """
+        sys.stdout.write("Finding trace patterns...\n ")
+        sys.stdout.flush()
+
+        #Iterate every cell on the quadtree
+        for k in self.all_nodes.keys():
+
+            for location in self.all_nodes[k].locations:
+
+                if location.prev_location and location.next_location:
+                    previous = location_dict[location.prev_location]
+                    next = location_dict[location.next_location]
+
+                    self._identify_pattern(previous, location, next, self.all_nodes[k])
+
+        sys.stdout.write("Done...\n ")
+        sys.stdout.flush()
+
+
+    def _identify_pattern(self, previous, current, next, cell):
+
+        """
+        Given three consecutive locations(from the same trace) identify a pair of numbers
+        indicating the source_cell and the destination_cell relative the the following diagram
+        where current would be 'x'.
+        |---|---|---|  
+        | 0 | 1 | 2 |
+        |---|---|---|
+        | 3 | x | 4 |
+        |---|---|---|
+        | 5 | 6 | 7 |
+        |---|---|---|
+
+        If a pattern is found then the current position is added to a list in the patterns dictionary
+        """
+
+        #get the total distance traveled
+        total_distance = Trajectory.distance(previous.latitude, previous.longitude, current.latitude, current.longitude) + Trajectory.distance(next.latitude, next.longitude, current.latitude, current.longitude)
+        in_speed = Trajectory.velocity(previous.latitude, previous.longitude, current.latitude, current.longitude, previous.time, current.time)
+        out_speed = Trajectory.velocity(current.latitude, current.longitude, next.latitude, next.longitude, current.time, next.time)
+        # If the distance traveled between the three points is moer than 15 mts
+        if total_distance > 5 and in_speed < 30 and out_speed < 30:
+            in_bearing = Trajectory.initial_heading(previous.latitude, previous.longitude, current.latitude, current.longitude)
+            out_bearing = Trajectory.initial_heading(current.latitude, current.longitude, next.latitude, next.longitude)
+
+            #Get a cardinal representation of the bearing
+            in_direction = Trajectory.direction((in_bearing + 180) % 360) #reverse the bearing to get the incoming direction
+            out_direction = Trajectory.direction(out_bearing)
+
+            #Create a new key on the dictionary if the pattern hasn't been encountered before
+            if  (in_direction, out_direction) not in cell.patterns:
+                cell.patterns[in_direction,out_direction] = []
+
+            cell.patterns[in_direction,out_direction].append(current)
+
+                                
+
+
+    def trim_patterns(self):
+        """
+        For each cell take a list of every pattern identified and it's number
+        of ocurrances. 
+
+        Select only those whose number of occurrence is relevant
+        and store them on the significant_pattern dictionary of the respective cell
+        """
+        sys.stdout.write("Filtering non-relevant patterns...\n ")
+        sys.stdout.flush()
+
+        for k in self.all_nodes.keys():
+            if len(self.all_nodes[k].patterns)>0:
+                sig_patterns = self._get_significant_patterns(k)
+
+                for _tuple in sig_patterns:
+                    self.all_nodes[k].significant_patterns[_tuple[0]] = _tuple[1]
+                
+        sys.stdout.write("Done...\n ")
+        sys.stdout.flush()
+
+   
+    def _get_significant_patterns(self, key, critical_value = 0.51):
+        
+        """
+        Given a certain cell run a T-test over all the patterns found and
+        return only those that are statistically significant
+        """     
+        #Get all the patterns of the current cell and sorted by number of ocurrences
+
+
+        temp_sort = sorted(self.all_nodes[key].patterns.iteritems(), key = lambda t: len(t[1]), reverse = True)
+        sorted_patterns = []
+
+        # Make a list of (key,value) tuples where the value is the the number of locations and the key is the pattern
+        for t in temp_sort:
+            sorted_patterns.append((t[0],len(t[1])))
+
+        _current_group = []
+
+        #If there's only one pattern then return it and skip the rest
+        if len(sorted_patterns) == 1:
+            _current_group =  sorted_patterns
+
+        else:
+            #Each tuple is in the form (Pattern, Number of Ocurrences)
+            for _tuple in sorted_patterns:
+                #If the list is empty the first pattern is added
+                if not _current_group:
+                    _current_group.append(_tuple)
+
+                else:
+                    #create a copy of the current list
+                    test_group = list(_current_group)
+                    # Add the next pattern
+                    test_group.append(_tuple)
+                    #Test if the new set is statistically diferent from
+                    
+                    #The list should be sorted on descending order.
+                    #They are also turned into sets
+                    l1 = sorted(list(set([x[1] for x in _current_group])), reverse = True)
+                    l2 = sorted(list(set([x[1] for x in test_group])), reverse = True)
+                    
+                    #When two patterns in a row have the same number of ocurrences [8,7,5,4,4] => [8,7,5,4]
+                    #the last value is removed. This makes sure that the same test
+                    #is being run for each pattern with the same value.
+                    if len(l1)>= 2 and l1[-1] == l2[-1]:
+                        l1.pop()
+
+
+                    (t, p_value) = st.ttest_ind(l1, l2, equal_var = False) 
+
+                
+                    if p_value >= critical_value:
+                        break
+                    else:
+                        _current_group.append(_tuple)
+
+            #Removing the last pattern added
+            final_patterns = set([x[1] for x in _current_group])
+            _significant_patterns =[]
+            if len(final_patterns) > 1:
+         
+                # while _current_group[-1][1] == last_pattern:
+                #     _current_group.pop()
+                temp_list = sorted(list(set([x[1] for x in _current_group])), reverse = True)
+                median = np.median(temp_list)
+
+                for x in _current_group:
+                    if x[1] > median:
+                        _significant_patterns.append(x)
+        
+                if _significant_patterns:
+                    _current_group = _significant_patterns
+        print _current_group
+        return _current_group
+
+    #----------------------------------------------------
+    # Stuff I tried before adn I'm not currently using
+    #----------------------------------------------------   
+
+
+    #   Store all canonical trip edges in a RTree index    
+    def _build_trip_edge_index(self):
+        sys.stdout.write("\nBuilding trip edge index for map inference algorithm... ")
+        sys.stdout.flush()
+        edge_index = index.Index()
+
+        # iterate through all trip edges
+
+        for trip_edge in self.canonical_edges.values():
+
+            #Get a Point(latitude, longitude) touple
+            in_location = trip_edge.in_node._center_of_mass() 
+            out_location = trip_edge.out_node._center_of_mass() 
+            
+            # determine the bounding box of the edge
+            trip_edge_minx = min(in_location.longitude ,out_location.longitude) 
+            trip_edge_miny = min(in_location.latitude, out_location.latitude)
+            trip_edge_maxx = max(in_location.longitude, out_location.longitude)
+            trip_edge_maxy = max(in_location.latitude, out_location.latitude)                        
+
+            #insert into index
+            edge_index.insert(trip_edge.id, (trip_edge_minx, trip_edge_miny, trip_edge_maxx, trip_edge_maxy))
+        
+        return edge_index
 
     def classify_nodes(self):
         thresholds = [2**x for x in range(8, 3, -1)] + range(15, 0, -1)
@@ -144,230 +409,6 @@ class MapAlgo(object):
 
         return trips
 
-    #
-    # Initializes the quadtree and adds all the trajectory information
-    # 
-    def _build_location_index(self):   
-        sys.stdout.write("Generating QuadTree location index... ")
-        sys.stdout.flush()
-        location_index = QuadTree(self.bounding_box)
-        # iterate through all trips
-
-        for trip in self.all_trips:
-            #Iterate through all locations
-            current_cell = None
-            #Loop for adding trajectory information
-            for previous, location, next in self.previous_and_next(trip.locations):
-                current_cell = location_index.insert(location)
-
-                # First location 
-                if previous is not None and next is not None:
-                    #get the node where the next location would fall
-                    self.update_trajectory(previous, location, next, current_cell)
-
-
-        location_index.traverse() #Populate leaves[]
-
-        _node_id = 0
-        #Hash with all leaves
-        for leave in location_index.leaves:
-            location = leave._center_of_mass()
-            leave.id = (location.latitude, location.longitude)
-            self.all_nodes[(location.latitude, location.longitude)] = leave
-
-        return location_index
-
-    def _build_dynamic_location_index(self):   
-        sys.stdout.write("Generating QuadTree location index...\n ")
-        sys.stdout.flush()
-        location_index = QuadTree(self.bounding_box)
-        # iterate through all trips
-
-        for trip in self.all_trips:
-            #Iterate through all locations
-            current_cell = None
-            #Loop for adding trajectory information
-            for location in trip.locations:
-                current_cell = location_index.insert(location)
-
-        location_index.traverse() #Populate leaves[]
-
-        _node_id = 0
-        #Hash with all leaves
-        for leave in location_index.leaves:
-            location = leave._center_of_mass()
-            leave.id = (location.latitude, location.longitude)
-            self.all_nodes[(location.latitude, location.longitude)] = leave
-        
-        sys.stdout.write("Done...\n ")
-        sys.stdout.flush()
-        
-        return location_index
-
-    def _find_pattern(self, previous, current, next, cell):
-
-
-
-        #get the total distance traveled
-        total_distance = Trajectory.distance(previous.latitude, previous.longitude, current.latitude, current.longitude) + Trajectory.distance(next.latitude, next.longitude, current.latitude, current.longitude)
-        
-        # If the distance traveled between the three points is moer than 15 mts
-        if total_distance > 15:
-            in_bearing = Trajectory.initial_heading(previous.latitude, previous.longitude, current.latitude, current.longitude)
-            out_bearing = Trajectory.initial_heading(current.latitude, current.longitude, next.latitude, next.longitude)
-
-            #Get a cardinal representation of the bearing
-            in_direction = Trajectory.direction((in_bearing + 180) % 360)
-            out_direction = Trajectory.direction(out_bearing)
-
-            if  (in_direction, out_direction) not in cell.patterns:
-                cell.patterns[in_direction,out_direction] = 0
-
-            cell.patterns[in_direction,out_direction] += 1
-
-                                
-    
-    #
-    #   Store all canonical trip edges in a RTree index
-    #
-    def _build_trip_edge_index(self):
-        sys.stdout.write("\nBuilding trip edge index for map inference algorithm... ")
-        sys.stdout.flush()
-        edge_index = index.Index()
-
-        # iterate through all trip edges
-
-        for trip_edge in self.canonical_edges.values():
-
-            #Get a Point(latitude, longitude) touple
-            in_location = trip_edge.in_node._center_of_mass() 
-            out_location = trip_edge.out_node._center_of_mass() 
-            
-            # determine the bounding box of the edge
-            trip_edge_minx = min(in_location.longitude ,out_location.longitude) 
-            trip_edge_miny = min(in_location.latitude, out_location.latitude)
-            trip_edge_maxx = max(in_location.longitude, out_location.longitude)
-            trip_edge_maxy = max(in_location.latitude, out_location.latitude)                        
-
-            #insert into index
-            edge_index.insert(trip_edge.id, (trip_edge_minx, trip_edge_miny, trip_edge_maxx, trip_edge_maxy))
-        
-        return edge_index
-
-
-    def _bounding_box(self, locations):
-        max_y = max(coord.latitude for coord in locations)
-        min_y = min(coord.latitude for coord in locations)
-        max_x  = max(coord.longitude for coord in locations)
-        min_x = min(coord.longitude for coord in locations)
-        rectangle = namedtuple('rectangle', ['x0', 'x1','y0', 'y1'])    
-        box = rectangle(min_x -  0.005, max_x +  0.005 , min_y -  0.005, max_y +  0.005)
-        return box
-
-    def _get_all_patterns(self):
-        """
-        Traverse all the LEAF cells on the tree and identify all
-        the patterns
-        """
-        sys.stdout.write("Finding trace patterns...\n ")
-        sys.stdout.flush()
-
-        for k in self.all_nodes.keys():
-
-            for location in self.all_nodes[k].locations:
-
-                if location.prev_location and location.next_location:
-                    previous = location_dict[location.prev_location]
-                    next = location_dict[location.next_location]
-                    self._find_pattern(previous, location, next, self.all_nodes[k])
-
-        sys.stdout.write("Done...\n ")
-        sys.stdout.flush()
-
-    def _trim_spurious_roads(self):
-
-        sys.stdout.write("Filtering non-relevant patterns...\n ")
-        sys.stdout.flush()
-        for k in self.all_nodes.keys():
-            if len(self.all_nodes[k].patterns)>0:
-                sig_patterns = self._get_significant_patterns(k)
-
-                for _tuple in sig_patterns:
-                    self.all_nodes[k].significant_patterns[_tuple[0]] = _tuple[1]
-                
-        sys.stdout.write("Done...\n ")
-        sys.stdout.flush()
-
-   
-    def _get_significant_patterns(self, key, critical_value = 0.51):
-        
-        """
-        Given a certain cell run a T-test over all the patterns found and
-        return only those that are statistically significant
-        """     
-        #Get all the patterns of the current cell and sorted by number of ocurrences
-        sorted_patterns = sorted(self.all_nodes[key].patterns.iteritems(), key = lambda t: t[1], reverse = True)
-        _current_group = []
-
-        #If there's only one pattern then return it and skip the rest
-        if len(sorted_patterns) == 1:
-            _current_group =  sorted_patterns
-
-        else:
-            #Each tuple is in the form (Pattern, Number of Ocurrences)
-            for _tuple in sorted_patterns:
-                #If the list is empty the first pattern is added
-                if not _current_group:
-                    _current_group.append(_tuple)
-
-                else:
-                    #create a copy of the current list
-                    test_group = list(_current_group)
-                    # Add the next pattern
-                    test_group.append(_tuple)
-                    #Test if the new set is statistically diferent from
-                    
-                    #The list should be sorted on descending order.
-                    #They are also turned into sets
-                    l1 = sorted(list(set([x[1] for x in _current_group])), reverse = True)
-                    l2 = sorted(list(set([x[1] for x in test_group])), reverse = True)
-                    
-                    #When two patterns in a row have the same number of ocurrences [8,7,5,4,4] => [8,7,5,4]
-                    #the last value is removed. This makes sure that the same test
-                    #is being run for each pattern with the same value.
-                    if len(l1)>= 2 and l1[-1] == l2[-1]:
-                        l1.pop()
-
-
-                    (t, p_value) = st.ttest_ind(l1, l2, equal_var = False) 
-
-                
-                    if p_value >= critical_value:
-                        break
-                    else:
-                        _current_group.append(_tuple)
-
-            #Removing the last pattern added
-            final_patterns = set([x[1] for x in _current_group])
-            _significant_patterns =[]
-            if len(final_patterns) > 1:
-         
-                # while _current_group[-1][1] == last_pattern:
-                #     _current_group.pop()
-                temp_list = sorted(list(set([x[1] for x in _current_group])), reverse = True)
-                median = np.median(temp_list)
-
-                for x in _current_group:
-                    if x[1] > median:
-                        _significant_patterns.append(x)
-        
-                if _significant_patterns:
-                    _current_group = _significant_patterns
-        
-        return _current_group
-
-            
-   
     #----------------------------------------------------
     # Image Processing Algorithms
     #----------------------------------------------------
@@ -711,11 +752,12 @@ class MapAlgo(object):
                 for t in _trajs:
                     #Threshold
                     if _trajs[t] > density:
+                        #print _neighbors
                         _in = _neighbors[t[0]]
                         _out = _neighbors[t[1]]
                         _file.write( "<Placemark>\n")
                         _file.write( "<name>" + str(key) + "</name>\n")
-                        if t == ('w','e') or t == ('s', 'n'):
+                        if t == ('3','4') or t == ('6', '1'):
                             _file.write( "<styleUrl>#myStyle</styleUrl>\n")
                         else:
                             _file.write( "<styleUrl>#myStyle2</styleUrl>\n")

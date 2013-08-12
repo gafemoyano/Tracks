@@ -2,6 +2,7 @@ from __future__ import division
 import numpy as np
 from collections import namedtuple
 from itertools import permutations
+from trajectory import Trajectory
 from math import radians, cos, sin, asin, sqrt,atan2,degrees
 Point = namedtuple('Point', 'latitude, longitude')
 directions = ["n","e","w","s","ne","nw","se","sw"]
@@ -18,7 +19,7 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
-    MAX_LOCATIONS = 10
+    MAX_LOCATIONS = 5
     DYNAMIC = False
     leaves = []
 
@@ -106,9 +107,12 @@ class QuadTree(object):
     def insert(self, coord):
 
         if(self.type == QuadTree.LEAF):
-            self.locations.append(coord)       
-            if QuadTree.DYNAMIC and len(self.locations) > QuadTree.MAX_LOCATIONS:
+            self.locations.append(coord)
+            cell_size = Trajectory.distance(self.y0, self.x0, self.y1, self.x1)
+
+            if QuadTree.DYNAMIC and len(self.locations) > QuadTree.MAX_LOCATIONS and cell_size >= 2:
                 self.subdivide()
+                
             return self
         
         if self.nw._contains(coord.latitude, coord.longitude):           
@@ -326,8 +330,9 @@ class QuadTree(object):
                 lat = np.mean([coord.latitude for coord in self.locations])
                 lon = np.mean([coord.longitude for coord in self.locations])     
             else:
-                lat = (self.y0 + self.y1)/2
-                lon = (self.x0 + self.x1)/2
+                # lat = (self.y0 + self.y1)/2
+                # lon = (self.x0 + self.x1)/2
+                return Point(41.863519333333336, -87.646728666666675)
             return Point(lat,lon)
             
     #Returnsthe geographical center of all the locations in the node

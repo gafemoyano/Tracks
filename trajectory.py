@@ -34,6 +34,16 @@ class Trajectory:
         heading = initial_heading(lon2,lat2,lon1,lat1)
         final_heading = (heading+180)%360
         print final_heading
+   
+
+    @staticmethod
+    def velocity(lat1, lon1, lat2, lon2, t1, t2):
+        """Given two locations and their unix timestamps
+        returns the average speed in m/s"""
+        d = Trajectory.distance(lat1, lon1, lat2, lon2)
+        t = (t2 - t1)
+        return d/t
+
     @staticmethod
     def distance(lat1, lon1, lat2, lon2):
         dlat= radians(lat2-lat1)
@@ -42,8 +52,8 @@ class Trajectory:
         lat2_rad = radians(lat2)
         a = (sin(dlat/2)**2) + (sin(dlon/2)**2*cos(lat1_rad)*cos(lat2_rad))
         c = 2*atan2(sqrt(a),sqrt(1-a))
-        d = 6371*c
-        return d*1000
+        d = 6371*c #earth radius in km
+        return d*1000 #convert to meters
         
     @staticmethod
     def haversine(lon1, lat1, lon2, lat2):
@@ -65,16 +75,7 @@ class Trajectory:
     @staticmethod
     def direction(heading):
         """
-        Maps a given angle to a number similar to this picture (asuming it is a circle).
-        i.e.  128 would be maped to 7
-        |---|---|---|
-        | 0 | 1 | 2 |
-        |---|---|---|
-        | 3 | x | 4 |
-        |---|---|---|
-        | 5 | 6 | 7 |
-        |---|---|---|
-
+        Maps a given angle to a number.
         """
 
         _dir = ''

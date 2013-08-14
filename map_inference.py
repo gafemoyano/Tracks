@@ -21,11 +21,11 @@ from itertools import tee, islice, chain, izip
 client = MongoClient()
 db = client.trip_db
 trip_collection = db.trips
-all_trips = TripParser.json_to_object(trip_collection.find())
+all_trips = TripParser.json_to_object(trip_collection.find().limit(1))
 # globals
 trip_max=len(all_trips)
-all_locations = list(location for trip in all_trips for location in trip.locations)
-location_dict = dict([(loc._id, loc) for loc in all_locations])
+location_list = list(location for trip in all_trips for location in trip.locations)
+all_locations = dict([(loc._id, loc) for loc in location_list])
 
 MAX_DEPTH = 8 #Max recursion inn the quadtree #Should change this to meters
 
@@ -40,12 +40,12 @@ class MapAlgo(object):
 
     def __init__(self, all_trips):
         self.all_trips = all_trips
+        self.all_locations = all_locations
         self.trip_edges = self._find_all_trip_edges()
-        self.bounding_box = self._bounding_box(all_locations)
+        self.bounding_box = self._bounding_box(self.all_locations)
         self.location_index = None    
-        self.trip_edge_index = None
-        self.canonical_trips = []
         self.canonical_edges = {}
+        self.pattern_edges = []
         self.all_nodes = {}
 	
     #distribution
@@ -58,8 +58,9 @@ class MapAlgo(object):
         #self.canonical_trips = self._find_canonical_trips() # Build Trips with qtree Nodes instead of Locations
         #self._apply_gaussian()
         #self._print_pattern_ocurrences()
-        self.look_for_patterns() #Identify patternes on the quadtree
+        self.look_for_patterns() #identify directional patterns on each quadtree cell
         self.trim_patterns() #Remove patterns that aren't statistically significant
+        self.get_road_segments()
     
     def _bounding_box(self, locations):
         """
@@ -67,10 +68,10 @@ class MapAlgo(object):
         find the max and min value. 
         Return a rectangle element with those values plus an arbitrary delta
         """
-        max_y = max(coord.latitude for coord in locations)
-        min_y = min(coord.latitude for coord in locations)
-        max_x  = max(coord.longitude for coord in locations)
-        min_x = min(coord.longitude for coord in locations)
+        max_y = max(coord.latitude for coord in locations.itervalues())
+        min_y = min(coord.latitude for coord in locations.itervalues())
+        max_x  = max(coord.longitude for coord in locations.itervalues())
+        min_x = min(coord.longitude for coord in locations.itervalues())
         rectangle = namedtuple('rectangle', ['x0', 'x1','y0', 'y1'])    
         box = rectangle(min_x -  0.005, max_x +  0.005 , min_y -  0.005, max_y +  0.005)
         return box
@@ -155,8 +156,8 @@ class MapAlgo(object):
             for location in self.all_nodes[k].locations:
 
                 if location.prev_location and location.next_location:
-                    previous = location_dict[location.prev_location]
-                    next = location_dict[location.next_location]
+                    previous = self.all_locations[location.prev_location]
+                    next = self.all_locations[location.next_location]
 
                     self._identify_pattern(previous, location, next, self.all_nodes[k])
 
@@ -186,7 +187,7 @@ class MapAlgo(object):
         in_speed = Trajectory.velocity(previous.latitude, previous.longitude, current.latitude, current.longitude, previous.time, current.time)
         out_speed = Trajectory.velocity(current.latitude, current.longitude, next.latitude, next.longitude, current.time, next.time)
         # If the distance traveled between the three points is moer than 15 mts
-        if total_distance > 5 and in_speed < 30 and out_speed < 30:
+        if total_distance > 3 and in_speed < 30 and out_speed < 30:
             in_bearing = Trajectory.initial_heading(previous.latitude, previous.longitude, current.latitude, current.longitude)
             out_bearing = Trajectory.initial_heading(current.latitude, current.longitude, next.latitude, next.longitude)
 
@@ -219,7 +220,7 @@ class MapAlgo(object):
                 sig_patterns = self._get_significant_patterns(k)
 
                 for _tuple in sig_patterns:
-                    self.all_nodes[k].significant_patterns[_tuple[0]] = _tuple[1]
+                    self.all_nodes[k].significant_patterns[_tuple[0]] = self.all_nodes[k].patterns[_tuple[0]]
                 
         sys.stdout.write("Done...\n ")
         sys.stdout.flush()
@@ -297,8 +298,61 @@ class MapAlgo(object):
         
                 if _significant_patterns:
                     _current_group = _significant_patterns
-        print _current_group
+
         return _current_group
+
+    def get_road_segments(self):
+        """
+        Traverse all the cells and look for pattern similarities that would
+        allow two cells to be linked thus creating a road segment.
+        If a segment is found add it to an index.
+        """
+
+        for k in self.all_nodes.keys():
+
+            if len(self.all_nodes[k].significant_patterns)>0:
+                new_segments = self._pattern_intersection(k)
+
+    def _pattern_intersection(self, key):
+        """
+        regarde la cellule voisine pointee par le pattern. Si l'intersection des 
+        traces associees a ce pattern avec l'un des patterns de la cellule pointee, 
+        alors on peut lier les 2 points d'equilibre (Center of Mass) des 2 patterns 
+        pour obtenir un segment du chemin.
+        """
+
+        for pattern, locs in self.all_nodes[key].significant_patterns.iteritems():
+            print "source"
+            print list(self.all_nodes[key].significant_patterns.iterkeys())
+
+            direction_out = pattern[1]
+
+            dest_cell = self.location_index.neighbor_on_direction(self.all_nodes[key]._center_of_mass(),direction_out)
+            print dest_cell._center_of_mass()
+            print self.all_nodes[key]._center_of_mass()
+            for l in locs:
+                print l.latitude, l.longitude
+            
+            #Get the geographical midpoint of the locations assosiated with the current pattern in the target cell
+            # target_locations = [self.all_locations[loc.next_location] for loc in locations]
+            # target_midpoint = Trajectory.center_of_mass(target_locations)
+            # print target_midpoint
+            # #print locations
+            # #Get the geographical midpoint of the locations assosiatedwith the current pattern in the current cell
+            # current_midpoint = Trajectory.center_of_mass(locations)
+           
+            # #Find the cell where this average location would be located
+            # destination_cell = self.location_index.containing_node(target_midpoint)
+            # print destination_cell._center_of_mass()
+            # print "dest"
+            # print list(destination_cell.significant_patterns.iterkeys())
+
+            # all_dest_in =  [dp[0] for dp in destination_cell.significant_patterns.iterkeys()]
+            
+            # if Trajectory.reverse_direction(source_out) in all_dest_in:
+            #     self.pattern_edges.append((current_midpoint, target_midpoint))
+
+
 
     #----------------------------------------------------
     # Stuff I tried before adn I'm not currently using
@@ -383,7 +437,8 @@ class MapAlgo(object):
                 # increment trip edge id
                 trip_edge_id += 1
         
-        print "done."
+        sys.stdout.write("\nDone. ")
+        sys.stdout.flush()
         
         # return all trip edges
         return trip_edges
@@ -783,7 +838,68 @@ class MapAlgo(object):
 
         sys.stdout.write("\nDone ... ")
         sys.stdout.flush()
+    
 
+    def _edges_to_kml(self, output = "default.kml"):
+
+        os.chdir("/home/moyano/Projects/Tracks/kml/")
+
+        sys.stdout.write("\nWriting output to kml ... ")
+        sys.stdout.flush()
+
+        _file = open(output,"w")
+        #Header
+        _file.write("<?xml version='1.0' encoding='UTF-8'?>\n")
+        _file.write( "<kml xmlns='http://www.opengis.net/kml/2.2'>\n")
+        _file.write(  "<Document>\n")
+
+        #Line Style)
+        _file.write(  "<Style id='myStyle'>\n")
+        _file.write(      "<LineStyle>\n")
+        _file.write(        "<color>7f00ff00</color>\n")
+        _file.write(        "<width>4</width>\n")
+        _file.write(      "</LineStyle>\n")
+        _file.write(      "<PolyStyle>\n")
+        _file.write(        "<color>7f00ff00</color>\n")
+        _file.write(      "</PolyStyle>\n")
+        _file.write(  "</Style>\n")
+       
+               #Line Style)
+        _file.write(  "<Style id='myStyle2'>\n")
+        _file.write(      "<LineStyle>\n")
+        _file.write(        "<color>ffff0000</color>\n")
+        _file.write(        "<width>4</width>\n")
+        _file.write(      "</LineStyle>\n")
+        _file.write(      "<PolyStyle>\n")
+        _file.write(        "<color>ff0000ff</color>\n")
+        _file.write(      "</PolyStyle>\n")
+        _file.write(  "</Style>\n")
+
+        count = 0
+        for edge in self.pattern_edges:
+            count +=1
+            _in = edge[0]
+            _out = edge[1]
+
+            _file.write( "<Placemark>\n")
+            _file.write( "<name>" + str(count) + "</name>\n")
+            _file.write( "<styleUrl>#myStyle</styleUrl>\n")
+            _file.write( "<LineString>\n")
+            _file.write(  "<altitudeMode>relative</altitudeMode>\n")
+            _file.write(  "<coordinates>\n")
+            _file.write(      str(_in.longitude) + "," + str(_in.latitude) + "\n")
+            _file.write(      str(_out.longitude) + "," + str(_out.latitude) + "\n")
+            _file.write(   "</coordinates>\n")
+            _file.write(  "</LineString>\n")
+            _file.write( "</Placemark>\n")
+
+        #Close tags
+        _file.write(  "</Document>\n")       
+        _file.write( "</kml>\n")
+        _file.close()
+
+        sys.stdout.write("\nDone ... ")
+        sys.stdout.flush()
     def _write_nodes_to_file(self):
 
         nodes = self.location_index.leaves
@@ -911,14 +1027,15 @@ if __name__ == '__main__':
         if o == "-f":
             kml_output = a
         if o == "-h":
-            print "Usage: python map_inference.py [-n <trip_max>] [-f <filde_name>] [-h]\n"
+            print "Usage: python map_inference.py [-n <trip_max>] [-f <file_name>] [-h]\n"
             exit()
     
     start_time = time.time()
     m = MapAlgo(all_trips[:trip_max])
     m.run_algorithm()
-    m._segments_to_kml(kml_output)
-    #m._write_nodes_to_file()
+    #m._segments_to_kml(kml_output)
+    m._edges_to_kml(kml_output)
+    m._write_nodes_to_file()
     # os.chdir("/home/moyano/Projects/CreateTracks/maps/")
     
     print "\nMap inference completed (in " + str(time.time() - start_time) + " seconds).\n"

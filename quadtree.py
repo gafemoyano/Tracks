@@ -19,8 +19,10 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
-    MAX_LOCATIONS = 5
+    MAX_LOCATIONS = 1
+    MIN_CELL_SIZE = 5 #meters height
     DYNAMIC = False
+    DELTA = 0.00000000000001
     leaves = []
 
 
@@ -110,7 +112,8 @@ class QuadTree(object):
             self.locations.append(coord)
             cell_size = Trajectory.distance(self.y0, self.x0, self.y1, self.x1)
 
-            if QuadTree.DYNAMIC and len(self.locations) > QuadTree.MAX_LOCATIONS and cell_size >= 2:
+            #Conditions that must be met in order to subdivde the current cell
+            if QuadTree.DYNAMIC and len(self.locations) > QuadTree.MAX_LOCATIONS and cell_size >= QuadTree.MIN_CELL_SIZE:
                 self.subdivide()
                 
             return self
@@ -246,7 +249,7 @@ class QuadTree(object):
             # Shift the position on the x axis by a given delta. This will give a new
             # location guaranteed to fall on the cell to the right (4) and to the left (3)
             # Then query the quadtree for those cells
-            lons = {'4': node.cx - delta_x, '3': node.cx + delta_x}
+            lons = {'3': node.cx - delta_x, '4': node.cx + delta_x}
             
             for location, tlon in lons.iteritems():
                 if tlon >= self.x0 and tlon <= self.x1:
@@ -280,9 +283,20 @@ class QuadTree(object):
 
             return neighbors
 
-    def cleanse(self):
-        pass
-    
+    def neighbor_on_direction(self, coord, _dir):
+
+        if self.type == QuadTree.ROOT:
+            node = self.containing_node(coord)
+
+            delta_x = (node.x1 - node.x0) + QuadTree.DELTA
+            delta_y = (node.y1 - node.y0) + QuadTree.DELTA
+            
+            distance = Trajectory.distance(node.cy, node.cx, node.cy + delta_y, node.cx + delta_x)
+            cm = node._center_of_mass()
+            bearing = Trajectory.bearing(_dir)
+            dest_point = Trajectory.destination_point(cm.latitude, cm.longitude, bearing, distance) 
+            print "dest_point: ", dest_point
+            return self.containing_node(dest_point)
     def traverse(self, count = 0):
         if(self.type == QuadTree.LEAF):
 
@@ -297,7 +311,7 @@ class QuadTree(object):
         
 
     """ #######################################
-    INSTANCE METHODS
+     METHODS
     ###################################### """     
 
     def _neighbors(self, include_self=False):
@@ -330,9 +344,9 @@ class QuadTree(object):
                 lat = np.mean([coord.latitude for coord in self.locations])
                 lon = np.mean([coord.longitude for coord in self.locations])     
             else:
-                # lat = (self.y0 + self.y1)/2
-                # lon = (self.x0 + self.x1)/2
-                return Point(41.863519333333336, -87.646728666666675)
+                lat = (self.y0 + self.y1)/2
+                lon = (self.x0 + self.x1)/2
+                print "warning"*20
             return Point(lat,lon)
             
     #Returnsthe geographical center of all the locations in the node

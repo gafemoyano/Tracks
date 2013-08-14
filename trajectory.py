@@ -1,8 +1,10 @@
 import collections
 import sys
-from math import radians, cos, sin, asin, sqrt,atan2,degrees
+import numpy as np
+from math import radians, cos, sin, asin, sqrt,atan2,degrees,fmod,pi
 from Tree import Tree as Tree
-
+from collections import namedtuple
+Point = namedtuple('Point', 'latitude, longitude')
 
 class Trajectory:
 
@@ -54,7 +56,24 @@ class Trajectory:
         c = 2*atan2(sqrt(a),sqrt(1-a))
         d = 6371*c #earth radius in km
         return d*1000 #convert to meters
+    #
+    # Returns the destination point given distance and bearing from a start point. Formula adapted from: http://www.movable-type.co.uk/scripts/latlong.html
+    #
+    @staticmethod
+    def destination_point(a_lat, a_lon, bearing, distance):
+        angular_distance = (distance/6371000.0) # meters
+        bearing = radians(bearing)
         
+        a_lat = radians(a_lat)
+        a_lon = radians(a_lon)
+        
+        b_lat = asin(sin(a_lat) * cos(angular_distance) + cos(a_lat) * sin(angular_distance) * cos(bearing))
+        b_lon = a_lon + atan2(sin(bearing) * sin(angular_distance) * cos(a_lat), cos(angular_distance) - sin(a_lat) * sin(b_lat))
+        
+        b_lon = fmod((b_lon + (3 * pi)), (2 * pi)) - pi
+        
+        return Point(degrees(b_lat), degrees(b_lon))  
+    
     @staticmethod
     def haversine(lon1, lat1, lon2, lat2):
         """
@@ -69,9 +88,14 @@ class Trajectory:
         a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
         c = 2 * asin(sqrt(a)) 
         km = 6367 * c
-        print km 
+        return km 
 
-        
+    @staticmethod
+    def center_of_mass(locations):
+        lat = np.mean([coord.latitude for coord in locations])
+        lon = np.mean([coord.longitude for coord in locations]) 
+        return Point(lat,lon)
+
     @staticmethod
     def direction(heading):
         """
@@ -108,3 +132,82 @@ class Trajectory:
             print heading
             sys.exit(0)
         return _dir
+
+
+    @staticmethod
+    def bearing(_dir):
+        """
+        Maps a given angle to a number.
+        """
+
+        bearing = -1
+
+        if _dir == '1':
+            bearing = 0
+
+        elif _dir == '2':
+            bearing = 45
+
+        elif _dir == '4':
+            bearing = 90
+
+        elif _dir == '7':
+            bearing = 135
+
+        elif _dir == '6':
+            bearing = 180
+
+        elif _dir == '5':
+            bearing = 225 
+
+        elif _dir == '3':
+            bearing = 270
+
+        elif _dir == '0':
+            bearing = 315
+
+        if  bearing == -1:
+            print 'nope'
+            print heading
+            sys.exit(0)
+        return bearing
+
+    @staticmethod
+    def reverse_direction(_dir):
+        """
+        map
+        |---|---|---|  
+        | 0 | 1 | 2 |
+        |---|---|---|
+        | 3 | x | 4 |
+        |---|---|---|
+        | 5 | 6 | 7 |
+        |---|---|---|
+        to:
+        |---|---|---|  
+        | 7 | 6 | 5 |
+        |---|---|---|
+        | 4 | x | 3 |
+        |---|---|---|
+        | 2 | 1 | 0 |
+        |---|---|---|
+        """
+        rev = -1
+        if _dir == 0:
+            rev = 7
+        elif _dir == 1:
+            rev = 6
+        elif _dir == 2:
+            rev = 5
+        elif _dir == 3:
+            rev = 4
+        elif _dir == 4:
+            rev = 3
+        elif _dir == 5:
+            rev = 2
+        elif _dir == 6:
+            rev = 1
+        elif _dir == 7:
+            rev = 0
+
+        return rev

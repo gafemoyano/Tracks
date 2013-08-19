@@ -20,7 +20,7 @@ class QuadTree(object):
     BRANCH = 1
     ROOT = 0
     MAX_LOCATIONS = 1
-    MIN_CELL_SIZE = 5 #meters height
+    MIN_CELL_SIZE = 15 #meters height
     DYNAMIC = False
     DELTA = 0.00000000000001
     leaves = []
@@ -295,8 +295,8 @@ class QuadTree(object):
             cm = node._center_of_mass()
             bearing = Trajectory.bearing(_dir)
             dest_point = Trajectory.destination_point(cm.latitude, cm.longitude, bearing, distance) 
-            print "dest_point: ", dest_point
             return self.containing_node(dest_point)
+    
     def traverse(self, count = 0):
         if(self.type == QuadTree.LEAF):
 
@@ -308,7 +308,26 @@ class QuadTree(object):
             self.ne.traverse()
             self.sw.traverse()
             self.se.traverse()
+
+    def patterns_by_in_direction(self, direction):
+        "Returns the key of the patterns that have the given direction as in key"        
+        _patterns = []
+
+        for p in self.significant_patterns.iterkeys():
+            if p[0] is direction:
+                _patterns.append(p)
+
+        return _patterns
         
+    def out_patterns_by_out_direction(self, direction):
+        "Returns the key of the patterns that have the given direction as in key"        
+        _patterns = []
+        
+        for p in self.significant_patterns.iterkeys():
+            if p[1] == direction:
+                _patterns.append(p)
+
+        return _patterns
 
     """ #######################################
      METHODS

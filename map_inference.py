@@ -21,7 +21,7 @@ from itertools import tee, islice, chain, izip
 client = MongoClient()
 db = client.trip_db
 trip_collection = db.trips
-all_trips = TripParser.json_to_object(trip_collection.find().limit(1))
+all_trips = TripParser.json_to_object(trip_collection.find())
 # globals
 trip_max=len(all_trips)
 location_list = list(location for trip in all_trips for location in trip.locations)
@@ -322,16 +322,24 @@ class MapAlgo(object):
         """
 
         for pattern, locs in self.all_nodes[key].significant_patterns.iteritems():
-            print "source"
-            print list(self.all_nodes[key].significant_patterns.iterkeys())
 
             direction_out = pattern[1]
-
             dest_cell = self.location_index.neighbor_on_direction(self.all_nodes[key]._center_of_mass(),direction_out)
-            print dest_cell._center_of_mass()
-            print self.all_nodes[key]._center_of_mass()
+           
+            print "dest cell: ", dest_cell._center_of_mass()
+            print "current cell: ", self.all_nodes[key]._center_of_mass()
             for l in locs:
                 print l.latitude, l.longitude
+            print Trajectory.reverse_direction(direction_out)
+            dest_cell_patterns = dest_cell.patterns_by_in_direction(Trajectory.reverse_direction(direction_out))
+            print dest_cell_patterns
+            print dest_cell.significant_patterns
+            if dest_cell_patterns:
+                for _p in dest_cell_patterns:
+                    dest_midpoint = Trajectory.center_of_mass(dest_cell.significant_patterns[_p])
+                    source_midpoint = Trajectory.center_of_mass(locs)
+                    self.pattern_edges.append((source_midpoint, dest_midpoint))
+
             
             #Get the geographical midpoint of the locations assosiated with the current pattern in the target cell
             # target_locations = [self.all_locations[loc.next_location] for loc in locations]
@@ -883,7 +891,7 @@ class MapAlgo(object):
 
             _file.write( "<Placemark>\n")
             _file.write( "<name>" + str(count) + "</name>\n")
-            _file.write( "<styleUrl>#myStyle</styleUrl>\n")
+            _file.write( "<styleUrl>#myStyle2</styleUrl>\n")
             _file.write( "<LineString>\n")
             _file.write(  "<altitudeMode>relative</altitudeMode>\n")
             _file.write(  "<coordinates>\n")

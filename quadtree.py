@@ -19,10 +19,10 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
-    MAX_LOCATIONS = 1
-    MIN_CELL_SIZE = 15 #meters height
+    MAX_LOCATIONS = 15
+    MIN_CELL_SIZE = 25 #meters height
     DYNAMIC = False
-    DELTA = 0.00000000000001
+    DELTA = 0.0000000000001
     leaves = []
 
 
@@ -292,7 +292,7 @@ class QuadTree(object):
             delta_y = (node.y1 - node.y0) + QuadTree.DELTA
             
             distance = Trajectory.distance(node.cy, node.cx, node.cy + delta_y, node.cx + delta_x)
-            cm = node._center_of_mass()
+            cm = node._center()
             bearing = Trajectory.bearing(_dir)
             dest_point = Trajectory.destination_point(cm.latitude, cm.longitude, bearing, distance) 
             return self.containing_node(dest_point)
@@ -367,7 +367,11 @@ class QuadTree(object):
                 lon = (self.x0 + self.x1)/2
                 print "warning"*20
             return Point(lat,lon)
-            
+    
+    def _center(self):
+        lat = (self.y0 + self.y1)/2
+        lon = (self.x0 + self.x1)/2
+        return Point(lat,lon)
     #Returnsthe geographical center of all the locations in the node
     #Returns a Point topule [latitude,longitude]
     def _geographic_midpoint(self):

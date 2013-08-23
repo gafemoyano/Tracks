@@ -322,7 +322,7 @@ class MapAlgo(object):
         """
         print "CELL:"
         for pattern, locs in self.all_nodes[key].significant_patterns.iteritems():
-            if len(locs) > 0:
+            if len(locs) > 20:
                 print "current pattern: ", pattern
                 direction_out = pattern[1]
                 dest_cell = self.location_index.neighbor_on_direction(self.all_nodes[key]._center_of_mass(),direction_out)
@@ -337,16 +337,17 @@ class MapAlgo(object):
                 print "dcp: ", dest_cell_patterns
 
 
-                # self.pattern_edges.append((self.all_nodes[key]._center_of_mass(), dest_cell._center_of_mass()))
+                self.pattern_edges.append((self.all_nodes[key]._center_of_mass(), dest_cell._center_of_mass()))
             
-            # if dest_cell_patterns:
+                # if dest_cell_patterns:
 
-                for _p in dest_cell_patterns:
-                    dest_midpoint = Trajectory.center_of_mass(dest_cell.significant_patterns[_p])
-                    source_midpoint = Trajectory.center_of_mass(locs)
-                    self.pattern_edges.append((source_midpoint, dest_midpoint))
-                    print "segment added", (source_midpoint, dest_midpoint)
-            #Get the geographical midpoint of the locations assosiated with the current pattern in the target cell
+                #     for _p in dest_cell_patterns:
+                #         dest_midpoint = Trajectory.center_of_mass(dest_cell.significant_patterns[_p])
+                #         source_midpoint = Trajectory.center_of_mass(locs)
+                #         self.pattern_edges.append((source_midpoint, dest_midpoint))
+                #         print "segment added", (source_midpoint, dest_midpoint)
+           
+            # Get the geographical midpoint of the locations assosiated with the current pattern in the target cell
             # target_locations = [self.all_locations[loc.next_location] for loc in locations]
             # target_midpoint = Trajectory.center_of_mass(target_locations)
             # print target_midpoint
@@ -885,15 +886,30 @@ class MapAlgo(object):
         _file.write(      "</PolyStyle>\n")
         _file.write(  "</Style>\n")
 
+        _file.write(  "<Style id='myStyle3'>\n")
+        _file.write(      "<LineStyle>\n")
+        _file.write(        "<color>df0000ff</color>\n")
+        _file.write(        "<width>4</width>\n")
+        _file.write(      "</LineStyle>\n")
+        _file.write(      "<PolyStyle>\n")
+        _file.write(        "<color>ff0000ff</color>\n")
+        _file.write(      "</PolyStyle>\n")
+        _file.write(  "</Style>\n")
         count = 0
         for edge in self.pattern_edges:
             count +=1
             _in = edge[0]
             _out = edge[1]
 
+            _dir = Trajectory.direction(Trajectory.initial_heading(_in.latitude, _in.longitude, _out.latitude, _out.longitude))
+   
             _file.write( "<Placemark>\n")
             _file.write( "<name>" + str(count) + "</name>\n")
-            _file.write( "<styleUrl>#myStyle2</styleUrl>\n")
+            if _dir == '0' or _dir == '1' or _dir == '2' or _dir == '4':
+                _file.write( "<styleUrl>#myStyle2</styleUrl>\n")
+            else:
+                _file.write( "<styleUrl>#myStyle3</styleUrl>\n")
+
             _file.write( "<LineString>\n")
             _file.write(  "<altitudeMode>relative</altitudeMode>\n")
             _file.write(  "<coordinates>\n")

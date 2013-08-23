@@ -19,8 +19,8 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
-    MAX_LOCATIONS = 15
-    MIN_CELL_SIZE = 25 #meters height
+    MAX_LOCATIONS = 4
+    MIN_CELL_SIZE = 40 #meters height
     DYNAMIC = False
     DELTA = 0.0000000000001
     leaves = []
@@ -110,8 +110,7 @@ class QuadTree(object):
 
         if(self.type == QuadTree.LEAF):
             self.locations.append(coord)
-            cell_size = Trajectory.distance(self.y0, self.x0, self.y1, self.x1)
-
+            cell_size = Trajectory.distance(self.y0, self.x0, self.y1, self.x1)/2
             #Conditions that must be met in order to subdivde the current cell
             if QuadTree.DYNAMIC and len(self.locations) > QuadTree.MAX_LOCATIONS and cell_size >= QuadTree.MIN_CELL_SIZE:
                 self.subdivide()
@@ -288,8 +287,8 @@ class QuadTree(object):
         if self.type == QuadTree.ROOT:
             node = self.containing_node(coord)
 
-            delta_x = (node.x1 - node.x0) + QuadTree.DELTA
-            delta_y = (node.y1 - node.y0) + QuadTree.DELTA
+            delta_x = (node.x1 - node.x0)/2  +QuadTree.DELTA
+            delta_y = (node.y1 - node.y0)/2 + QuadTree.DELTA
             
             distance = Trajectory.distance(node.cy, node.cx, node.cy + delta_y, node.cx + delta_x)
             cm = node._center()

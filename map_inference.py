@@ -21,7 +21,7 @@ from itertools import tee, islice, chain, izip
 client = MongoClient()
 db = client.trip_db
 trip_collection = db.trips
-all_trips = TripParser.json_to_object(trip_collection.find().limit(1))
+all_trips = TripParser.json_to_object(trip_collection.find())
 # globals
 trip_max=len(all_trips)
 location_list = list(location for trip in all_trips for location in trip.locations)
@@ -320,20 +320,34 @@ class MapAlgo(object):
         alors on peut lier les 2 points d'equilibre (Center of Mass) des 2 patterns 
         pour obtenir un segment du chemin.
         """
-
+        print "CELL:"
         for pattern, locs in self.all_nodes[key].significant_patterns.iteritems():
-            print "source"
-            print list(self.all_nodes[key].significant_patterns.iterkeys())
+            if len(locs) > 0:
+                print "current pattern: ", pattern
+                direction_out = pattern[1]                
+                dest_cell = self.location_index.neighbor_on_direction(self.all_nodes[key]._center_of_mass(),direction_out)
+               
+                # if dest_cell:
+                print "dest cell: ", dest_cell._center_of_mass()
+                print "current cell: ", self.all_nodes[key]._center_of_mass()
+                for l in locs:
+                    pass
+                    #print l.latitude, l.longitude
+                dest_cell_patterns = dest_cell.patterns_by_in_direction(Trajectory.reverse_direction(direction_out))
+                print "dcp: ", dest_cell_patterns
 
-            direction_out = pattern[1]
 
-            dest_cell = self.location_index.neighbor_on_direction(self.all_nodes[key]._center_of_mass(),direction_out)
-            print dest_cell._center_of_mass()
-            print self.all_nodes[key]._center_of_mass()
-            for l in locs:
-                print l.latitude, l.longitude
+                # self.pattern_edges.append((self.all_nodes[key]._center_of_mass(), dest_cell._center_of_mass()))
             
-            #Get the geographical midpoint of the locations assosiated with the current pattern in the target cell
+                if dest_cell_patterns:
+
+                    for _p in dest_cell_patterns:
+                        dest_midpoint = Trajectory.center_of_mass(dest_cell.significant_patterns[_p])
+                        source_midpoint = Trajectory.center_of_mass(locs)
+                        self.pattern_edges.append((source_midpoint, dest_midpoint))
+                        print "segment added", (source_midpoint, dest_midpoint)
+           
+            # Get the geographical midpoint of the locations assosiated with the current pattern in the target cell
             # target_locations = [self.all_locations[loc.next_location] for loc in locations]
             # target_midpoint = Trajectory.center_of_mass(target_locations)
             # print target_midpoint
@@ -827,9 +841,6 @@ class MapAlgo(object):
                         _file.write(   "</coordinates>\n")
                         _file.write(  "</LineString>\n")
                         _file.write( "</Placemark>\n")
-                        _file.write( "<weight>\n")
-                        _file.write( str(t) + ":::" + str(_trajs[t]) + "\n")
-                        _file.write( "</weight>\n")
 
         #Close tags
         _file.write(  "</Document>\n")       
@@ -857,7 +868,7 @@ class MapAlgo(object):
         _file.write(  "<Style id='myStyle'>\n")
         _file.write(      "<LineStyle>\n")
         _file.write(        "<color>7f00ff00</color>\n")
-        _file.write(        "<width>4</width>\n")
+        _file.write(        "<width>1</width>\n")
         _file.write(      "</LineStyle>\n")
         _file.write(      "<PolyStyle>\n")
         _file.write(        "<color>7f00ff00</color>\n")
@@ -875,15 +886,30 @@ class MapAlgo(object):
         _file.write(      "</PolyStyle>\n")
         _file.write(  "</Style>\n")
 
+        _file.write(  "<Style id='myStyle3'>\n")
+        _file.write(      "<LineStyle>\n")
+        _file.write(        "<color>df0000ff</color>\n")
+        _file.write(        "<width>4</width>\n")
+        _file.write(      "</LineStyle>\n")
+        _file.write(      "<PolyStyle>\n")
+        _file.write(        "<color>ff0000ff</color>\n")
+        _file.write(      "</PolyStyle>\n")
+        _file.write(  "</Style>\n")
         count = 0
         for edge in self.pattern_edges:
             count +=1
             _in = edge[0]
             _out = edge[1]
 
+            _dir = Trajectory.direction(Trajectory.initial_heading(_in.latitude, _in.longitude, _out.latitude, _out.longitude))
+   
             _file.write( "<Placemark>\n")
             _file.write( "<name>" + str(count) + "</name>\n")
-            _file.write( "<styleUrl>#myStyle</styleUrl>\n")
+            if _dir == '0' or _dir == '1' or _dir == '2' or _dir == '4':
+                _file.write( "<styleUrl>#myStyle2</styleUrl>\n")
+            else:
+                _file.write( "<styleUrl>#myStyle3</styleUrl>\n")
+
             _file.write( "<LineString>\n")
             _file.write(  "<altitudeMode>relative</altitudeMode>\n")
             _file.write(  "<coordinates>\n")
@@ -893,6 +919,24 @@ class MapAlgo(object):
             _file.write(  "</LineString>\n")
             _file.write( "</Placemark>\n")
 
+        #Print the grid
+
+        for k in self.all_nodes.iterkeys():
+            node = self.all_nodes[k]
+            _file.write( "<Placemark>\n")
+            _file.write( "<name>" + str(count) + "</name>\n")
+            _file.write( "<styleUrl>#myStyle</styleUrl>\n")
+            _file.write( "<LineString>\n")
+            _file.write(  "<altitudeMode>relative</altitudeMode>\n")
+            _file.write(  "<coordinates>\n")
+            _file.write(      str(node.x0) + "," + str(node.y0) + "\n")
+            _file.write(      str(node.x1) + "," + str(node.y0) + "\n")
+            _file.write(      str(node.x1) + "," + str(node.y1) + "\n")
+            _file.write(      str(node.x0) + "," + str(node.y1) + "\n")
+            _file.write(      str(node.x0) + "," + str(node.y0) + "\n")
+            _file.write(   "</coordinates>\n")
+            _file.write(  "</LineString>\n")
+            _file.write( "</Placemark>\n")
         #Close tags
         _file.write(  "</Document>\n")       
         _file.write( "</kml>\n")
@@ -1035,7 +1079,7 @@ if __name__ == '__main__':
     m.run_algorithm()
     #m._segments_to_kml(kml_output)
     m._edges_to_kml(kml_output)
-    m._write_nodes_to_file()
+    #m._write_nodes_to_file()
     # os.chdir("/home/moyano/Projects/CreateTracks/maps/")
     
     print "\nMap inference completed (in " + str(time.time() - start_time) + " seconds).\n"

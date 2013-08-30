@@ -175,6 +175,7 @@ class Trajectory:
     @staticmethod
     def reverse_direction(_dir):
         """
+        0=>7, 1=>6, 
         map
         |---|---|---|  
         | 0 | 1 | 2 |
@@ -192,22 +193,22 @@ class Trajectory:
         | 2 | 1 | 0 |
         |---|---|---|
         """
-        rev = -1
-        if _dir == 0:
-            rev = 7
-        elif _dir == 1:
-            rev = 6
-        elif _dir == 2:
-            rev = 5
-        elif _dir == 3:
-            rev = 4
-        elif _dir == 4:
-            rev = 3
-        elif _dir == 5:
-            rev = 2
-        elif _dir == 6:
-            rev = 1
-        elif _dir == 7:
-            rev = 0
+        rev = ''
+        if _dir == '0':
+            rev = '7'
+        elif _dir == '1':
+            rev = '6'
+        elif _dir == '2':
+            rev = '5'
+        elif _dir == '3':
+            rev = '4'
+        elif _dir == '4':
+            rev = '3'
+        elif _dir == '5':
+            rev = '2'
+        elif _dir == '6':
+            rev = '1'
+        elif _dir == '7':
+            rev = '0'
 
         return rev

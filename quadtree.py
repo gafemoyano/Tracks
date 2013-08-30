@@ -19,10 +19,10 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
-    MAX_LOCATIONS = 1
-    MIN_CELL_SIZE = 5 #meters height
+    MAX_LOCATIONS = 10
+    MIN_CELL_SIZE = 25 #meters height
     DYNAMIC = False
-    DELTA = 0.00000000000001
+    DELTA = 0.0000000000001
     leaves = []
 
 
@@ -110,8 +110,7 @@ class QuadTree(object):
 
         if(self.type == QuadTree.LEAF):
             self.locations.append(coord)
-            cell_size = Trajectory.distance(self.y0, self.x0, self.y1, self.x1)
-
+            cell_size = Trajectory.distance(self.y0, self.x0, self.y1, self.x1)/2
             #Conditions that must be met in order to subdivde the current cell
             if QuadTree.DYNAMIC and len(self.locations) > QuadTree.MAX_LOCATIONS and cell_size >= QuadTree.MIN_CELL_SIZE:
                 self.subdivide()
@@ -288,15 +287,15 @@ class QuadTree(object):
         if self.type == QuadTree.ROOT:
             node = self.containing_node(coord)
 
-            delta_x = (node.x1 - node.x0) + QuadTree.DELTA
-            delta_y = (node.y1 - node.y0) + QuadTree.DELTA
+            delta_x = (node.x1 - node.x0)/2  +QuadTree.DELTA
+            delta_y = (node.y1 - node.y0)/2 + QuadTree.DELTA
             
             distance = Trajectory.distance(node.cy, node.cx, node.cy + delta_y, node.cx + delta_x)
-            cm = node._center_of_mass()
+            cm = node._center()
             bearing = Trajectory.bearing(_dir)
             dest_point = Trajectory.destination_point(cm.latitude, cm.longitude, bearing, distance) 
-            print "dest_point: ", dest_point
             return self.containing_node(dest_point)
+    
     def traverse(self, count = 0):
         if(self.type == QuadTree.LEAF):
 
@@ -308,7 +307,26 @@ class QuadTree(object):
             self.ne.traverse()
             self.sw.traverse()
             self.se.traverse()
+
+    def patterns_by_in_direction(self, direction):
+        "Returns the key of the patterns that have the given direction as in key"        
+        _patterns = []
+
+        for p in self.significant_patterns.iterkeys():
+            if p[0] is direction:
+                _patterns.append(p)
+
+        return _patterns
         
+    def out_patterns_by_out_direction(self, direction):
+        "Returns the key of the patterns that have the given direction as in key"        
+        _patterns = []
+        
+        for p in self.significant_patterns.iterkeys():
+            if p[1] == direction:
+                _patterns.append(p)
+
+        return _patterns
 
     """ #######################################
      METHODS
@@ -348,7 +366,11 @@ class QuadTree(object):
                 lon = (self.x0 + self.x1)/2
                 print "warning"*20
             return Point(lat,lon)
-            
+    
+    def _center(self):
+        lat = (self.y0 + self.y1)/2
+        lon = (self.x0 + self.x1)/2
+        return Point(lat,lon)
     #Returnsthe geographical center of all the locations in the node
     #Returns a Point topule [latitude,longitude]
     def _geographic_midpoint(self):

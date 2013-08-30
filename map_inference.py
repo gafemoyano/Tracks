@@ -322,9 +322,9 @@ class MapAlgo(object):
         """
         print "CELL:"
         for pattern, locs in self.all_nodes[key].significant_patterns.iteritems():
-            if len(locs) > 20:
+            if len(locs) > 0:
                 print "current pattern: ", pattern
-                direction_out = pattern[1]
+                direction_out = pattern[1]                
                 dest_cell = self.location_index.neighbor_on_direction(self.all_nodes[key]._center_of_mass(),direction_out)
                
                 # if dest_cell:
@@ -337,15 +337,15 @@ class MapAlgo(object):
                 print "dcp: ", dest_cell_patterns
 
 
-                self.pattern_edges.append((self.all_nodes[key]._center_of_mass(), dest_cell._center_of_mass()))
+                # self.pattern_edges.append((self.all_nodes[key]._center_of_mass(), dest_cell._center_of_mass()))
             
-                # if dest_cell_patterns:
+                if dest_cell_patterns:
 
-                #     for _p in dest_cell_patterns:
-                #         dest_midpoint = Trajectory.center_of_mass(dest_cell.significant_patterns[_p])
-                #         source_midpoint = Trajectory.center_of_mass(locs)
-                #         self.pattern_edges.append((source_midpoint, dest_midpoint))
-                #         print "segment added", (source_midpoint, dest_midpoint)
+                    for _p in dest_cell_patterns:
+                        dest_midpoint = Trajectory.center_of_mass(dest_cell.significant_patterns[_p])
+                        source_midpoint = Trajectory.center_of_mass(locs)
+                        self.pattern_edges.append((source_midpoint, dest_midpoint))
+                        print "segment added", (source_midpoint, dest_midpoint)
            
             # Get the geographical midpoint of the locations assosiated with the current pattern in the target cell
             # target_locations = [self.all_locations[loc.next_location] for loc in locations]

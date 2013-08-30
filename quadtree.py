@@ -19,8 +19,8 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
-    MAX_LOCATIONS = 4
-    MIN_CELL_SIZE = 40 #meters height
+    MAX_LOCATIONS = 10
+    MIN_CELL_SIZE = 25 #meters height
     DYNAMIC = False
     DELTA = 0.0000000000001
     leaves = []

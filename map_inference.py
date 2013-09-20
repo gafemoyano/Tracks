@@ -21,7 +21,7 @@ from itertools import tee, islice, chain, izip
 client = MongoClient()
 db = client.trip_db
 trip_collection = db.trips
-all_trips = TripParser.json_to_object(trip_collection.find())
+all_trips = TripParser.json_to_object(trip_collection.find().limit(1))
 # globals
 trip_max=len(all_trips)
 location_list = list(location for trip in all_trips for location in trip.locations)
@@ -187,7 +187,7 @@ class MapAlgo(object):
         in_speed = Trajectory.velocity(previous.latitude, previous.longitude, current.latitude, current.longitude, previous.time, current.time)
         out_speed = Trajectory.velocity(current.latitude, current.longitude, next.latitude, next.longitude, current.time, next.time)
         # If the distance traveled between the three points is moer than 15 mts
-        if total_distance > 3 and in_speed < 30 and out_speed < 30:
+        if total_distance > 10 and in_speed < 30 and out_speed < 30:
             in_bearing = Trajectory.initial_heading(previous.latitude, previous.longitude, current.latitude, current.longitude)
             out_bearing = Trajectory.initial_heading(current.latitude, current.longitude, next.latitude, next.longitude)
 
@@ -322,7 +322,7 @@ class MapAlgo(object):
         """
         print "CELL:"
         for pattern, locs in self.all_nodes[key].significant_patterns.iteritems():
-            if len(locs) > 20:
+            if len(locs) > 0:
                 print "current pattern: ", pattern
                 direction_out = pattern[1]
                 dest_cell = self.location_index.neighbor_on_direction(self.all_nodes[key]._center_of_mass(),direction_out)

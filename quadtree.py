@@ -19,8 +19,8 @@ class QuadTree(object):
     LEAF = 2
     BRANCH = 1
     ROOT = 0
-    MAX_LOCATIONS = 4
-    MIN_CELL_SIZE = 40 #meters height
+    MAX_LOCATIONS = 1
+    MIN_CELL_SIZE = 30 #meters height
     DYNAMIC = False
     DELTA = 0.0000000000001
     leaves = []
@@ -296,6 +296,22 @@ class QuadTree(object):
             dest_point = Trajectory.destination_point(cm.latitude, cm.longitude, bearing, distance) 
             return self.containing_node(dest_point)
     
+    def neighbor_on_direction_from_cm(self, coord, _dir):
+        """
+        Parting from the center of mass
+        """
+        if self.type == QuadTree.ROOT:
+            node = self.containing_node(coord)
+            com = self._center_of_mass()
+            delta_x = (node.x1 - node.x0)/2  +QuadTree.DELTA
+            delta_y = (node.y1 - node.y0)/2 + QuadTree.DELTA
+            
+            distance = Trajectory.distance(node.cy, node.cx, node.cy + delta_y, node.cx + delta_x)
+            cm = node._center()
+            bearing = Trajectory.bearing(_dir)
+            dest_point = Trajectory.destination_point(cm.latitude, cm.longitude, bearing, distance) 
+            return self.containing_node(dest_point)
+            
     def traverse(self, count = 0):
         if(self.type == QuadTree.LEAF):
 
@@ -309,7 +325,7 @@ class QuadTree(object):
             self.se.traverse()
 
     def patterns_by_in_direction(self, direction):
-        "Returns the key of the patterns that have the given direction as in key"        
+        "Returns the key of the patterns that have the given direction as in ekey"        
         _patterns = []
 
         for p in self.significant_patterns.iterkeys():

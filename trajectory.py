@@ -31,6 +31,7 @@ class Trajectory:
         #normalize
         heading =  (degrees((atan2(y,x)))+360)%360
         return heading
+
     @staticmethod
     def final_heading(lat1, lon1, lat2, lon2):
         heading = initial_heading(lon2,lat2,lon1,lat1)
@@ -97,6 +98,22 @@ class Trajectory:
         return Point(lat,lon)
 
     @staticmethod
+    def cluster_intersections(previous, current, next):
+
+        total_distance = Trajectory.distance(previous.latitude, previous.longitude, current.latitude, current.longitude) + Trajectory.distance(next.latitude, next.longitude, current.latitude, current.longitude)
+        
+        #change to average speed
+        in_speed = Trajectory.velocity(previous.latitude, previous.longitude, current.latitude, current.longitude, previous.time, current.time)
+        out_speed = Trajectory.velocity(current.latitude, current.longitude, next.latitude, next.longitude, current.time, next.time)
+
+        in_bearing = Trajectory.initial_heading(previous.latitude, previous.longitude, current.latitude, current.longitude)
+        out_bearing = Trajectory.initial_heading(current.latitude, current.longitude, next.latitude, next.longitude)
+
+        if abs(in_bearing - out_bearing) < 15 and total_distance < 20 and in_speed < 30 and out_speed < 30:
+            return True
+
+
+    @staticmethod
     def direction(heading):
         """
         Maps a given angle to a number.
@@ -107,7 +124,7 @@ class Trajectory:
             _dir = '1'
 
         elif heading > 22.5 and heading <= 67.5:
-            _dir = '2'
+            _dir = '2'                                                                                                                                
 
         elif heading > 67.5 and heading <= 112.5:
             _dir = '4'

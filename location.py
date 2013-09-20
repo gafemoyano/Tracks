@@ -7,6 +7,7 @@
 #
 
 import os
+from math import sqrt
 
 class Location:
     def __init__(self, id, latitude, longitude, time):
@@ -19,6 +20,11 @@ class Location:
         self.prev_location = None
         self.next_location = None
     
+    @property
+    def distance(self, other):
+        m = (self.latitude - other.latitude, self.longitude - other.longitude)
+        return sqrt(m[0]*m[0] + m[1]*m[1])
+
     def __str__(self):
         location_string = str(self.id) + "," + str(self.latitude) + "," + str(self.longitude) + "," + str(self.time)
         

@@ -8,8 +8,9 @@
 #
 
 from __future__ import division
-from math import radians, cos, sin, atan2, degrees
+from math import radians, cos, sin, atan2, degrees, sqrt
 from itertools import tee, islice, chain, izip
+from trajectory import Trajectory
 import os
 
 class Location:
@@ -21,6 +22,10 @@ class Location:
         self.prev_location = None
         self.next_location = None
         self.trace_id = None
+    
+
+    def distance(self, other):
+        return Trajectory.distance(self.latitude, self.longitude, other.latitude, other.longitude)
 
 class Trip(object):
     

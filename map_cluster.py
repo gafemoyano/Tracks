@@ -14,10 +14,11 @@ class Cluster(object):
 
 	def add_location(self, location):
 		self.locations.append(location)
-		self.radius = seed.distance(location)
+		self.radius = self.center.distance(location)
 
 	def score(self, location):
-		return 1
+		#FIX
+		return self.center.distance(location)
 
 class ClusterSplit:
 	
@@ -30,24 +31,30 @@ class ClusterSplit:
 	def build_clusters(points, seeds):
 		clusters = [Cluster(s) for s in seeds]
 		print clusters
-		sys.exit(0)
+
 		for p in points:
 			#calculate scores for each cluster
 			candidates = [(c,c.score(p)) for c in clusters]
 			
 			#select the cluster with the best score
-			best_candidate = min([_c[1] for _c in candidates])
+			best_candidate = min(candidates, key = lambda x: x[1])
 
-			best_candidate.add_location(p)
+			best_candidate[0].add_location(p)
+		
+		return clusters
 
 	@staticmethod
 	def score_clusters(clusters):
-		cluster.foldLeft()
-	
+		score = sum([c.radius for c in clusters])
+		return score
+
 	@staticmethod
 	def compare_clusters(score, solution, points):
 		seeds = [c.center for c in solution]
-		candidates = ClusterSplit.build_clusters(poitns, seeds)
+
+		candidates = ClusterSplit.build_clusters(points, seeds)
+		print "x"*50
+		print candidates
 		candidate_score = ClusterSplit.score_clusters(candidates)
 
 		if candidate_score < score:
@@ -59,7 +66,7 @@ class ClusterSplit:
 	def split(points, seeds):
 		solution = ClusterSplit.build_clusters(points, seeds)
 		score = ClusterSplit.score_clusters(solution)
-		ClusterSplit.compare_clusters(self, score, solution, points)
+		ClusterSplit.compare_clusters(score, solution, points)
 
 
 
